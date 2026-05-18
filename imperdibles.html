@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lo que no te podés perder de BA — Modo Feria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;
+      --pink:#f4a8a8;--pink-light:#fce8e8;
+      --terra:#c4522a;--terra-light:#e8724a;
+      --olive:#7a9040;
+      --cream:#faf5f0;--cream-dk:#f0e8df;
+      --txt:#2a2a2a;--txt-m:#555;--txt-l:#999;
+      --shadow:0 4px 20px rgba(0,0,0,.08);
+      --shadow-h:0 8px 32px rgba(0,0,0,.15);
+      --r:16px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--txt);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+
+    /* ── NAV ── */
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px}
+    .bc a{color:rgba(255,255,255,.7);transition:color .2s}.bc a:hover{color:#fff}
+    .bc i.sep{font-size:.6rem}
+
+    /* ── HERO ── */
+    .hero{min-height:480px;background:url('obelisco2.avif') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,80,70,.93) 0%,rgba(21,80,70,.55) 45%,rgba(0,0,0,.1) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px)}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;line-height:1.1;max-width:700px;text-shadow:0 2px 14px rgba(0,0,0,.3);margin-bottom:12px}
+    .hero-body p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:580px}
+
+    /* ── INTRO ── */
+    .intro{background:#fff;border-bottom:2px solid var(--cream-dk);padding:32px 24px}
+    .intro-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .intro-text h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--teal-dark);margin-bottom:6px}
+    .intro-text p{color:var(--txt-m);font-size:.95rem;max-width:560px}
+    .intro-badge{display:flex;align-items:center;gap:8px;background:var(--pink-light);border-radius:12px;padding:12px 18px;white-space:nowrap}
+    .intro-badge i{color:var(--terra);font-size:1.2rem}
+    .intro-badge span{font-size:.85rem;font-weight:700;color:var(--txt)}
+
+    /* ── BARRIOS GRID ── */
+    .section{max-width:1200px;margin:0 auto;padding:52px 24px}
+    .section-header{margin-bottom:32px}
+    .section-header h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--teal-dark)}
+    .section-header p{color:var(--txt-m);margin-top:6px}
+
+    .barrios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+
+    .barrio-card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:transform .28s,box-shadow .28s;display:flex;flex-direction:column}
+    .barrio-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-h)}
+    .barrio-img{height:190px;background-size:cover;background-position:center;position:relative;flex-shrink:0}
+    .barrio-num{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:var(--teal-dark);font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:.04em}
+    .barrio-body{padding:20px;display:flex;flex-direction:column;flex:1}
+    .barrio-body h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--teal-dark);margin-bottom:8px}
+    .barrio-body p{font-size:.85rem;color:var(--txt-m);line-height:1.55;flex:1;margin-bottom:16px}
+    .barrio-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+    .btag{background:var(--cream-dk);color:var(--txt-m);font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:8px;text-transform:uppercase;letter-spacing:.03em}
+    .barrio-link{display:inline-flex;align-items:center;gap:6px;color:var(--terra);font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;transition:gap .2s;align-self:flex-start}
+    .barrio-link:hover{gap:10px}
+
+    /* ── BACK BTN ── */
+    .back-section{max-width:1200px;margin:0 auto;padding:0 24px 52px}
+    .btn-back{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;transition:background .2s}
+    .btn-back:hover{background:var(--teal-light)}
+
+    /* ── FOOTER ── */
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem}
+    footer a{color:var(--pink);font-weight:700}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:860px){.barrios-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){
+      .nav-links{display:none}
+      .barrios-grid{grid-template-columns:1fr}
+      .hero-body h1{font-size:2rem}
+      .intro-inner{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.jpeg" alt="Modo Feria BA">
+      <span>Modo Feria BA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="proximos-eventos.html">Próximos eventos</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right sep"></i>
+    <span>Lo que no te podés perder de BA</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-star"></i> Imperdibles</div>
+    <h1>Lo que no te podés<br>perder de Buenos Aires</h1>
+    <p>Una guía por los barrios que hacen única a la ciudad, ideal si es tu primera vez.</p>
+  </div>
+</section>
+
+<!-- INTRO BAR -->
+<div class="intro">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <h2>12 barrios, una sola ciudad</h2>
+      <p>Recorrelos a pie, en subte o en bici. Cada barrio tiene su identidad, su gastronomía y su historia. Acá te contamos qué no podés dejar de ver en cada uno.</p>
+    </div>
+    <div class="intro-badge">
+      <i class="fas fa-map-marked-alt"></i>
+      <span>Guía para primera visita</span>
+    </div>
+  </div>
+</div>
+
+<!-- BARRIOS -->
+<div class="section">
+  <div class="section-header">
+    <h2>Los barrios más emblemáticos</h2>
+    <p>Hacé clic en cada barrio para explorar su recorrido</p>
+  </div>
+
+  <div class="barrios-grid">
+
+    <!-- 1. San Telmo -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:url('bar.avif') center/cover no-repeat">
+        <span class="barrio-num">01 · Historia</span>
+      </div>
+      <div class="barrio-body">
+        <h3>San Telmo</h3>
+        <div class="barrio-tags"><span class="btag">Tango</span><span class="btag">Antigüedades</span><span class="btag">Historia</span></div>
+        <p>Uno de los barrios más antiguos de la ciudad. Caminá sus adoquines, entrá a sus tanguerías y explorá la Feria de San Pedro Telmo los domingos.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 2. Puerto Madero -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:url('pmadero.avif') center/cover no-repeat">
+        <span class="barrio-num">02 · Moderno</span>
+      </div>
+      <div class="barrio-body">
+        <h3>Puerto Madero</h3>
+        <div class="barrio-tags"><span class="btag">Gastronomía</span><span class="btag">Diseño</span><span class="btag">Río</span></div>
+        <p>El barrio más nuevo de BA. Sus calles llevan nombres de mujeres históricas, tiene restaurantes de primer nivel y la Reserva Ecológica a pasos del río.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 3. Recoleta -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:linear-gradient(135deg,#155046 0%,#1e6b5e 60%,#2d8a7a 100%);display:flex;align-items:center;justify-content:center;font-size:5rem">
+        🏛️
+        <span class="barrio-num">03 · Elegante</span>
+      </div>
+      <div class="barrio-body">
+        <h3>Recoleta</h3>
+        <div class="barrio-tags"><span class="btag">Cementerio</span><span class="btag">Museos</span><span class="btag">Floralis</span></div>
+        <p>El barrio más elegante de Buenos Aires. Visitá el Cementerio de la Recoleta, la Floralis Genérica y los mejores museos de la ciudad.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 4. Palermo -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:url('calle-amplia.avif') center/cover no-repeat">
+        <span class="barrio-num">04 · Bohemio</span>
+      </div>
+      <div class="barrio-body">
+        <h3>Palermo</h3>
+        <div class="barrio-tags"><span class="btag">Parques</span><span class="btag">Bares</span><span class="btag">Diseño</span></div>
+        <p>El barrio más grande de la ciudad. Bosques, lago, Planetario y una escena gastronómica y cultural que no para. Imperdible de día y de noche.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 5. La Boca -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:linear-gradient(135deg,#c4522a 0%,#e8724a 60%,#f0a060 100%);display:flex;align-items:center;justify-content:center;font-size:5rem">
+        🎨
+        <span class="barrio-num">05 · Color</span>
+      </div>
+      <div class="barrio-body">
+        <h3>La Boca</h3>
+        <div class="barrio-tags"><span class="btag">Caminito</span><span class="btag">Fútbol</span><span class="btag">Arte</span></div>
+        <p>Entre Caminito, los conventillos de colores y la pasión por Boca Juniors, este barrio es uno de los más fotografiados del mundo. Único e irrepetible.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 6. San Nicolás / Centro -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:url('obelisco.avif') center/cover no-repeat">
+        <span class="barrio-num">06 · Centro</span>
+      </div>
+      <div class="barrio-body">
+        <h3>San Nicolás</h3>
+        <div class="barrio-tags"><span class="btag">Obelisco</span><span class="btag">Teatros</span><span class="btag">Av. Corrientes</span></div>
+        <p>El corazón de la ciudad. El Obelisco, el Teatro Colón, la Avenida Corrientes y miles de librerías, pizzerías y bares nocturnos que no cierran nunca.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 7. Retiro -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:url('subte.avif') center/cover no-repeat">
+        <span class="barrio-num">07 · Conexión</span>
+      </div>
+      <div class="barrio-body">
+        <h3>Retiro</h3>
+        <div class="barrio-tags"><span class="btag">Plaza San Martín</span><span class="btag">Inmigrantes</span><span class="btag">Hub</span></div>
+        <p>Puerta de entrada histórica de millones de inmigrantes. Hoy es el hub de transporte de la ciudad y tiene una de las plazas más hermosas de BA.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 8. Monserrat -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:linear-gradient(135deg,#7a9040 0%,#a8b87a 60%,#c4d490 100%);display:flex;align-items:center;justify-content:center;font-size:5rem">
+        🏛️
+        <span class="barrio-num">08 · Histórico</span>
+      </div>
+      <div class="barrio-body">
+        <h3>Monserrat</h3>
+        <div class="barrio-tags"><span class="btag">Casa Rosada</span><span class="btag">Congreso</span><span class="btag">Av. de Mayo</span></div>
+        <p>La Avenida de Mayo une la Casa Rosada con el Congreso. Un paseo lleno de arquitectura europea, cafés históricos y el alma política de Argentina.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 9. Balvanera / Abasto -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:url('empanadas.avif') center/cover no-repeat">
+        <span class="barrio-num">09 · Gardel</span>
+      </div>
+      <div class="barrio-body">
+        <h3>Balvanera · Abasto</h3>
+        <div class="barrio-tags"><span class="btag">Gardel</span><span class="btag">Tango</span><span class="btag">Gastronomía</span></div>
+        <p>El barrio de Carlos Gardel. El Mercado del Abasto convertido en shopping, la gastronomía del Once y la historia del tango porteño en cada esquina.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 10. Belgrano -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:linear-gradient(135deg,#1e6b5e 0%,#2d8a7a 50%,#f4a8a8 100%);display:flex;align-items:center;justify-content:center;font-size:5rem">
+        🌳
+        <span class="barrio-num">10 · Residencial</span>
+      </div>
+      <div class="barrio-body">
+        <h3>Belgrano</h3>
+        <div class="barrio-tags"><span class="btag">Barrancos</span><span class="btag">Chinatown</span><span class="btag">Museos</span></div>
+        <p>Nació como pueblo independiente. Hoy tiene el Barrio Chino, las Barrancas de Belgrano y una escena comercial y cultural vibrante y familiar.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 11. Barracas -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:linear-gradient(135deg,#c4522a 0%,#7a9040 100%);display:flex;align-items:center;justify-content:center;font-size:5rem">
+        🎭
+        <span class="barrio-num">11 · Arte</span>
+      </div>
+      <div class="barrio-body">
+        <h3>Barracas</h3>
+        <div class="barrio-tags"><span class="btag">Murales</span><span class="btag">Quinquela</span><span class="btag">Street art</span></div>
+        <p>Un barrio rico en historia y arte callejero. El mural de Quinquela Martín y las intervenciones urbanas lo convierten en un destino cultural emergente.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- 12. Villa Crespo -->
+    <div class="barrio-card">
+      <div class="barrio-img" style="background:linear-gradient(135deg,#f4a8a8 0%,#c4522a 50%,#7a9040 100%);display:flex;align-items:center;justify-content:center;font-size:5rem">
+        🛍️
+        <span class="barrio-num">12 · Feria</span>
+      </div>
+      <div class="barrio-body">
+        <h3>Villa Crespo</h3>
+        <div class="barrio-tags"><span class="btag">Ferias</span><span class="btag">Diseño</span><span class="btag">Gastronomía</span></div>
+        <p>El epicentro de las ferias de diseño y el mercado independiente. Thames, Palermo Hollywood y los mejores brunch de la ciudad a poca distancia.</p>
+        <a href="#" class="barrio-link">Explorar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="back-section">
+  <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+</div>
+
+<footer>
+  © 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados
+</footer>
+
+</body>
+</html>

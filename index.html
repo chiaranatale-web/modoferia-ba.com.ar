@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modo Feria BA — Ferias y Eventos en Buenos Aires</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --teal:        #1e6b5e;
+      --teal-light:  #2d8a7a;
+      --teal-dark:   #155046;
+      --pink:        #f4a8a8;
+      --pink-light:  #fce8e8;
+      --terra:       #c4522a;
+      --terra-light: #e8724a;
+      --olive:       #7a9040;
+      --cream:       #faf5f0;
+      --cream-dk:    #f0e8df;
+      --txt:         #2a2a2a;
+      --txt-m:       #555;
+      --txt-l:       #999;
+      --white:       #fff;
+      --shadow:      0 4px 20px rgba(0,0,0,.08);
+      --shadow-h:    0 8px 32px rgba(0,0,0,.14);
+      --r:           16px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--txt);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+
+    /* ── HEADER ── */
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;letter-spacing:.02em;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .nav-btn{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+    .nav-btn:hover{background:rgba(255,255,255,.28)}
+
+    /* ── HERO ── */
+    .hero{background:url('foto-bs-as.jpg') center/cover no-repeat;padding:16px 24px 60px;position:relative;overflow:hidden;min-height:520px;display:flex;flex-direction:column}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(21,80,70,.9) 0%,rgba(21,80,70,.65) 50%,rgba(0,0,0,.2) 100%)}
+    .bunting{width:100%;height:28px;display:block;position:relative;z-index:1}
+    .hero-inner{max-width:1200px;margin:24px auto 0;display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:center;position:relative;z-index:1;flex:1}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);color:#fff;padding:5px 14px;border-radius:20px;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.2)}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.9rem;color:#fff;line-height:1.1;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+    .hero h1 em{color:var(--pink);font-style:normal}
+    .hero p{font-size:1.05rem;color:rgba(255,255,255,.88);max-width:460px;margin-bottom:26px}
+    .hero-search{display:flex;border-radius:50px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.35);max-width:460px}
+    .hero-search input{flex:1;padding:13px 20px;border:none;font-size:.93rem;font-family:'Nunito',sans-serif;outline:none;background:#fff}
+    .hero-search input::placeholder{color:var(--txt-l)}
+    .hero-search button{background:var(--terra);color:#fff;border:none;padding:13px 22px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;font-size:.88rem;transition:background .2s}
+    .hero-search button:hover{background:var(--terra-light)}
+    .hero-stats{display:flex;gap:28px;margin-top:26px}
+    .hero-stat strong{display:block;font-size:1.7rem;font-family:'Playfair Display',serif;color:var(--pink)}
+    .hero-stat span{font-size:.78rem;color:rgba(255,255,255,.75);font-weight:700}
+    .hero-logo-stamp{display:flex;justify-content:center;align-items:center}
+    .hero-logo-stamp img{width:210px;height:210px;object-fit:contain;border-radius:50%;border:3px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);backdrop-filter:blur(8px);box-shadow:0 8px 36px rgba(0,0,0,.4);padding:14px}
+
+    /* ── INFO BAR ── */
+    .info-bar{background:var(--teal-dark);padding:12px 24px}
+    .info-bar-inner{max-width:1200px;margin:0 auto;display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .ibi{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.9);font-size:.82rem;font-weight:600}
+    .ibi i{color:var(--pink)}
+
+    /* ── COBERTURAS ── */
+    .cob{background:var(--cream-dk);padding:52px 24px 56px}
+    .cob-inner{max-width:1200px;margin:0 auto}
+    .cob-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+    .cob-header h2{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--teal-dark);line-height:1}
+    .cob-header h2::after{content:'';display:block;width:50px;height:3px;background:var(--terra);margin-top:8px;border-radius:2px}
+    .cob-all{display:inline-flex;align-items:center;gap:6px;color:var(--teal);font-weight:800;font-size:.88rem;transition:color .2s}
+    .cob-all:hover{color:var(--terra)}
+    .cob-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .cob-card{border-radius:var(--r);overflow:hidden;position:relative;height:280px;display:block;transition:transform .32s,box-shadow .32s}
+    .cob-card:hover{transform:scale(1.025);box-shadow:var(--shadow-h)}
+    .cob-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .32s}
+    .cob-card:hover .cob-img{transform:scale(1.06)}
+    .cob-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 10%,rgba(0,0,0,.75) 100%)}
+    .cob-body{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 18px}
+    .cob-cat{display:inline-block;font-size:.68rem;font-weight:800;color:var(--pink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px;font-family:'Nunito',sans-serif}
+    .cob-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:10px}
+    .cob-meta{display:flex;align-items:center;justify-content:space-between}
+    .cob-author{font-size:.75rem;color:rgba(255,255,255,.7);font-family:'Nunito',sans-serif}
+    .cob-link{font-size:.75rem;font-weight:800;color:var(--pink);text-transform:uppercase;letter-spacing:.04em;font-family:'Nunito',sans-serif;transition:color .2s}
+    .cob-card:hover .cob-link{color:#fff}
+    @media(max-width:600px){.cob-grid{grid-template-columns:1fr}.cob-card{height:240px}}
+
+    /* ── DESTACADOS ── */
+    .dest{background:#fff;padding:52px 24px 56px}
+    .dest-inner{max-width:1200px;margin:0 auto}
+    .dest-heading{text-align:center;margin-bottom:32px}
+    .dest-heading h2{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--txt);text-transform:uppercase;letter-spacing:.1em;line-height:1}
+    .dest-heading h2 span{color:var(--terra)}
+    .dest-heading::after{content:'';display:block;width:60px;height:3px;background:var(--terra);margin:10px auto 0;border-radius:2px}
+    .dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .dest-card{border-radius:14px;overflow:hidden;position:relative;height:230px;cursor:pointer;transition:transform .32s,box-shadow .32s}
+    .dest-card:hover{transform:scale(1.035);box-shadow:var(--shadow-h)}
+    .dest-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5.5rem;user-select:none;transition:transform .32s}
+    .dest-card:hover .dest-bg{transform:scale(1.08)}
+    .dest-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 25%,rgba(0,0,0,.68) 100%)}
+    .dest-body{position:absolute;bottom:0;left:0;right:0;padding:18px 16px 16px}
+    .dest-card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff;line-height:1.25;margin-bottom:7px}
+    .dest-link{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:800;color:rgba(255,255,255,.85);transition:color .2s;text-transform:uppercase;letter-spacing:.04em}
+    .dest-link:hover{color:var(--pink)}
+    .dest-link i{font-size:.7rem}
+    @media(max-width:760px){.dest-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:420px){.dest-grid{grid-template-columns:1fr}}
+
+    /* ── FILTERS ── */
+    .filters{background:#fff;border-bottom:2px solid var(--cream-dk);position:sticky;top:68px;z-index:100}
+    .filters-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+    .filters-inner::-webkit-scrollbar{display:none}
+    .flabel{font-size:.75rem;font-weight:800;color:var(--txt-l);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;margin-right:4px}
+    .fbtn{background:var(--cream);border:2px solid var(--cream-dk);color:var(--txt-m);padding:6px 15px;border-radius:20px;font-size:.83rem;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;white-space:nowrap;transition:all .2s}
+    .fbtn:hover{border-color:var(--teal);color:var(--teal)}
+    .fbtn.active{background:var(--terra);border-color:var(--terra);color:#fff}
+
+    /* ── MAIN ── */
+    .main{max-width:1200px;margin:0 auto;padding:36px 24px}
+    .wk-divider{display:flex;align-items:center;gap:14px;margin:40px 0 20px}
+    .wk-divider:first-child{margin-top:0}
+    .wk-divider h2{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--teal-dark);white-space:nowrap}
+    .wk-divider::after{content:'';flex:1;height:2px;background:var(--cream-dk)}
+    .wk-finalizados h2{color:var(--txt-l);font-size:1.1rem}
+    .wk-finalizados::after{background:#ddd}
+    .grid-finalizados .card{opacity:.6;filter:grayscale(30%)}
+    .grid-finalizados .card:hover{opacity:.8;filter:grayscale(0%)}
+
+    /* ── CARDS GRID ── */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
+
+    /* ── EVENT CARD ── */
+    .card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:all .28s;cursor:default}
+    .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-h)}
+    .card-banner{height:130px;display:grid;place-items:center;font-size:3.8rem;position:relative;background-size:cover;background-position:center;background-repeat:no-repeat}
+    .card-banner.has-photo{height:180px}
+    .card-banner.has-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.05) 0%,rgba(0,0,0,.3) 100%)}
+    .card-badge{position:absolute;top:10px;right:10px;background:var(--terra);color:#fff;padding:3px 10px;border-radius:10px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .card-body{padding:18px 20px 14px}
+    .card-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}
+    .tag{padding:3px 9px;border-radius:9px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+    .tag-free{background:rgba(122,144,64,.15);color:var(--olive)}
+    .tag-paid{background:rgba(196,82,42,.12);color:var(--terra)}
+    .tag-cat{background:var(--cream-dk);color:var(--txt-m)}
+    .card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--txt);margin-bottom:12px;line-height:1.25}
+    .card-rows{display:flex;flex-direction:column;gap:6px}
+    .card-row{display:flex;align-items:flex-start;gap:8px;font-size:.83rem;color:var(--txt-m)}
+    .card-row i{color:var(--teal);width:14px;margin-top:2px;flex-shrink:0}
+    .card-desc{font-size:.83rem;color:var(--txt-m);margin-top:11px;border-top:1px solid var(--cream-dk);padding-top:11px;line-height:1.5}
+    .card-foot{padding:12px 20px;background:var(--cream);display:flex;align-items:center;justify-content:space-between}
+    .card-entry{font-size:.88rem;font-weight:800}
+    .card-entry.free{color:var(--olive)}
+    .card-entry.paid{color:var(--terra)}
+    .card-cta{background:var(--teal);color:#fff;border:none;padding:6px 14px;border-radius:20px;font-size:.78rem;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:background .2s}
+    .card-cta:hover{background:var(--teal-light)}
+    .card-maps{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--cream-dk);color:var(--teal);font-size:.82rem;transition:background .2s,color .2s;flex-shrink:0}
+    .card-maps:hover{background:var(--teal);color:#fff}
+    .card.hidden{display:none}
+
+    /* ── REELS ── */
+    .reels-section{background:var(--cream-dk);padding:52px 24px}
+    .reels-inner{max-width:1200px;margin:0 auto}
+    .reels-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+    .reels-header h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--teal-dark)}
+    .reels-header p{color:var(--txt-m);margin-top:4px}
+    .ig-handle{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;padding:10px 20px;border-radius:30px;font-weight:800;font-size:.9rem;transition:opacity .2s;white-space:nowrap}
+    .ig-handle:hover{opacity:.88}
+    .reels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;justify-items:center}
+    .reel-wrap{width:100%;max-width:400px}
+    @media(max-width:480px){.reels-grid{grid-template-columns:1fr}.reel-wrap{max-width:100%}}
+
+    /* ── CALENDARIO ── */
+    .cal-section{background:#fff;border-radius:var(--r);padding:28px 28px 24px;box-shadow:var(--shadow);margin-bottom:36px}
+    .cal-section>h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin-bottom:20px}
+    .cal-wrap{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
+    .cal-month-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.82rem;color:var(--txt-l);text-align:center;margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,40px);gap:4px}
+    .cal-dow{width:40px;text-align:center;font-size:.68rem;font-weight:800;color:var(--txt-l);padding:4px 0;font-family:'Nunito',sans-serif;text-transform:uppercase}
+    .cal-day{width:40px;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.85rem;font-family:'Nunito',sans-serif;font-weight:600;color:var(--txt-l);position:relative;gap:3px}
+    .cal-day.has-ev{cursor:pointer;color:var(--teal-dark);font-weight:800;background:var(--cream);transition:all .2s}
+    .cal-day.has-ev:hover{background:var(--teal);color:#fff}
+    .cal-day.has-ev:hover .cal-dot{opacity:.7;background:#fff!important}
+    .cal-day.cal-active{background:var(--teal)!important;color:#fff!important}
+    .cal-day.cal-active .cal-dot{background:#fff!important;opacity:.8}
+    .cal-day-num{line-height:1}
+    .cal-dots{display:flex;gap:2px}
+    .cal-dot{width:5px;height:5px;border-radius:50%}
+    .cal-panel{background:var(--cream);border-radius:var(--r);padding:18px;min-height:240px}
+    .cal-empty{text-align:center;color:var(--txt-l);padding:40px 16px;font-family:'Nunito',sans-serif}
+    .cal-empty i{font-size:1.8rem;margin-bottom:8px;display:block;opacity:.5}
+    .cal-empty p{font-size:.85rem}
+    .cal-panel-day{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--teal-dark);margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--cream-dk)}
+    .cal-ev-item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--cream-dk)}
+    .cal-ev-item:last-child{border-bottom:none}
+    .cal-ev-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+    .cal-ev-name{font-weight:800;font-size:.88rem;color:var(--txt);font-family:'Nunito',sans-serif}
+    .cal-ev-loc{font-size:.76rem;color:var(--txt-l);font-family:'Nunito',sans-serif;margin-top:2px}
+    .cal-ev-hrs{font-size:.74rem;color:var(--terra);font-family:'Nunito',sans-serif;font-weight:700;margin-top:1px}
+    @media(max-width:640px){
+      .cal-wrap{grid-template-columns:1fr}
+      .cal-grid{grid-template-columns:repeat(7,1fr);gap:3px}
+      .cal-dow,.cal-day{width:100%}
+    }
+
+    /* ── TIPS ── */
+    .tips{background:var(--teal);padding:52px 24px}
+    .tips-inner{max-width:1200px;margin:0 auto}
+    .tips h2{font-family:'Playfair Display',serif;font-size:2rem;color:#fff;text-align:center;margin-bottom:30px}
+    .tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+    .tip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);padding:24px;text-align:center;color:#fff;transition:background .2s}
+    .tip:hover{background:rgba(255,255,255,.18)}
+    .tip-icon{font-size:2.2rem;margin-bottom:10px}
+    .tip h3{font-size:.95rem;font-weight:800;margin-bottom:7px}
+    .tip p{font-size:.82rem;opacity:.85;line-height:1.55;margin-bottom:12px}
+    .tip-link{display:inline-flex;align-items:center;gap:5px;color:var(--pink);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;transition:gap .2s}
+    .tip-link:hover{gap:8px}
+    .tips-map{margin-top:32px}
+
+    /* ── NEWSLETTER ── */
+    .newsletter{background:var(--pink-light);padding:52px 24px;text-align:center}
+    .newsletter h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--teal-dark);margin-bottom:8px}
+    .newsletter p{color:var(--txt-m);margin-bottom:22px}
+    .nl-form{display:flex;border-radius:50px;overflow:hidden;box-shadow:var(--shadow);max-width:500px;margin:0 auto}
+    .nl-form input{flex:1;padding:13px 20px;border:none;font-size:.93rem;font-family:'Nunito',sans-serif;outline:none}
+    .nl-form button{background:var(--terra);color:#fff;border:none;padding:13px 22px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;font-size:.88rem;white-space:nowrap;transition:background .2s}
+    .nl-form button:hover{background:var(--terra-light)}
+
+    /* ── FOOTER ── */
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:44px 24px 20px}
+    .footer-inner{max-width:1200px;margin:0 auto}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;margin-bottom:28px}
+    .footer-brand img{height:48px;border-radius:8px;margin-bottom:11px;display:block}
+    .footer-brand p{font-size:.83rem;opacity:.8;line-height:1.6}
+    .footer-social{display:flex;gap:12px;margin-top:12px}
+    .footer-social a{color:rgba(255,255,255,.65);font-size:1.05rem;transition:color .2s}
+    .footer-social a:hover{color:var(--pink)}
+    .footer-col h4{color:#fff;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+    .footer-col a{color:rgba(255,255,255,.65);font-size:.83rem;transition:color .2s}
+    .footer-col a:hover{color:var(--pink)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;display:flex;justify-content:space-between;font-size:.78rem;opacity:.6}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:860px){
+      .hero-inner{grid-template-columns:1fr}
+      .hero-logo-stamp{display:none}
+      .hero h1{font-size:2.2rem}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:580px){
+      .nav-links{display:none}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column;gap:6px;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav">
+    <a href="#" class="nav-logo">
+      <img src="Logo.jpeg" alt="Modo Feria BA">
+      <span>Modo Feria BA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#este-finde">Este finde</a></li>
+      <li><a href="#tips">Cómo ir</a></li>
+      <li><a href="#contacto">Suscribirse</a></li>
+    </ul>
+    <button class="nav-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Bunting decorativo -->
+  <svg class="bunting" viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <polygon id="bflag" points="-14,2 14,2 0,26"/>
+    </defs>
+    <line x1="0" y1="2" x2="1200" y2="2" stroke="#155046" stroke-width="1.5" opacity=".5"/>
+    <use href="#bflag" x="25"   fill="#f4a8a8"/>
+    <use href="#bflag" x="75"   fill="#c4522a"/>
+    <use href="#bflag" x="125"  fill="#7a9040"/>
+    <use href="#bflag" x="175"  fill="#f4a8a8"/>
+    <use href="#bflag" x="225"  fill="#c4522a"/>
+    <use href="#bflag" x="275"  fill="#7a9040"/>
+    <use href="#bflag" x="325"  fill="#f4a8a8"/>
+    <use href="#bflag" x="375"  fill="#c4522a"/>
+    <use href="#bflag" x="425"  fill="#7a9040"/>
+    <use href="#bflag" x="475"  fill="#f4a8a8"/>
+    <use href="#bflag" x="525"  fill="#c4522a"/>
+    <use href="#bflag" x="575"  fill="#7a9040"/>
+    <use href="#bflag" x="625"  fill="#f4a8a8"/>
+    <use href="#bflag" x="675"  fill="#c4522a"/>
+    <use href="#bflag" x="725"  fill="#7a9040"/>
+    <use href="#bflag" x="775"  fill="#f4a8a8"/>
+    <use href="#bflag" x="825"  fill="#c4522a"/>
+    <use href="#bflag" x="875"  fill="#7a9040"/>
+    <use href="#bflag" x="925"  fill="#f4a8a8"/>
+    <use href="#bflag" x="975"  fill="#c4522a"/>
+    <use href="#bflag" x="1025" fill="#7a9040"/>
+    <use href="#bflag" x="1075" fill="#f4a8a8"/>
+    <use href="#bflag" x="1125" fill="#c4522a"/>
+    <use href="#bflag" x="1175" fill="#7a9040"/>
+  </svg>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><i class="fas fa-calendar-alt"></i> Mayo 2026 · Buenos Aires</div>
+      <h1>Ferias y Eventos<br>en <em>Buenos Aires</em></h1>
+      <p>Encontrá las mejores ferias, mercados y eventos culturales de la ciudad este mes. La mayoría con entrada gratuita.</p>
+    </div>
+    <div class="hero-logo-stamp">
+      <img src="Logo.jpeg" alt="Modo Feria BA">
+    </div>
+  </div>
+</section>
+
+
+<!-- COBERTURAS -->
+<section class="cob">
+  <div class="cob-inner">
+    <div class="cob-header">
+      <div>
+        <h2>Coberturas</h2>
+      </div>
+      <a href="editoriales.html" class="cob-all">Ver todas <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="cob-grid">
+
+      <a href="editorial-feria-francesa.html" class="cob-card">
+        <div class="cob-img" style="background-image:url('ff-foto2.jpg')"></div>
+        <div class="cob-overlay"></div>
+        <div class="cob-body">
+          <span class="cob-cat">Gastronomía · Cultura</span>
+          <div class="cob-title">"Durante dos días, es un momento de disfrutar juntos alrededor de una buena comida": la palabra del embajador Romain Nadal</div>
+          <div class="cob-meta">
+            <span class="cob-author">Florencia Santone · Mayo 2026</span>
+            <span class="cob-link">Leer <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="editorial-food-fest.html" class="cob-card">
+        <div class="cob-img" style="background-image:url('food-fest-portada.jpg');background-position:center 30%"></div>
+        <div class="cob-overlay"></div>
+        <div class="cob-body">
+          <span class="cob-cat">Gastronomía · Crónica</span>
+          <div class="cob-title">Dos días de aromas, música y multitudes: así se vivió la Food Fest en La Rural</div>
+          <div class="cob-meta">
+            <span class="cob-author">Úrsula Lombardo · Mayo 2026</span>
+            <span class="cob-link">Leer <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- DESTACADOS -->
+<section class="dest">
+  <div class="dest-inner">
+    <div class="dest-heading">
+      <h2>Destacados</h2>
+    </div>
+    <div class="dest-grid">
+
+      <!-- 1. Lo que no te podés perder -->
+      <a href="imperdibles.html" class="dest-card">
+        <div class="dest-bg" style="background:url('obelisco2.avif') center/cover no-repeat"></div>
+        <div class="dest-overlay"></div>
+        <div class="dest-body">
+          <div class="dest-card-title">Lo que no te podés perder de BA</div>
+          <span class="dest-link">Ver más <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 2. Próximos eventos -->
+      <a href="proximos-eventos.html" class="dest-card">
+        <div class="dest-bg" style="background:url('bar.avif') center/cover no-repeat"></div>
+        <div class="dest-overlay"></div>
+        <div class="dest-body">
+          <div class="dest-card-title">Próximos eventos</div>
+          <span class="dest-link">Ver más <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 3. Editoriales -->
+      <a href="editoriales.html" class="dest-card">
+        <div class="dest-bg" style="background:url('pmadero.avif') center/cover no-repeat"></div>
+        <div class="dest-overlay"></div>
+        <div class="dest-body">
+          <div class="dest-card-title">Editoriales</div>
+          <span class="dest-link">Ver más <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filters">
+  <div class="filters-inner">
+    <span class="flabel">Filtrar:</span>
+    <button class="fbtn active" onclick="setFilter('all',this)">Todos</button>
+    <button class="fbtn" onclick="setFilter('free',this)">🟢 Gratuitos</button>
+    <button class="fbtn" onclick="setFilter('gastronomia',this)">Gastronomía</button>
+    <button class="fbtn" onclick="setFilter('cultura',this)">Cultura</button>
+    <button class="fbtn" onclick="setFilter('artesanias',this)">Artesanías</button>
+    <button class="fbtn" onclick="setFilter('folklore',this)">Folklore</button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main" id="eventos">
+
+  <!-- CALENDARIO -->
+  <div class="cal-section">
+    <h3>Calendario de eventos · Mayo 2026</h3>
+    <div class="cal-wrap">
+      <div>
+        <div class="cal-month-title">Mayo 2026</div>
+        <div class="cal-grid" id="cal-grid">
+          <div class="cal-dow">Lu</div><div class="cal-dow">Ma</div><div class="cal-dow">Mi</div>
+          <div class="cal-dow">Ju</div><div class="cal-dow">Vi</div><div class="cal-dow">Sá</div>
+          <div class="cal-dow">Do</div>
+        </div>
+      </div>
+      <div class="cal-panel" id="cal-panel">
+        <div class="cal-empty">
+          <i class="fas fa-calendar-alt"></i>
+          <p>Tocá un día con eventos para ver el detalle</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wk-divider" id="este-finde">
+    <h2>🎉 Semana del 25 de Mayo — 23, 24 y 25 de Mayo</h2>
+  </div>
+  <div class="grid" id="grid-2"></div>
+
+  <div class="wk-divider wk-finalizados" id="div-finde1">
+    <h2>✅ Finalizados — 16 y 17 de Mayo</h2>
+  </div>
+  <div class="grid grid-finalizados" id="grid-1"></div>
+
+</main>
+
+<!-- REELS -->
+<section class="reels-section">
+  <div class="reels-inner">
+    <div class="reels-header">
+      <div>
+        <h2>Seguinos en Instagram</h2>
+        <p>Todo lo que pasa en las ferias, de primera mano.</p>
+      </div>
+      <a href="https://www.instagram.com/modoferia_ba" target="_blank" class="ig-handle">
+        <i class="fab fa-instagram"></i> @modoferia_ba
+      </a>
+    </div>
+    <div class="reels-grid">
+      <div class="reel-wrap">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DYav-W1ql6k/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);margin:0;max-width:100%;min-width:280px;padding:0;width:100%"></blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO LLEGAR -->
+<section class="tips" id="tips">
+  <div class="tips-inner">
+    <h2>¿Cómo llegar a las ferias?</h2>
+    <div class="tips-grid">
+      <div class="tip">
+        <div class="tip-icon">🚇</div>
+        <h3>Subte</h3>
+        <p>Línea D para Palermo (Est. Palermo o Scalabrini Ortiz). Línea B para Villa Crespo (Est. Malabia). Rápido y económico.</p>
+        <a href="https://www.google.com/maps/dir/?api=1&travelmode=transit&destination=Palermo+Buenos+Aires" target="_blank" class="tip-link">Ver en Maps <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">🚌</div>
+        <h3>Colectivo</h3>
+        <p>Más de 200 líneas cubren toda la ciudad. Usá <strong>Cuándo Llega BA</strong> o Google Maps para planificar.</p>
+        <a href="https://www.google.com/maps/dir/?api=1&travelmode=transit&destination=Buenos+Aires+Argentina" target="_blank" class="tip-link">Planificar viaje <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">🚲</div>
+        <h3>EcoBici</h3>
+        <p>Sistema de bicicletas públicas gratuito para residentes. Hay estaciones cerca de los principales eventos.</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=estacion+ecobici+Buenos+Aires" target="_blank" class="tip-link">Ver estaciones <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">🚗</div>
+        <h3>Auto / Taxi</h3>
+        <p>Considerá el tráfico los fines de semana. Uber, Cabify y remises son buenas opciones para San Isidro.</p>
+        <a href="https://www.google.com/maps/dir/?api=1&travelmode=driving&destination=La+Rural+Buenos+Aires" target="_blank" class="tip-link">Cómo llegar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="tips-map">
+      <iframe
+        src="https://maps.google.com/maps?q=Palermo,Buenos+Aires,Argentina&output=embed&z=13"
+        width="100%" height="360" style="border:0;border-radius:16px;display:block"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="contacto">
+  <h2>¿No te perdés ninguna feria?</h2>
+  <p>Suscribite y recibí el calendario semanal de eventos en tu correo.</p>
+  <div class="nl-form">
+    <input type="email" placeholder="tu@email.com">
+    <button>Suscribirme <i class="fas fa-arrow-right"></i></button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Logo.jpeg" alt="Modo Feria BA">
+        <p>Tu guía de ferias, mercados y eventos culturales en Buenos Aires. Encontrá lo mejor de la ciudad cada fin de semana.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Eventos</h4>
+        <ul>
+          <li><a href="#">Ferias de diseño</a></li>
+          <li><a href="#">Gastronomía</a></li>
+          <li><a href="#">Cultura y arte</a></li>
+          <li><a href="#">Folklore</a></li>
+          <li><a href="#">Comunidad</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Barrios</h4>
+        <ul>
+          <li><a href="#">Palermo</a></li>
+          <li><a href="#">Villa Crespo</a></li>
+          <li><a href="#">San Isidro</a></li>
+          <li><a href="#">Avellaneda</a></li>
+          <li><a href="#">San Telmo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="#">Cómo llegar</a></li>
+          <li><a href="#">Consejos útiles</a></li>
+          <li><a href="#">Agregar evento</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Modo Feria BA — Todos los derechos reservados</span>
+      <span>Hecho con ❤️ en Buenos Aires</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── DATA ──
+const W1 = [
+  {
+    name:"Food Fest",
+    date:"Sáb 16 y Dom 17 de Mayo",
+    loc:"La Rural, Av. Sarmiento 2704",
+    neighborhood:"Palermo",
+    hours:"12 a 20 hs",
+    entry:"Gratuita", free:true,
+    cats:["gastronomia","finde1"],
+    featured:true,
+    desc:"El festival gastronómico más esperado de Buenos Aires. Chefs reconocidos, productores locales, food trucks y shows de cocina en vivo en el predio de La Rural.",
+    emoji:"🍴", bg:"#fce8e8",
+    image:"food-fest-portada.jpg",
+    maps:"https://www.google.com/maps/search/?api=1&query=La+Rural+Av+Sarmiento+2704+Buenos+Aires"
+  },
+  {
+    name:"Feria Francesa",
+    date:"Sáb 16 y Dom 17 de Mayo",
+    loc:"Rosedal de Palermo",
+    neighborhood:"Palermo",
+    hours:"Desde las 11 hs",
+    entry:"Gratuita", free:true,
+    cats:["cultura","gastronomia","finde1"],
+    featured:true,
+    desc:"Productos artesanales, gastronomía y estética francesa en el corazón del Rosedal. Perfecto para un paseo al aire libre en otoño.",
+    emoji:"🥐", bg:"#f0f7e8",
+    image:"feria-francesa-portada-v2.png", imgPos:"center 70%",
+    maps:"https://www.google.com/maps/search/?api=1&query=Rosedal+de+Palermo+Buenos+Aires"
+  },
+  {
+    name:"Peña de Mayo",
+    date:"Sáb 16 y Dom 17 de Mayo",
+    loc:"Parque Lineal Don Bosco",
+    neighborhood:"Buenos Aires",
+    hours:"11 a 20:30 hs",
+    entry:"Gratuita", free:true,
+    cats:["folklore","cultura","finde1"],
+    featured:false,
+    desc:"Celebración folklórica en honor al Mes de la Patria. Música regional, danzas tradicionales y gastronomía del norte argentino.",
+    emoji:"🪗", bg:"#fff3e8",
+    image:"pena-de-mayo-portada.jpg",
+    maps:"https://www.google.com/maps/search/?api=1&query=Parque+Lineal+Don+Bosco+Buenos+Aires"
+  },
+  {
+    name:"Matsuri Feria Asiática",
+    date:"Sáb 16 y Dom 17 de Mayo",
+    loc:"Mercat Villa Crespo, Thames 747",
+    neighborhood:"Villa Crespo",
+    hours:"12 a 20 hs",
+    entry:"Gratuita", free:true,
+    cats:["cultura","gastronomia","finde1"],
+    featured:false,
+    desc:"Festival de cultura asiática: gastronomía japonesa, coreana y china, música, artesanías y actividades para toda la familia.",
+    emoji:"🌸", bg:"#fce8f3",
+    image:"feria-japonesa-portada.jpg",
+    maps:"https://www.google.com/maps/search/?api=1&query=Thames+747+Villa+Crespo+Buenos+Aires"
+  },
+  {
+    name:"Manos al Oficio",
+    date:"Solo Sáb 16 de Mayo",
+    loc:"CMA Avellaneda",
+    neighborhood:"Avellaneda",
+    hours:"15 a 20 hs",
+    entry:"Gratuita", free:true,
+    cats:["artesanias","cultura","finde1"],
+    featured:false,
+    desc:"Muestra y venta de artesanos y oficios tradicionales. Cerámica, textiles, cuero, madera y más en un espacio de intercambio cultural.",
+    emoji:"🏺", bg:"#f5ede8",
+    image:"manos-al-oficio-portada.jpg",
+    maps:"https://www.google.com/maps/search/?api=1&query=Avellaneda+Buenos+Aires"
+  }
+];
+
+const W2 = [
+  {
+    name:"Feria de las Provincias Argentinas",
+    date:"Vie 23, Sáb 24 y Dom 25 de Mayo",
+    loc:"Hipódromo de San Isidro",
+    neighborhood:"San Isidro",
+    hours:"11 a 21 hs",
+    entry:"Gratuita", free:true,
+    cats:["cultura","artesanias","folklore","finde2"],
+    featured:true,
+    desc:"La diversidad de las 23 provincias en un solo lugar. Artesanías regionales, gastronomía típica, música folklórica y danzas tradicionales para celebrar el 25 de Mayo.",
+    emoji:"🗺️", bg:"#e8f0e8",
+    image:"feria-provincias-argentinas-portada.jpg",
+    maps:"https://www.google.com/maps/search/?api=1&query=Hipodromo+de+San+Isidro+Buenos+Aires"
+  },
+  {
+    name:"Expo Mate",
+    date:"Vie 23, Sáb 24 y Dom 25 de Mayo",
+    loc:"Hipódromo de San Isidro",
+    neighborhood:"San Isidro",
+    hours:"10 a 19 hs",
+    entry:"$10.000", free:false,
+    cats:["gastronomia","cultura","finde2"],
+    featured:false,
+    desc:"Todo sobre la cultura del mate: variedades de yerbas, bombillas artesanales, saberes ancestrales y degustaciones. El evento del mate más importante del año.",
+    emoji:"🧉", bg:"#f0f8e8",
+    image:"expo-mate-portada.jpg",
+    maps:"https://www.google.com/maps/search/?api=1&query=Hipodromo+de+San+Isidro+Buenos+Aires"
+  },
+  {
+    name:"Feria Tomé Criolla",
+    date:"Dom 25 de Mayo",
+    loc:"Gorriti 5646, Palermo",
+    neighborhood:"Palermo",
+    hours:"12 a 17 hs",
+    entry:"$45.000", free:false,
+    cats:["gastronomia","folklore","finde2"],
+    featured:false,
+    desc:"Lo mejor de la gastronomía criolla con actuaciones en vivo, artesanos y productores locales. Una celebración del 25 de Mayo con sabor nacional.",
+    emoji:"🥩", bg:"#fef5e8",
+    image:"toma-criolla-portada.png",
+    maps:"https://www.google.com/maps/search/?api=1&query=Gorriti+5646+Palermo+Buenos+Aires"
+  },
+  {
+    name:"Fugazzeta Fest",
+    date:"Vie 23 y Sáb 24 de Mayo",
+    loc:"Dr. del Valle Iberlucea 1001",
+    neighborhood:"La Boca",
+    hours:"12 a 18 hs",
+    entry:"Con ticket", free:false,
+    cats:["gastronomia","finde2"],
+    featured:false,
+    desc:"El festival dedicado a la fugazzeta, la pizza argentina por excelencia. Los mejores pizzeros de Buenos Aires con combos especiales y degustaciones.",
+    emoji:"🍕", bg:"#fce8e8",
+    maps:"https://www.google.com/maps/search/?api=1&query=Dr+del+Valle+Iberlucea+1001+Buenos+Aires"
+  }
+];
+
+// ── RENDER ──
+function card(ev){
+  const entClass = ev.free?'free':'paid';
+  const entText  = ev.free?'🟢 Entrada gratuita':'🎟️ '+ev.entry;
+  const tagEntry = `<span class="tag ${ev.free?'tag-free':'tag-paid'}">${ev.free?'Gratis':ev.entry}</span>`;
+  const catLabels = {gastronomia:'Gastronomía',cultura:'Cultura',artesanias:'Artesanías',folklore:'Folklore'};
+  const catTags = ev.cats
+    .filter(c=>!['finde1','finde2'].includes(c))
+    .map(c=>`<span class="tag tag-cat">${catLabels[c]||c}</span>`).join('');
+  const bannerClass = ev.image ? 'card-banner has-photo' : 'card-banner';
+  const bannerStyle = ev.image
+    ? `background-image:url('${ev.image}');background-position:${ev.imgPos||'center'}`
+    : `background:${ev.bg}`;
+  const bannerContent = ev.image ? '' : ev.emoji;
+  return `
+  <div class="card" data-cats="${ev.cats.join(' ')}" data-free="${ev.free}" data-name="${ev.name.toLowerCase()} ${ev.neighborhood.toLowerCase()}">
+    <div class="${bannerClass}" style="${bannerStyle}">
+      ${bannerContent}
+      ${ev.featured?'<span class="card-badge">⭐ Destacado</span>':''}
+    </div>
+    <div class="card-body">
+      <div class="card-tags">${tagEntry}${catTags}</div>
+      <div class="card-title">${ev.name}</div>
+      <div class="card-rows">
+        <div class="card-row"><i class="fas fa-calendar-alt"></i><span>${ev.date}</span></div>
+        <div class="card-row"><i class="fas fa-map-marker-alt"></i><span>${ev.loc} &middot; <strong>${ev.neighborhood}</strong></span></div>
+        <div class="card-row"><i class="fas fa-clock"></i><span>${ev.hours}</span></div>
+      </div>
+      <div class="card-desc">${ev.desc}</div>
+    </div>
+    <div class="card-foot">
+      <span class="card-entry ${entClass}">${entText}</span>
+      <div style="display:flex;gap:8px;align-items:center">
+        ${ev.maps?`<a href="${ev.maps}" target="_blank" class="card-maps" title="Ver en Google Maps"><i class="fas fa-map-marker-alt"></i></a>`:''}
+        <button class="card-cta">Ver más →</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+document.getElementById('grid-1').innerHTML = W1.map(card).join('');
+document.getElementById('grid-2').innerHTML = W2.map(card).join('');
+
+// ── CALENDARIO ──
+const CAL = {
+  16:[
+    {name:'Food Fest',              loc:'La Rural, Av. Sarmiento 2704', hrs:'12 a 20 hs',    cat:'gastro',  free:true},
+    {name:'Feria Francesa',         loc:'Rosedal de Palermo',           hrs:'Desde las 11 hs',cat:'cultura', free:true},
+    {name:'Peña de Mayo',           loc:'Parque Lineal Don Bosco',      hrs:'11 a 20:30 hs', cat:'folk',    free:true},
+    {name:'Matsuri Feria Asiática', loc:'Thames 747, Villa Crespo',     hrs:'12 a 20 hs',    cat:'cultura', free:true},
+    {name:'Manos al Oficio',        loc:'CMA Avellaneda',               hrs:'15 a 20 hs',    cat:'arte',    free:true},
+  ],
+  17:[
+    {name:'Food Fest',              loc:'La Rural, Av. Sarmiento 2704', hrs:'12 a 20 hs',    cat:'gastro',  free:true},
+    {name:'Feria Francesa',         loc:'Rosedal de Palermo',           hrs:'Desde las 11 hs',cat:'cultura', free:true},
+    {name:'Peña de Mayo',           loc:'Parque Lineal Don Bosco',      hrs:'11 a 20:30 hs', cat:'folk',    free:true},
+    {name:'Matsuri Feria Asiática', loc:'Thames 747, Villa Crespo',     hrs:'12 a 20 hs',    cat:'cultura', free:true},
+  ],
+  23:[
+    {name:'Feria de las Provincias',loc:'Hipódromo de San Isidro',      hrs:'11 a 21 hs',    cat:'folk',    free:true},
+    {name:'Expo Mate',              loc:'Hipódromo de San Isidro',      hrs:'10 a 19 hs',    cat:'gastro',  free:false},
+    {name:'Fugazzeta Fest',         loc:'Dr. del Valle Iberlucea 1001', hrs:'12 a 18 hs',    cat:'gastro',  free:false},
+  ],
+  24:[
+    {name:'Feria de las Provincias',loc:'Hipódromo de San Isidro',      hrs:'11 a 21 hs',    cat:'folk',    free:true},
+    {name:'Expo Mate',              loc:'Hipódromo de San Isidro',      hrs:'10 a 19 hs',    cat:'gastro',  free:false},
+    {name:'Fugazzeta Fest',         loc:'Dr. del Valle Iberlucea 1001', hrs:'12 a 18 hs',    cat:'gastro',  free:false},
+  ],
+  25:[
+    {name:'Feria de las Provincias',loc:'Hipódromo de San Isidro',      hrs:'11 a 21 hs',    cat:'folk',    free:true},
+    {name:'Expo Mate',              loc:'Hipódromo de San Isidro',      hrs:'10 a 19 hs',    cat:'gastro',  free:false},
+    {name:'Feria Tomé Criolla',     loc:'Gorriti 5646, Palermo',        hrs:'12 a 17 hs',    cat:'gastro',  free:false},
+  ],
+};
+const CAT_COLOR={gastro:'#c4522a',cultura:'#1e6b5e',folk:'#7a9040',arte:'#e87a7a'};
+const DAY_NAMES=['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
+
+function initCalendar(){
+  const grid=document.getElementById('cal-grid');
+  // Mayo 2026 empieza en viernes → 4 celdas vacías (Lu=0…Vi=4)
+  for(let i=0;i<4;i++){const e=document.createElement('div');e.className='cal-day';grid.appendChild(e);}
+  for(let d=1;d<=31;d++){
+    const cell=document.createElement('div');
+    const evs=CAL[d];
+    cell.className='cal-day'+(evs?' has-ev':'');
+    cell.setAttribute('data-day',d);
+    const num=document.createElement('span');
+    num.className='cal-day-num';num.textContent=d;
+    cell.appendChild(num);
+    if(evs){
+      const cats=[...new Set(evs.map(e=>e.cat))].slice(0,3);
+      const dots=document.createElement('div');dots.className='cal-dots';
+      cats.forEach(c=>{const s=document.createElement('span');s.className='cal-dot';s.style.background=CAT_COLOR[c]||'#ccc';dots.appendChild(s);});
+      cell.appendChild(dots);
+      cell.onclick=()=>showCalDay(d,cell);
+    }
+    grid.appendChild(cell);
+  }
+  // Mostrar día 16 por defecto
+  const def=document.querySelector('[data-day="16"]');
+  if(def)def.click();
+}
+
+function matchesFilter(ev, f){
+  if(f==='all')        return true;
+  if(f==='free')       return ev.free;
+  if(f==='gastronomia')return ev.cat==='gastro';
+  if(f==='cultura')    return ev.cat==='cultura';
+  if(f==='artesanias') return ev.cat==='arte';
+  if(f==='folklore')   return ev.cat==='folk';
+  return true;
+}
+
+function showCalDay(day,cell){
+  document.querySelectorAll('.cal-day.cal-active').forEach(c=>c.classList.remove('cal-active'));
+  cell.classList.add('cal-active');
+  const evs=(CAL[day]||[]).filter(ev=>matchesFilter(ev,activeFilter));
+  const wd=DAY_NAMES[(4+day-1)%7];
+  const panel=document.getElementById('cal-panel');
+  if(!evs.length){
+    panel.innerHTML=`<div class="cal-empty"><i class="fas fa-filter"></i><p>Sin eventos para este filtro en este día</p></div>`;
+    return;
+  }
+  let html=`<div class="cal-panel-day">${wd.charAt(0).toUpperCase()+wd.slice(1)} ${day} de Mayo</div>`;
+  evs.forEach(ev=>{
+    const c=CAT_COLOR[ev.cat]||'#ccc';
+    const badge=ev.free?'<span style="color:#7a9040;font-size:.68rem;font-weight:800;font-family:Nunito,sans-serif">🟢 Gratis</span>':'';
+    html+=`<div class="cal-ev-item">
+      <div class="cal-ev-dot" style="background:${c}"></div>
+      <div><div class="cal-ev-name">${ev.name} ${badge}</div>
+      <div class="cal-ev-loc"><i class="fas fa-map-marker-alt" style="color:${c};font-size:.65rem"></i> ${ev.loc}</div>
+      <div class="cal-ev-hrs"><i class="fas fa-clock" style="font-size:.65rem"></i> ${ev.hrs}</div></div>
+    </div>`;
+  });
+  panel.innerHTML=html;
+}
+
+function updateCalendar(){
+  document.querySelectorAll('.cal-day[data-day]').forEach(cell=>{
+    const day=parseInt(cell.getAttribute('data-day'));
+    const evs=(CAL[day]||[]).filter(ev=>matchesFilter(ev,activeFilter));
+    // Limpiar dots
+    const old=cell.querySelector('.cal-dots');
+    if(old) old.remove();
+    if(evs.length){
+      cell.classList.add('has-ev');
+      cell.onclick=()=>showCalDay(day,cell);
+      const cats=[...new Set(evs.map(e=>e.cat))].slice(0,3);
+      const dots=document.createElement('div');dots.className='cal-dots';
+      cats.forEach(c=>{const s=document.createElement('span');s.className='cal-dot';s.style.background=CAT_COLOR[c]||'#ccc';dots.appendChild(s);});
+      cell.appendChild(dots);
+    } else {
+      cell.classList.remove('has-ev','cal-active');
+      cell.onclick=null;
+    }
+  });
+  // Re-renderizar el panel del día activo
+  const active=document.querySelector('.cal-day.cal-active');
+  if(active){
+    showCalDay(parseInt(active.getAttribute('data-day')),active);
+  } else {
+    const first=document.querySelector('.cal-day.has-ev');
+    if(first) first.click();
+    else document.getElementById('cal-panel').innerHTML=`<div class="cal-empty"><i class="fas fa-filter"></i><p>Sin eventos para este filtro</p></div>`;
+  }
+}
+
+initCalendar();
+
+// ── FILTER ──
+let activeFilter = 'all';
+
+function setFilter(f, btn){
+  activeFilter = f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+  updateCalendar();
+}
+
+function applyFilters(){
+  const el = document.getElementById('search-input');
+  const q = (el ? el.value : '').toLowerCase();
+  document.querySelectorAll('.card').forEach(c=>{
+    const cats  = c.dataset.cats;
+    const free  = c.dataset.free==='true';
+    const name  = c.dataset.name;
+    let ok = false;
+    if(activeFilter==='all')        ok=true;
+    else if(activeFilter==='free')  ok=free;
+    else                            ok=cats.includes(activeFilter);
+    if(q) ok = ok && name.includes(q);
+    c.classList.toggle('hidden',!ok);
+  });
+  // hide dividers if no visible cards
+  const gridMap = [['grid-2','este-finde'],['grid-1','div-finde1']];
+  gridMap.forEach(([gid,did])=>{
+    const g = document.getElementById(gid);
+    const d = document.getElementById(did);
+    if(g&&d) d.style.display = g.querySelector('.card:not(.hidden)')?'':'none';
+  });
+}
+</script>
+
+<script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>

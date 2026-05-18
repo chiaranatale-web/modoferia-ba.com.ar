@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feria Francesa en el Rosedal — Editoriales · Modo Feria BA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;
+      --pink:#f4a8a8;--pink-light:#fce8e8;
+      --terra:#c4522a;
+      --olive:#7a9040;
+      --cream:#faf5f0;--cream-dk:#f0e8df;
+      --txt:#2a2a2a;--txt-m:#555;--txt-l:#999;
+      --shadow:0 4px 20px rgba(0,0,0,.08);
+      --r:16px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+
+    /* ── NAV ── */
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7);transition:color .2s}.bc a:hover{color:#fff}
+    .bc i.sep{font-size:.6rem}
+
+    /* ── HERO ── */
+    .hero{width:100%;max-height:520px;overflow:hidden;position:relative}
+    .hero img{width:100%;height:520px;object-fit:cover;object-position:center 30%;display:block}
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(21,80,70,.5) 100%)}
+
+    /* ── ARTICLE HEADER ── */
+    .art-header{max-width:760px;margin:0 auto;padding:48px 24px 0}
+    .volanta{display:inline-flex;align-items:center;gap:6px;background:var(--pink-light);color:var(--terra);padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px;font-family:'Nunito',sans-serif}
+    .art-header h1{font-family:'Playfair Display',serif;font-size:2.1rem;line-height:1.25;color:var(--teal-dark);margin-bottom:20px}
+    .bajada{font-size:1.12rem;color:var(--txt-m);font-style:italic;border-left:4px solid var(--terra);padding-left:20px;margin-bottom:28px;line-height:1.7}
+    .meta{display:flex;align-items:center;gap:16px;padding-bottom:28px;border-bottom:2px solid var(--cream-dk);font-family:'Nunito',sans-serif}
+    .meta-author{display:flex;align-items:center;gap:8px}
+    .meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.85rem}
+    .meta-name{font-size:.88rem;font-weight:700;color:var(--txt)}
+    .meta-date{font-size:.82rem;color:var(--txt-l)}
+    .meta-dot{color:var(--txt-l)}
+    .meta-tag{background:var(--cream-dk);color:var(--txt-m);padding:3px 10px;border-radius:8px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
+    /* ── BODY ── */
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark);font-weight:600}
+
+    /* pullquote */
+    .pullquote{border-left:5px solid var(--teal);margin:36px 0;padding:20px 28px;background:#fff;border-radius:0 var(--r) var(--r) 0;box-shadow:var(--shadow)}
+    .pullquote p{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--teal-dark);margin:0;line-height:1.55}
+    .pullquote cite{display:block;margin-top:10px;font-size:.82rem;font-family:'Nunito',sans-serif;font-style:normal;color:var(--txt-l);font-weight:700}
+
+    /* foto inline */
+    .art-img{margin:36px -10px}
+    .art-img img{width:100%;border-radius:var(--r);display:block;object-fit:cover;max-height:420px}
+    .art-img figcaption{font-size:.78rem;color:var(--txt-l);font-family:'Nunito',sans-serif;margin-top:8px;padding:0 10px;font-style:italic}
+
+    /* subtítulo de sección */
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin:40px 0 16px;padding-top:8px;border-top:1px solid var(--cream-dk)}
+
+    /* firma */
+    .firma{max-width:760px;margin:40px auto 0;padding:28px 24px;border-top:2px solid var(--cream-dk);display:flex;align-items:center;gap:16px;font-family:'Nunito',sans-serif}
+    .firma-avatar{width:52px;height:52px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.1rem;flex-shrink:0}
+    .firma-name{font-weight:800;font-size:1rem;color:var(--txt)}
+    .firma-role{font-size:.82rem;color:var(--txt-l);margin-top:2px}
+
+    /* más editoriales */
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+
+    /* ── FOOTER ── */
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif;margin-top:0}
+    footer a{color:var(--pink);font-weight:700}
+
+    @media(max-width:640px){
+      .nav-links{display:none}
+      .art-header h1{font-size:1.6rem}
+      .art-img{margin:28px 0}
+      .firma{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.jpeg" alt="Modo Feria BA">
+      <span>Modo Feria BA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right sep"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right sep"></i>
+    <span>Feria Francesa</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<figure class="hero">
+  <img src="ff-foto5.jpg" alt="Entrada a la Feria Francesa en el Rosedal de Palermo">
+</figure>
+
+<!-- ARTICLE HEADER -->
+<div class="art-header">
+  <div class="volanta"><i class="fas fa-pen-nib"></i> Cultura francesa en CABA</div>
+  <h1>"Durante dos días, es un momento de disfrutar juntos alrededor de una buena comida": la palabra del embajador Romain Nadal en Palermo</h1>
+  <p class="bajada">El evento organizado por Lucullus reunió en el Rosedal a miles de personas que disfrutaron de sabores típicos franceses. Modo Feria estuvo presente con entrevistas y una cobertura exclusiva.</p>
+  <div class="meta">
+    <div class="meta-author">
+      <div class="meta-avatar">FS</div>
+      <div>
+        <div class="meta-name">Florencia Santone</div>
+        <div class="meta-date">Mayo 2026</div>
+      </div>
+    </div>
+    <span class="meta-dot">·</span>
+    <span class="meta-tag">Gastronomía</span>
+    <span class="meta-tag">Cultura</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<article class="art-body">
+
+  <p>
+    <strong>"Se dice que entre el 15% y el 20% de los argentinos tienen origen francés"</strong>, dijo Romain Nadal, embajador de Francia en Argentina, durante su discurso de apertura en la Feria Francesa el pasado sábado en el Rosedal de Palermo.
+  </p>
+
+  <figure class="art-img">
+    <img src="ff-foto1.jpg" alt="Escenario de apertura de la Feria Francesa">
+    <figcaption>Romain Nadal durante su discurso de apertura el sábado.</figcaption>
+  </figure>
+
+  <p>
+    La Feria Francesa es organizada hace quince años por Lucullus —la Asociación de Gastronomía Francesa en Argentina— y tiene como objetivo promover la cultura y la gastronomía francesa en el país. El evento reúne cada edición a miles de personas en distintos puntos de la ciudad, con una propuesta que combina tradición, sabor e identidad.
+  </p>
+
+  <p>
+    Esta edición contó con 35 stands con platos típicos, dulces y salados, innovación y combinaciones. También, un stand cultural donde se expone la revista <em>La Review</em>, y un stand de merchandising de Lucullus.
+  </p>
+
+  <div class="pullquote">
+    <p>"Esta Feria Francesa, durante dos días, es un momento de disfrutar juntos alrededor de una buena comida."</p>
+    <cite>— Romain Nadal, embajador de Francia en Argentina</cite>
+  </div>
+
+  <p>
+    Distintos puestos con platos típicos franceses toman lugar, aproximadamente, cinco veces por año, en esta feria que combina el sentimiento patrio y la gastronomía en una jornada para recorrer, disfrutar de la música, los espectáculos y, sobre todo, de la comida.
+  </p>
+
+  <figure class="art-img">
+    <img src="ff-foto2.jpg" alt="Stand de panadería francesa">
+    <figcaption>Stands de la feria: croissants, cannelés, baguettes recién horneadas y mucho más.</figcaption>
+  </figure>
+
+  <figure class="art-img">
+    <img src="ff-foto3.jpg" alt="Stand Las Dinas — charcutería francesa" style="object-position:center 85%">
+    <figcaption>Stands de la feria.</figcaption>
+  </figure>
+
+  <h2>La voz de los protagonistas</h2>
+
+  <p>
+    En una nota exclusiva, Sebastián Fouillade, chef y creador del catering Topinambour y socio fundador de Lucullus, nos contó qué sentía al participar en la feria: <strong>"Es divertido, hay mucha logística en armar el stand, pero es gratificante darle placer a la gente que viene acá a comer".</strong>
+  </p>
+
+  <figure class="art-img">
+    <img src="ff-foto4.jpg" alt="Sebastián Fouillade cocinando en el escenario" style="object-position:center 90%">
+    <figcaption>Sebastián Fouillade durante el Banquette de Bondiola de Cerdo el sábado.</figcaption>
+  </figure>
+
+  <div class="pullquote">
+    <p>"Estamos todos representando a la gastronomía francesa [...] está bueno contar con variedad de platos porque la gente se tienta [...] al ser una feria francesa, la gente viene a buscar ese tipo de platos, aunque en mi restaurante intento tener platos adaptados al paladar argentino."</p>
+    <cite>— Sebastián Fouillade, chef y socio fundador de Lucullus</cite>
+  </div>
+
+  <h2>¿Cómo participar?</h2>
+
+  <p>
+    Modo Feria consultó con uno de los coordinadores, quien informó que la asociación tiene un staff de comisión directiva y socios fundadores permanente. Para el resto de los puestos, son invitados restaurantes, caterings y otros emprendedores gastronómicos para que puedan difundir sus productos.
+  </p>
+
+  <p>
+    Para participar en la feria, el primer paso es contactar por redes sociales a Lucullus. El proceso comienza con una entrevista con el Director de la Asociación, quien luego conoce y hace una degustación de la propuesta antes de elegir entre los candidatos.
+  </p>
+
+</article>
+
+<!-- FIRMA -->
+<div class="firma">
+  <div class="firma-avatar">FS</div>
+  <div>
+    <div class="firma-name">Florencia Santone</div>
+    <div class="firma-role">Redactora · Modo Feria BA</div>
+  </div>
+</div>
+
+<!-- MÁS EDITORIALES -->
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Inicio</a>
+</div>
+
+<footer>
+  © 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados
+</footer>
+
+</body>
+</html>

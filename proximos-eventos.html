@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Próximos Eventos — Modo Feria BA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;
+      --pink:#f4a8a8;--pink-light:#fce8e8;
+      --terra:#c4522a;--terra-light:#e8724a;
+      --olive:#7a9040;
+      --cream:#faf5f0;--cream-dk:#f0e8df;
+      --txt:#2a2a2a;--txt-m:#555;--txt-l:#999;
+      --shadow:0 4px 20px rgba(0,0,0,.08);
+      --shadow-h:0 8px 32px rgba(0,0,0,.14);
+      --r:16px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--txt);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+
+    .hero{min-height:400px;background:url('bar.avif') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,80,70,.92) 0%,rgba(21,80,70,.5) 50%,rgba(0,0,0,.15) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 48px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px)}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.8rem;color:#fff;line-height:1.1;max-width:700px;text-shadow:0 2px 14px rgba(0,0,0,.3)}
+    .hero-body p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:580px;margin-top:14px}
+
+    .filters{background:#fff;border-bottom:2px solid var(--cream-dk);position:sticky;top:68px;z-index:100}
+    .filters-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+    .filters-inner::-webkit-scrollbar{display:none}
+    .flabel{font-size:.75rem;font-weight:800;color:var(--txt-l);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;margin-right:4px}
+    .fbtn{background:var(--cream);border:2px solid var(--cream-dk);color:var(--txt-m);padding:6px 15px;border-radius:20px;font-size:.83rem;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;white-space:nowrap;transition:all .2s}
+    .fbtn:hover{border-color:var(--teal);color:var(--teal)}
+    .fbtn.active{background:var(--terra);border-color:var(--terra);color:#fff}
+
+    .main{max-width:1200px;margin:0 auto;padding:36px 24px 52px}
+
+    .month-header{display:flex;align-items:center;gap:14px;margin:44px 0 20px}
+    .month-header:first-child{margin-top:0}
+    .month-header::after{content:'';flex:1;height:2px;background:var(--cream-dk)}
+    .month-pill{background:var(--teal);color:#fff;font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:800;padding:5px 14px;border-radius:20px;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em}
+    .month-header h2{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--teal-dark);white-space:nowrap}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
+    .card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:all .28s}
+    .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-h)}
+    .card-banner{height:130px;display:grid;place-items:center;font-size:3.8rem;position:relative;background-size:cover;background-position:center;background-repeat:no-repeat}
+    .card-banner.has-photo{height:180px}
+    .card-banner.has-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.05) 0%,rgba(0,0,0,.3) 100%)}
+    .card-badge{position:absolute;top:10px;right:10px;background:var(--terra);color:#fff;padding:3px 10px;border-radius:10px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .card-tbc{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.45);color:#fff;padding:3px 10px;border-radius:10px;font-size:.68rem;font-weight:800;backdrop-filter:blur(4px)}
+    .card-body{padding:18px 20px 14px}
+    .card-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}
+    .tag{padding:3px 9px;border-radius:9px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+    .tag-free{background:rgba(122,144,64,.15);color:var(--olive)}
+    .tag-paid{background:rgba(196,82,42,.12);color:var(--terra)}
+    .tag-tbc{background:var(--cream-dk);color:var(--txt-l)}
+    .tag-cat{background:var(--cream-dk);color:var(--txt-m)}
+    .card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--txt);margin-bottom:12px;line-height:1.25}
+    .card-rows{display:flex;flex-direction:column;gap:6px}
+    .card-row{display:flex;align-items:flex-start;gap:8px;font-size:.83rem;color:var(--txt-m)}
+    .card-row i{color:var(--teal);width:14px;margin-top:2px;flex-shrink:0}
+    .card-desc{font-size:.83rem;color:var(--txt-m);margin-top:11px;border-top:1px solid var(--cream-dk);padding-top:11px;line-height:1.5}
+    .card-foot{padding:12px 20px;background:var(--cream);display:flex;align-items:center;justify-content:space-between}
+    .card-entry{font-size:.88rem;font-weight:800}
+    .card-entry.free{color:var(--olive)}
+    .card-entry.paid{color:var(--terra)}
+    .card-entry.tbc{color:var(--txt-l)}
+    .card-actions{display:flex;gap:8px;align-items:center}
+    .card-maps{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--cream-dk);color:var(--teal);font-size:.82rem;transition:background .2s,color .2s}
+    .card-maps:hover{background:var(--teal);color:#fff}
+    .card-cta{background:var(--teal);color:#fff;border:none;padding:6px 14px;border-radius:20px;font-size:.78rem;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:background .2s}
+    .card-cta:hover{background:var(--teal-light)}
+    .card-cta.ticket{background:var(--terra)}
+    .card-cta.ticket:hover{background:var(--terra-light)}
+    .card.hidden{display:none}
+
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem}
+    footer a{color:var(--pink);font-weight:700}
+
+    @media(max-width:640px){.nav-links{display:none}.hero-body h1{font-size:2rem}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.jpeg" alt="Modo Feria BA">
+      <span>Modo Feria BA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right" style="font-size:.65rem"></i>
+    <span>Próximos eventos</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-calendar-alt"></i> Agenda 2026</div>
+    <h1>Próximos eventos<br>en Buenos Aires</h1>
+    <p>Ferias, festivales y experiencias gastronómicas y culturales para los próximos meses.</p>
+  </div>
+</section>
+
+<div class="filters">
+  <div class="filters-inner">
+    <span class="flabel">Filtrar:</span>
+    <button class="fbtn active" onclick="setFilter('all',this)">Todos</button>
+    <button class="fbtn" onclick="setFilter('free',this)">🟢 Gratuitos</button>
+    <button class="fbtn" onclick="setFilter('gastronomia',this)">Gastronomía</button>
+    <button class="fbtn" onclick="setFilter('cultura',this)">Cultura</button>
+    <button class="fbtn" onclick="setFilter('artesanias',this)">Artesanías</button>
+    <button class="fbtn" onclick="setFilter('folklore',this)">Folklore</button>
+  </div>
+</div>
+
+<main class="main">
+
+  <div class="month-header"><span class="month-pill">Mayo 2026</span><h2>🎪 Hoy — 17 de Mayo</h2></div>
+  <div class="grid" id="g-mayo-hoy"></div>
+
+  <div class="month-header"><h2>🎉 Semana del 25 de Mayo</h2></div>
+  <div class="grid" id="g-mayo-25"></div>
+
+  <div class="month-header"><span class="month-pill">Junio 2026</span><h2>☀️ Junio</h2></div>
+  <div class="grid" id="g-junio"></div>
+
+  <div class="month-header"><span class="month-pill">Julio 2026</span><h2>🧣 Julio</h2></div>
+  <div class="grid" id="g-julio"></div>
+
+  <div class="month-header"><span class="month-pill">Agosto 2026</span><h2>🌿 Agosto</h2></div>
+  <div class="grid" id="g-agosto"></div>
+
+  <div class="month-header"><span class="month-pill">Septiembre 2026</span><h2>🌸 Septiembre</h2></div>
+  <div class="grid" id="g-sep"></div>
+
+  <div class="month-header"><span class="month-pill">Noviembre 2026</span><h2>🎨 Noviembre</h2></div>
+  <div class="grid" id="g-nov"></div>
+
+</main>
+
+<footer>
+  © 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados
+</footer>
+
+<script>
+const EVENTS = {
+  'g-mayo-hoy': [
+    { name:"Food Fest", date:"Dom 17 de Mayo", loc:"La Rural, Av. Sarmiento 2704", neighborhood:"Palermo", hours:"12 a 20 hs", entry:"Gratuita", free:true, cats:["gastronomia"], featured:true, desc:"El festival gastronómico más esperado de Buenos Aires. Chefs reconocidos, productores locales, food trucks y shows de cocina en vivo.", emoji:"🍴", bg:"#fce8e8", image:"food-fest-portada.jpg", maps:"https://www.google.com/maps/search/?api=1&query=La+Rural+Av+Sarmiento+2704+Buenos+Aires" },
+    { name:"Feria Francesa", date:"Dom 17 de Mayo", loc:"Rosedal de Palermo", neighborhood:"Palermo", hours:"Desde las 11 hs", entry:"Gratuita", free:true, cats:["cultura","gastronomia"], desc:"Productos artesanales, gastronomía y estética francesa en el corazón del Rosedal.", emoji:"🥐", bg:"#f0f7e8", image:"feria-francesa-portada-v2.png", imgPos:"center 70%", maps:"https://www.google.com/maps/search/?api=1&query=Rosedal+de+Palermo+Buenos+Aires" },
+    { name:"Peña de Mayo", date:"Dom 17 de Mayo", loc:"Parque Lineal Don Bosco", neighborhood:"Buenos Aires", hours:"11 a 20:30 hs", entry:"Gratuita", free:true, cats:["folklore","cultura"], desc:"Celebración folklórica con música regional, danzas tradicionales y gastronomía del norte argentino.", emoji:"🪗", bg:"#fff3e8", image:"pena-de-mayo-portada.jpg", maps:"https://www.google.com/maps/search/?api=1&query=Parque+Lineal+Don+Bosco+Buenos+Aires" },
+    { name:"Matsuri Feria Asiática", date:"Dom 17 de Mayo", loc:"Mercat Villa Crespo, Thames 747", neighborhood:"Villa Crespo", hours:"12 a 20 hs", entry:"Gratuita", free:true, cats:["cultura","gastronomia"], desc:"Festival de cultura asiática: gastronomía japonesa, coreana y china, música, artesanías y actividades para toda la familia.", emoji:"🌸", bg:"#fce8f3", image:"feria-japonesa-portada.jpg", maps:"https://www.google.com/maps/search/?api=1&query=Thames+747+Villa+Crespo+Buenos+Aires" },
+  ],
+  'g-mayo-25': [
+    { name:"Feria de las Provincias Argentinas", date:"Vie 23 al Dom 25 de Mayo", loc:"Hipódromo de San Isidro", neighborhood:"San Isidro", hours:"11 a 21 hs", entry:"Gratuita", free:true, cats:["cultura","artesanias","folklore"], featured:true, desc:"La diversidad de las 23 provincias en un solo lugar. Artesanías, gastronomía, música folklórica y danzas para celebrar el 25 de Mayo.", emoji:"🗺️", bg:"#e8f0e8", image:"feria-provincias-argentinas-portada.jpg", maps:"https://www.google.com/maps/search/?api=1&query=Hipodromo+de+San+Isidro+Buenos+Aires" },
+    { name:"Expo Mate", date:"Vie 23 al Dom 25 de Mayo", loc:"Hipódromo de San Isidro", neighborhood:"San Isidro", hours:"10 a 19 hs", entry:"$10.000", free:false, cats:["gastronomia","cultura"], desc:"Todo sobre la cultura del mate: variedades de yerbas, bombillas artesanales y degustaciones. El evento del mate más importante del año.", emoji:"🧉", bg:"#f0f8e8", image:"expo-mate-portada.jpg", maps:"https://www.google.com/maps/search/?api=1&query=Hipodromo+de+San+Isidro+Buenos+Aires" },
+    { name:"Feria Tomé Criolla", date:"Dom 25 de Mayo", loc:"Gorriti 5646, Palermo", neighborhood:"Palermo", hours:"12 a 17 hs", entry:"$45.000", free:false, cats:["gastronomia","folklore"], desc:"Lo mejor de la gastronomía criolla con actuaciones en vivo y productores locales. Celebración del 25 de Mayo con sabor nacional.", emoji:"🥩", bg:"#fef5e8", image:"toma-criolla-portada.png", maps:"https://www.google.com/maps/search/?api=1&query=Gorriti+5646+Palermo+Buenos+Aires" },
+    { name:"Fugazzeta Fest", date:"Vie 23 y Sáb 24 de Mayo", loc:"Dr. del Valle Iberlucea 1001", neighborhood:"La Boca", hours:"12 a 18 hs", entry:"Con ticket", free:false, cats:["gastronomia"], desc:"El festival dedicado a la fugazzeta, la pizza argentina por excelencia. Las mejores pizzerías de Buenos Aires con combos especiales.", emoji:"🍕", bg:"#fce8e8", ticket:"https://www.portalentradas.com/event/fugazzeta-fest", maps:"https://www.google.com/maps/search/?api=1&query=Dr+del+Valle+Iberlucea+1001+Buenos+Aires" },
+  ],
+  'g-junio': [
+    { name:"MAPA", date:"Jue 25 al Dom 28 de Junio", loc:"La Rural, Pabellón 8, Av. Sarmiento 2704", neighborhood:"Palermo", hours:"A confirmar", entry:"A confirmar", free:false, tbc:true, cats:["artesanias"], desc:"Feria de diseño, arte y artesanías contemporáneas en el Pabellón 8 de La Rural. Diseñadores, artistas y artesanos de todo el país.", emoji:"🎨", bg:"#f0e8f5", maps:"https://www.google.com/maps/search/?api=1&query=La+Rural+Av+Sarmiento+2704+Buenos+Aires" },
+    { name:"La Chocolaterie", date:"Sáb 27 y Dom 28 de Junio", loc:"La Rural, Av. Sarmiento 2407", neighborhood:"Palermo", hours:"A confirmar", entry:"A confirmar", free:false, tbc:true, cats:["gastronomia"], desc:"La feria del chocolate artesanal más esperada del año. Maestros chocolateros, degustaciones y novedades de temporada.", emoji:"🍫", bg:"#f5ece8", maps:"https://www.google.com/maps/search/?api=1&query=La+Rural+Av+Sarmiento+2704+Buenos+Aires" },
+  ],
+  'g-julio': [
+    { name:"Caminos y Sabores", date:"Jue 9 al Dom 12 de Julio", loc:"BA Ferial, Costanera Rafael Obligado 1221", neighborhood:"Palermo", hours:"A confirmar", entry:"A confirmar", free:false, tbc:true, cats:["gastronomia","cultura"], desc:"La feria que celebra los sabores regionales de Argentina. Productores, chefs y artesanos de las 23 provincias en un solo lugar.", emoji:"🌽", bg:"#f5f0e8", maps:"https://www.google.com/maps/search/?api=1&query=Costanera+Rafael+Obligado+1221+Palermo+Buenos+Aires" },
+  ],
+  'g-agosto': [
+    { name:"ExpoCelíaca", date:"Sáb 1 y Dom 2 de Agosto", loc:"BA Ferial, ex Costa Salguero, Pabellones 2 y 3", neighborhood:"Palermo", hours:"10 a 20 hs", entry:"A confirmar", free:false, tbc:true, cats:["gastronomia"], desc:"La expo más grande de productos y gastronomía sin TACC de Argentina. Ideal para celíacos y personas con intolerancia al gluten.", emoji:"🌾", bg:"#e8f5e8", maps:"https://www.google.com/maps/search/?api=1&query=Costa+Salguero+Buenos+Aires" },
+  ],
+  'g-sep': [
+    { name:"Feria Internacional de Turismo", date:"Sáb 26 al Mar 29 de Septiembre", loc:"La Rural, Av. Santa Fe y Thames", neighborhood:"Palermo", hours:"A confirmar", entry:"A confirmar", free:false, tbc:true, cats:["cultura"], desc:"La feria de turismo más importante de América Latina. Destinos, experiencias y novedades del sector turístico mundial.", emoji:"✈️", bg:"#e8f0f5", maps:"https://www.google.com/maps/search/?api=1&query=La+Rural+Av+Santa+Fe+Palermo+Buenos+Aires" },
+  ],
+  'g-nov': [
+    { name:"arteba", date:"Jue 6 al Sáb 8 de Noviembre", loc:"La Rural, Av. Santa Fe y Thames", neighborhood:"Palermo", hours:"A confirmar", entry:"A confirmar", free:false, tbc:true, cats:["cultura"], desc:"La feria de arte contemporáneo más importante de Argentina. Galerías nacionales e internacionales, artistas emergentes y consagrados.", emoji:"🖼️", bg:"#f0e8f5", maps:"https://www.google.com/maps/search/?api=1&query=La+Rural+Av+Santa+Fe+Palermo+Buenos+Aires" },
+  ],
+};
+
+function card(ev){
+  const entClass = ev.free ? 'free' : ev.tbc ? 'tbc' : 'paid';
+  const entText  = ev.free ? '🟢 Entrada gratuita' : ev.tbc ? '🔔 A confirmar' : '🎟️ '+ev.entry;
+  const tagEntry = ev.free
+    ? `<span class="tag tag-free">Gratis</span>`
+    : ev.tbc
+    ? `<span class="tag tag-tbc">Próximamente</span>`
+    : `<span class="tag tag-paid">${ev.entry}</span>`;
+  const catLabels = {gastronomia:'Gastronomía',cultura:'Cultura',artesanias:'Artesanías',folklore:'Folklore'};
+  const catTags = ev.cats.map(c=>`<span class="tag tag-cat">${catLabels[c]||c}</span>`).join('');
+  const bannerClass = ev.image ? 'card-banner has-photo' : 'card-banner';
+  const bannerStyle = ev.image
+    ? `background-image:url('${ev.image}');background-position:${ev.imgPos||'center'}`
+    : `background:${ev.bg}`;
+  const tbcBadge = ev.tbc ? '<span class="card-tbc">Precio a confirmar</span>' : '';
+  const featBadge = ev.featured ? '<span class="card-badge">⭐ Destacado</span>' : '';
+  const ctaBtn = ev.ticket
+    ? `<a href="${ev.ticket}" target="_blank" class="card-cta ticket">Conseguir tickets →</a>`
+    : `<button class="card-cta">Ver más →</button>`;
+  return `
+  <div class="card" data-cats="${ev.cats.join(' ')}" data-free="${ev.free}">
+    <div class="${bannerClass}" style="${bannerStyle}">
+      ${ev.image ? '' : ev.emoji}
+      ${featBadge}${tbcBadge}
+    </div>
+    <div class="card-body">
+      <div class="card-tags">${tagEntry}${catTags}</div>
+      <div class="card-title">${ev.name}</div>
+      <div class="card-rows">
+        <div class="card-row"><i class="fas fa-calendar-alt"></i><span>${ev.date}</span></div>
+        <div class="card-row"><i class="fas fa-map-marker-alt"></i><span>${ev.loc} · <strong>${ev.neighborhood}</strong></span></div>
+        <div class="card-row"><i class="fas fa-clock"></i><span>${ev.hours}</span></div>
+      </div>
+      <div class="card-desc">${ev.desc}</div>
+    </div>
+    <div class="card-foot">
+      <span class="card-entry ${entClass}">${entText}</span>
+      <div class="card-actions">
+        ${ev.maps?`<a href="${ev.maps}" target="_blank" class="card-maps" title="Ver en Google Maps"><i class="fas fa-map-marker-alt"></i></a>`:''}
+        ${ctaBtn}
+      </div>
+    </div>
+  </div>`;
+}
+
+// Render all grids
+Object.entries(EVENTS).forEach(([id, evs]) => {
+  const el = document.getElementById(id);
+  if(el) el.innerHTML = evs.map(card).join('');
+});
+
+let activeFilter = 'all';
+
+function setFilter(f, btn){
+  activeFilter = f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters(){
+  document.querySelectorAll('.card').forEach(c=>{
+    const cats = c.dataset.cats;
+    const free = c.dataset.free==='true';
+    let ok = activeFilter==='all' ? true
+           : activeFilter==='free' ? free
+           : cats.includes(activeFilter);
+    c.classList.toggle('hidden',!ok);
+  });
+  // Ocultar headers de meses sin eventos visibles
+  document.querySelectorAll('.grid').forEach(g=>{
+    const header = g.previousElementSibling;
+    if(header) header.style.display = g.querySelector('.card:not(.hidden)') ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
