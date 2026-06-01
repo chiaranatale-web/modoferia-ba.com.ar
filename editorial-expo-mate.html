@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expo Mate 2026 — Editoriales · Modo Feria BA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;
+      --pink:#f4a8a8;--pink-light:#fce8e8;
+      --terra:#c4522a;--terra-light:#e8724a;
+      --olive:#7a9040;
+      --cream:#faf5f0;--cream-dk:#f0e8df;
+      --txt:#2a2a2a;--txt-m:#555;--txt-l:#999;
+      --shadow:0 4px 20px rgba(0,0,0,.08);--r:16px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+    .bc i.sep{font-size:.6rem}
+
+    .hero{min-height:500px;background:url('expo-mate-portada.jpg') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,80,70,.92) 0%,rgba(21,80,70,.55) 45%,rgba(0,0,0,.1) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px);font-family:'Nunito',sans-serif}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.6rem;color:#fff;line-height:1.15;max-width:780px;text-shadow:0 2px 14px rgba(0,0,0,.35);margin-bottom:12px}
+    .hero-body .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;font-style:italic}
+
+    .art-header{max-width:760px;margin:0 auto;padding:44px 24px 0}
+    .bajada{font-size:1.1rem;color:var(--txt-m);font-style:italic;border-left:4px solid var(--terra);padding-left:20px;margin-bottom:28px;line-height:1.7}
+    .meta{display:flex;align-items:center;gap:16px;padding-bottom:28px;border-bottom:2px solid var(--cream-dk);font-family:'Nunito',sans-serif;flex-wrap:wrap}
+    .meta-author{display:flex;align-items:center;gap:8px}
+    .meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.85rem;flex-shrink:0}
+    .meta-name{font-size:.88rem;font-weight:700;color:var(--txt)}
+    .meta-date{font-size:.82rem;color:var(--txt-l)}
+    .meta-dot{color:var(--txt-l)}
+    .meta-tag{background:var(--cream-dk);color:var(--txt-m);padding:3px 10px;border-radius:8px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark)}
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin:40px 0 16px;padding-top:8px;border-top:1px solid var(--cream-dk)}
+
+    .pullquote{border-left:5px solid var(--terra);margin:36px 0;padding:20px 28px;background:#fff;border-radius:0 var(--r) var(--r) 0;box-shadow:var(--shadow)}
+    .pullquote p{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--terra);margin:0;line-height:1.55}
+    .pullquote cite{display:block;margin-top:10px;font-size:.82rem;font-family:'Nunito',sans-serif;font-style:normal;color:var(--txt-l);font-weight:700}
+
+    .art-img{margin:36px 0}
+    .art-img img{width:100%;border-radius:var(--r);display:block;object-fit:cover;max-height:460px}
+    .art-img figcaption{font-size:.78rem;color:var(--txt-l);font-family:'Nunito',sans-serif;margin-top:8px;font-style:italic}
+
+    .firma{max-width:760px;margin:40px auto 0;padding:28px 24px;border-top:2px solid var(--cream-dk);display:flex;align-items:center;gap:16px;font-family:'Nunito',sans-serif}
+    .firma-avatar{width:52px;height:52px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.1rem;flex-shrink:0}
+    .firma-name{font-weight:800;font-size:1rem;color:var(--txt)}
+    .firma-role{font-size:.82rem;color:var(--txt-l);margin-top:2px}
+
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif}
+    footer a{color:var(--pink);font-weight:700}
+
+    @media(max-width:640px){
+      .nav-links{display:none}
+      .hero-body h1{font-size:1.9rem}
+      .firma{flex-direction:column;text-align:center}
+      .btn-ghost{margin-left:0;margin-top:10px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.jpeg" alt="Modo Feria BA">
+      <span>Modo Feria BA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right sep"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right sep"></i>
+    <span>Expo Mate 2026</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-pen-nib"></i> Crónica · Cultura argentina</div>
+    <h1>Mate, chacarera y escarapela: la Expo Mate celebró el 25 de Mayo como se debe</h1>
+    <p class="hero-sub">25 de mayo · Hipódromo de San Isidro · Buenos Aires</p>
+  </div>
+</section>
+
+<div class="art-header">
+  <p class="bajada">Ir a la Expo Mate un 25 de Mayo fue, sin dudas, un día patrio al cuadrado. Infusión típica, música típica y los bailes más nuestros: así se vivió una de las ferias más argentinas del año.</p>
+  <div class="meta">
+    <div class="meta-author">
+      <div class="meta-avatar">CN</div>
+      <div>
+        <div class="meta-name">Chiara Natale</div>
+        <div class="meta-date">Mayo 2026</div>
+      </div>
+    </div>
+    <span class="meta-dot">·</span>
+    <span class="meta-tag">Gastronomía</span>
+    <span class="meta-tag">Cultura</span>
+    <span class="meta-tag">Crónica</span>
+  </div>
+</div>
+
+<article class="art-body">
+
+  <p>
+    Llegamos al Hipódromo de San Isidro una tarde del 25 de mayo. Frío, algo húmedo, ese tipo de día que en cualquier otro contexto invitaría a quedarse en casa con una manta. Pero el clima no fue obstáculo: la Expo Mate 2026 tenía sus puertas abiertas y adentro, Argentina entera parecía haber decidido festejar.
+  </p>
+
+  <p>
+    Porque si hay algo que la fecha sumó a la experiencia, es una capa de significado extra. Ir a la Expo Mate un día patrio no fue casualidad —fue poesía. La infusión más argentina, celebrada el día más argentino. Muchas personas lo entendieron así: abundaban las escarapelas en las solapas, los pañuelos celestes y blancos, y una actitud colectiva de disfrute genuino que no se fuerza.
+  </p>
+
+  <h2>El ritmo de la chacarera</h2>
+
+  <p>
+    A poco de entrar, una banda en vivo tocaba chacarera. No había escenario imponente ni luces de producción: solo músicos, el sonido limpio que recorría el predio —el audio funcionó de diez durante toda la jornada— y gente que no necesitó más invitación para ponerse a bailar.
+  </p>
+
+  <p>
+    Niños, adultos, parejas, abuelos. Todos en ronda, todos moviendo los pies. Esa imagen —la de generaciones distintas bailando juntas bajo el frío de mayo— fue quizás la más representativa de lo que la Expo Mate logra cuando está en su mejor versión: no vender un producto, sino convocar una identidad.
+  </p>
+
+  <figure class="art-img">
+    <img src="expo-mate-foto1.jpg" alt="Interior de la Expo Mate con mural de gauchos" style="object-position:center">
+    <figcaption>El interior del predio, con un mural de gauchos que marcaba el tono de la jornada.</figcaption>
+  </figure>
+
+  <h2>Degustaciones: el mate como experiencia</h2>
+
+  <p>
+    La propuesta principal de la expo era clara: recorrer los stands y probar. Las distintas marcas de yerba ofrecían degustaciones —sí llevabas tu mate, algo que recomendamos fuertemente para vivir la experiencia completa— y así uno podía ir comparando sabores, intensidades, texturas. Un recorrido sensorial que no tiene equivalente en ninguna góndola de supermercado.
+  </p>
+
+  <p>
+    Pero la Expo Mate es mucho más que yerba. El mundo de los accesorios tenía su propio universo: materas, yerberas, termos, bombillas, mates de todos los materiales y estilos. Y también cuero: ropa, marroquinería, piezas trabajadas a mano. Los precios sorprendían gratamente —materas entre $60.000 y $200.000— en un contexto donde esos valores resultan más que accesibles para la calidad que ofrecen.
+  </p>
+
+  <figure class="art-img">
+    <img src="expo-mate-foto2.jpg" alt="Anfiteatro al atardecer con gente sentada en fardos de paja" style="object-position:center">
+    <figcaption>El anfiteatro al atardecer, con el público sentado en fardos de paja.</figcaption>
+  </figure>
+
+  <h2>"Nada de lo que hacemos es pensado"</h2>
+
+  <p>
+    Entre los stands, uno en particular llamó la atención: <strong>Patrón</strong> (<em>patron.cosasdecampo</em>), una talabartería para chicos que nació, como tantos buenos proyectos, de una necesidad concreta. Luli, su dueña, nos recibió entre sweaters, camisas, cinturas de cuero y bombachas de campo en talle bebé.
+  </p>
+
+  <div class="pullquote">
+    <p>"Este año superó el triple lo que fue el año pasado. Fue espectacular."</p>
+    <cite>— Luli, dueña de Patrón</cite>
+  </div>
+
+  <p>
+    No es su primera Expo Mate —el año pasado también estuvieron— pero esta edición los encontró con una presencia mucho mayor. Y la historia de cómo llegaron hasta acá es tan argentina como la feria misma.
+  </p>
+
+  <p>
+    <strong>"Yo tengo tres chiquitos y cuatro sobrinos, todos de la misma edad"</strong>, cuenta Luli. <strong>"Empezamos haciendo bombachas de campo para ellos, y de repente nuestros amigos y conocidos nos empezaron a pedir. En un momento dijimos: che, empecemos con el emprendimiento."</strong>
+  </p>
+
+  <p>
+    De esas primeras cincuenta bombachas de campo, Patrón creció hasta tener una colección completa: sweaters, remeras, pantalones, jeans, chalecos y cinturas de cuero. Todo para niños, todo producido con artesanos conocidos, todo con materiales locales. El cuero, por ejemplo, es de burro: lo caza un amigo de Luli, lo cura, y se los entrega. Una cadena de producción que empieza y termina en personas reales, con nombres y caras.
+  </p>
+
+  <div class="pullquote">
+    <p>"Nada de lo que hacemos es pensado. Son todas cosas heredadas. Hacemos facones de madera porque yo, cuando era chiquita, jugaba con palos como si fueran facones."</p>
+    <cite>— Luli, Patrón</cite>
+  </div>
+
+  <p>
+    El proyecto nació, nos explica, de la ausencia. <strong>"No encontrábamos, desde una bombacha de campo de buen gusto y calidad hasta un chalequito de cuero para nuestra chiquita."</strong> Empezaron a fabricar en base a las necesidades que iban teniendo, y cuando tuvieron todo armado fue que recién se animaron a pensar en el emprendimiento.
+  </p>
+
+  <h2>Una feria que celebra lo nuestro</h2>
+
+  <p>
+    Al salir del predio, con el atardecer cayendo sobre San Isidro y el sonido lejano de otra chacarera, quedó una sensación difícil de articular en palabras. La Expo Mate no es solo una feria de yerba: es un espacio donde Argentina se reconoce a sí misma, donde la tradición no es un museo sino algo vivo, que se baila, se prueba, se vende y se comparte. Un lugar donde tiene sentido llegar un 25 de Mayo con escarapela.
+  </p>
+
+</article>
+
+<div class="firma">
+  <div class="firma-avatar">CN</div>
+  <div>
+    <div class="firma-name">Chiara Natale</div>
+    <div class="firma-role">Redactora · Modo Feria BA</div>
+  </div>
+</div>
+
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Inicio</a>
+</div>
+
+<footer>
+  © 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados
+</footer>
+
+</body>
+</html>
