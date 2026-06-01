@@ -78,8 +78,7 @@
     .cob-header h2::after{content:'';display:block;width:50px;height:3px;background:var(--terra);margin-top:8px;border-radius:2px}
     .cob-all{display:inline-flex;align-items:center;gap:6px;color:var(--teal);font-weight:800;font-size:.88rem;transition:color .2s}
     .cob-all:hover{color:var(--terra)}
-    .cob-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-    @media(max-width:900px){.cob-grid{grid-template-columns:repeat(2,1fr)}}
+    .cob-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
     .cob-card{border-radius:var(--r);overflow:hidden;position:relative;height:280px;display:block;transition:transform .32s,box-shadow .32s}
     .cob-card:hover{transform:scale(1.025);box-shadow:var(--shadow-h)}
     .cob-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .32s}
@@ -388,6 +387,32 @@
           <div class="cob-title">Mate, chacarera y escarapela: la Expo Mate celebró el 25 de Mayo como se debe</div>
           <div class="cob-meta">
             <span class="cob-author">Chiara Natale · Mayo 2026</span>
+            <span class="cob-link">Leer <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="editorial-buenos-aires-market.html" class="cob-card">
+        <div class="cob-img" style="background-image:url('buenos-aires-market-portada.png')"></div>
+        <div class="cob-overlay"></div>
+        <div class="cob-body">
+          <span class="cob-cat">Gastronomía · Emprendimientos</span>
+          <div class="cob-title">Buenos Aires Market: un espacio de crecimiento y gastronomía</div>
+          <div class="cob-meta">
+            <span class="cob-author">Valentina García Iaria · Mayo 2026</span>
+            <span class="cob-link">Leer <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="editorial-fugazzeta-fest.html" class="cob-card" style="background:linear-gradient(135deg,#c4522a,#e8724a)">
+        <div class="cob-img" style="background:transparent;display:flex;align-items:center;justify-content:center;font-size:6rem">🍕</div>
+        <div class="cob-overlay"></div>
+        <div class="cob-body">
+          <span class="cob-cat">Gastronomía · La Boca</span>
+          <div class="cob-title">Fugazzeta Fest: pizza, historia y murga en La Boca</div>
+          <div class="cob-meta">
+            <span class="cob-author">Redacción Modo Feria · Mayo 2026</span>
             <span class="cob-link">Leer <i class="fas fa-arrow-right"></i></span>
           </div>
         </div>

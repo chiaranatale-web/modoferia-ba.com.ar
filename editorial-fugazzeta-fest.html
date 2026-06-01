@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fugazzeta Fest — Editoriales · Modo Feria BA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;--pink:#f4a8a8;--terra:#c4522a;--olive:#7a9040;--cream:#faf5f0;--cream-dk:#f0e8df;--txt:#2a2a2a;--txt-m:#555;--txt-l:#999;--shadow:0 4px 20px rgba(0,0,0,.08);--r:16px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+    .hero{min-height:480px;background:linear-gradient(135deg,#c4522a 0%,#e8724a 50%,#f0a060 100%);position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.3) 60%,transparent 100%)}
+    .hero-emoji{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10rem;opacity:.15;user-select:none}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px);font-family:'Nunito',sans-serif}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.6rem;color:#fff;line-height:1.15;max-width:780px;text-shadow:0 2px 14px rgba(0,0,0,.4);margin-bottom:12px}
+    .hero-body .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;font-style:italic}
+    .art-header{max-width:760px;margin:0 auto;padding:44px 24px 0}
+    .bajada{font-size:1.1rem;color:var(--txt-m);font-style:italic;border-left:4px solid var(--terra);padding-left:20px;margin-bottom:28px;line-height:1.7}
+    .meta{display:flex;align-items:center;gap:16px;padding-bottom:28px;border-bottom:2px solid var(--cream-dk);font-family:'Nunito',sans-serif;flex-wrap:wrap}
+    .meta-author{display:flex;align-items:center;gap:8px}
+    .meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--terra);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.85rem;flex-shrink:0}
+    .meta-name{font-size:.88rem;font-weight:700;color:var(--txt)}
+    .meta-date{font-size:.82rem;color:var(--txt-l)}
+    .meta-dot{color:var(--txt-l)}
+    .meta-tag{background:var(--cream-dk);color:var(--txt-m);padding:3px 10px;border-radius:8px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark)}
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin:40px 0 16px;padding-top:8px;border-top:1px solid var(--cream-dk)}
+    .pullquote{border-left:5px solid var(--terra);margin:36px 0;padding:20px 28px;background:#fff;border-radius:0 var(--r) var(--r) 0;box-shadow:var(--shadow)}
+    .pullquote p{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--terra);margin:0;line-height:1.55}
+    .pullquote cite{display:block;margin-top:10px;font-size:.82rem;font-family:'Nunito',sans-serif;font-style:normal;color:var(--txt-l);font-weight:700}
+    .firma{max-width:760px;margin:40px auto 0;padding:28px 24px;border-top:2px solid var(--cream-dk);display:flex;align-items:center;gap:16px;font-family:'Nunito',sans-serif}
+    .firma-avatar{width:52px;height:52px;border-radius:50%;background:var(--terra);display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.1rem;flex-shrink:0}
+    .firma-name{font-weight:800;font-size:1rem;color:var(--txt)}
+    .firma-role{font-size:.82rem;color:var(--txt-l);margin-top:2px}
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif}
+    footer a{color:var(--pink);font-weight:700}
+    @media(max-width:640px){.nav-links{display:none}.hero-body h1{font-size:1.9rem}.firma{flex-direction:column;text-align:center}.btn-ghost{margin-left:0;margin-top:10px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo"><img src="Logo.jpeg" alt="Modo Feria BA"><span>Modo Feria BA</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <span>Fugazzeta Fest</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-emoji">🍕</div>
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-pen-nib"></i> Queso, barrio y tradición</div>
+    <h1>Fugazzeta Fest en La Boca: pizza, historia y murga en la primera edición</h1>
+    <p class="hero-sub">Sábado 23 de mayo · Dr. del Valle Iberlucea 1001, La Boca · Buenos Aires</p>
+  </div>
+</section>
+
+<div class="art-header">
+  <p class="bajada">Entre las 12 y las 18 horas, el barrio de La Boca se transformó en uno de los puntos más convocantes de la Ciudad con la primera edición de la Fugazzeta Fest.</p>
+  <div class="meta">
+    <div class="meta-author">
+      <div class="meta-avatar">MF</div>
+      <div><div class="meta-name">Redacción Modo Feria BA</div><div class="meta-date">Mayo 2026</div></div>
+    </div>
+    <span class="meta-dot">·</span>
+    <span class="meta-tag">Gastronomía</span>
+    <span class="meta-tag">La Boca</span>
+    <span class="meta-tag">Crónica</span>
+  </div>
+</div>
+
+<article class="art-body">
+
+  <p>
+    Desde el mediodía, cientos de personas comenzaron a llegar a la calle Dr. Valle Iberlucea 1001, atraídas por una combinación difícil de rechazar: pizza, historia, música y uno de los paisajes urbanos más emblemáticos de Buenos Aires. El clima acompañó durante toda la jornada. El sol iluminaba las fachadas coloridas y los murales típicos del barrio, mientras una brisa suave hacía más agradable el recorrido por las calles llenas de turistas, familias y fanáticos de la gastronomía porteña.
+  </p>
+
+  <p>
+    A pocas cuadras de La Bombonera y a tres de Caminito, el festival se integraba perfectamente al movimiento turístico de la zona. Quienes caminaban por allí podían escuchar distintos idiomas mezclados con el ruido de los murmullos, los pedidos en los stands y la música que sonaba de fondo. El aroma a mozzarella derretida, cebolla caramelizada y masa recién salida del horno se sentía desde varias cuadras antes de llegar al predio.
+  </p>
+
+  <h2>Pizza con memoria</h2>
+
+  <p>
+    Entre los puestos decorados con banderines, carteles, pizarras escritas a mano y cuadros con fotografías históricas de antiguos vendedores de fugazza y fainá, aparecían datos que conectaban el festival con los orígenes italianos del barrio. Uno de los más comentados hacía referencia a 1865, cuando un inmigrante genovés llamado Luigi recorría las calles de La Boca vendiendo fugazza y fainá por cinco centavos la porción, siendo recordado como uno de los primeros "faineros" de la zona.
+  </p>
+
+  <p>
+    Esa mezcla entre memoria histórica y gastronomía actual era justamente uno de los ejes del evento: homenajear un plato que forma parte de la identidad cultural porteña. Según relevamientos de la Asociación de Pizzerías y Casas de Empanadas de la República Argentina (APYCE), Buenos Aires cuenta con más de mil pizzerías distribuidas en toda la ciudad, consolidándose como una de las capitales gastronómicas de la pizza en América Latina.
+  </p>
+
+  <p>
+    Entre las pizzerías participantes se encontraban <strong>Fugazi, Burgio, Pizza Zen, Fare y Gino el Capo</strong>, cada una con su propia versión del clásico plato porteño. Algunas ofrecían fugazzetas rellenas con cantidades abundantes de queso que desbordaban al cortarlas; otras apostaban por versiones más crocantes o con cebollas caramelizadas.
+  </p>
+
+  <h2>El éxito y sus sombras</h2>
+
+  <p>
+    El predio contaba con sectores diferenciados, baños señalizados y un escenario en el exterior donde durante toda la tarde hubo música y espectáculos en vivo. Personal de organización recorría constantemente el lugar guiando a los asistentes. La convocatoria fue tan importante que medios como Crónica TV y El Trece estuvieron presentes realizando coberturas en vivo.
+  </p>
+
+  <p>
+    Sin embargo, el éxito también dejó algunas críticas. Cerca de las dos de la tarde, varios stands comenzaron a quedarse sin fugazzeta debido a la alta demanda.
+  </p>
+
+  <div class="pullquote">
+    <p>"Hicimos casi cuarenta minutos de cola y cuando llegamos ya no tenían nada."</p>
+    <cite>— Visitante decepcionada</cite>
+  </div>
+
+  <div class="pullquote">
+    <p>"La idea está buenísima, pero tendrían que haber calculado más cantidad porque muchísima gente se quedó sin probar."</p>
+    <cite>— Otro visitante</cite>
+  </div>
+
+  <p>
+    La falta de lugares para sentarse también fue uno de los reclamos más repetidos. Muchas familias debían comer paradas o buscar espacio en el piso del patio exterior. A pesar de eso, el ambiente general continuó siendo festivo.
+  </p>
+
+  <h2>La murga: el momento del día</h2>
+
+  <p>
+    Cerca de las tres de la tarde llegó uno de los momentos más celebrados de toda la jornada: una murga irrumpió en las calles de La Boca con bombos, redoblantes y platillos que hicieron vibrar cada rincón del festival. Vestidos con trajes brillantes cargados de lentejuelas, galeras coloridas y banderas agitadas en el aire, mujeres, hombres y niños avanzaban bailando coordinadamente entre el público con una energía contagiosa. Los espectadores se acercaban, algunos levantaban sus celulares para grabar el espectáculo, mientras otros acompañaban con palmas, silbidos y sonrisas.
+  </p>
+
+  <p>
+    Con el correr de las horas, el sol comenzó a bajar lentamente sobre los conventillos y las fachadas coloridas del barrio. Poco a poco, el festival comenzó a apagarse junto con el atardecer, dejando detrás una tarde atravesada por la gastronomía, la cultura popular y el movimiento constante de un barrio que volvió a convertirse en el centro de encuentro de miles de personas.
+  </p>
+
+</article>
+
+<div class="firma">
+  <div class="firma-avatar"><i class="fas fa-pen"></i></div>
+  <div><div class="firma-name">Redacción Modo Feria BA</div><div class="firma-role">Mayo 2026</div></div>
+</div>
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Inicio</a>
+</div>
+<footer>© 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados</footer>
+</body>
+</html>
