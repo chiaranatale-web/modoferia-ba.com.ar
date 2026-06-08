@@ -179,7 +179,17 @@
 
     /* ── CALENDARIO ── */
     .cal-section{background:#fff;border-radius:var(--r);padding:28px 28px 24px;box-shadow:var(--shadow);margin-bottom:36px}
-    .cal-section>h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin-bottom:20px}
+    .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+    .cal-head h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark)}
+    .cal-nav{display:flex;align-items:center;gap:8px}
+    .cal-nav-btn{background:var(--cream-dk);border:none;width:32px;height:32px;border-radius:8px;cursor:pointer;display:grid;place-items:center;color:var(--teal);font-size:.85rem;transition:background .2s,color .2s}
+    .cal-nav-btn:hover{background:var(--teal);color:#fff}
+    .cal-nav-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;color:var(--teal-dark);white-space:nowrap;min-width:130px;text-align:center}
+    .upcoming-banner{background:var(--teal);border-radius:var(--r);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:14px}
+    .upcoming-banner h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff}
+    .upcoming-banner p{color:rgba(255,255,255,.8);font-size:.85rem;margin-top:4px;font-family:'Nunito',sans-serif}
+    .btn-upcoming{background:#fff;color:var(--teal);padding:10px 22px;border-radius:30px;font-weight:800;font-size:.88rem;font-family:'Nunito',sans-serif;transition:all .2s;white-space:nowrap;text-decoration:none}
+    .btn-upcoming:hover{background:var(--pink-light);color:var(--teal-dark)}
     .cal-wrap{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
     .cal-month-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.82rem;color:var(--txt-l);text-align:center;margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em}
     .cal-grid{display:grid;grid-template-columns:repeat(7,40px);gap:4px}
@@ -317,7 +327,7 @@
 
   <div class="hero-inner">
     <div>
-      <div class="hero-badge"><i class="fas fa-calendar-alt"></i> Mayo 2026 · Buenos Aires</div>
+      <div class="hero-badge"><i class="fas fa-calendar-alt"></i> Buenos Aires · 2026</div>
       <h1>Ferias y Eventos<br>en <em>Buenos Aires</em></h1>
       <p>Encontrá las mejores ferias, mercados y eventos culturales de la ciudad este mes. La mayoría con entrada gratuita.</p>
     </div>
@@ -495,10 +505,16 @@
 
   <!-- CALENDARIO -->
   <div class="cal-section">
-    <h3>Calendario de eventos · Mayo 2026</h3>
+    <div class="cal-head">
+      <h3 id="cal-heading">Calendario de eventos</h3>
+      <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="prevMonth()"><i class="fas fa-chevron-left"></i></button>
+        <span class="cal-nav-title" id="cal-title">Junio 2026</span>
+        <button class="cal-nav-btn" onclick="nextMonth()"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
     <div class="cal-wrap">
       <div>
-        <div class="cal-month-title">Mayo 2026</div>
         <div class="cal-grid" id="cal-grid">
           <div class="cal-dow">Lu</div><div class="cal-dow">Ma</div><div class="cal-dow">Mi</div>
           <div class="cal-dow">Ju</div><div class="cal-dow">Vi</div><div class="cal-dow">Sá</div>
@@ -506,18 +522,23 @@
         </div>
       </div>
       <div class="cal-panel" id="cal-panel">
-        <div class="cal-empty">
-          <i class="fas fa-calendar-alt"></i>
-          <p>Tocá un día con eventos para ver el detalle</p>
-        </div>
+        <div class="cal-empty"><i class="fas fa-calendar-alt"></i><p>Tocá un día con eventos para ver el detalle</p></div>
       </div>
     </div>
   </div>
 
-  <div class="wk-divider" id="este-finde">
-    <h2>🎉 Semana del 25 de Mayo — 23, 24 y 25 de Mayo</h2>
+  <div class="upcoming-banner">
+    <div>
+      <h3>Próximos eventos en Buenos Aires</h3>
+      <p>Ferias, festivales y experiencias hasta noviembre 2026</p>
+    </div>
+    <a href="proximos-eventos.html" class="btn-upcoming">Ver agenda completa <i class="fas fa-arrow-right"></i></a>
   </div>
-  <div class="grid" id="grid-2"></div>
+
+  <div class="wk-divider wk-finalizados" id="este-finde">
+    <h2>✅ Finalizados — Semana del 25 de Mayo</h2>
+  </div>
+  <div class="grid grid-finalizados" id="grid-2"></div>
 
   <div class="wk-divider wk-finalizados" id="div-finde1">
     <h2>✅ Finalizados — 16 y 17 de Mayo</h2>
@@ -823,66 +844,86 @@ document.getElementById('grid-1').innerHTML = W1.map(card).join('');
 document.getElementById('grid-2').innerHTML = W2.map(card).join('');
 
 // ── CALENDARIO ──
-const CAL = {
-  16:[
-    {name:'Food Fest',              loc:'La Rural, Av. Sarmiento 2704', hrs:'12 a 20 hs',    cat:'gastro',  free:true},
-    {name:'Feria Francesa',         loc:'Rosedal de Palermo',           hrs:'Desde las 11 hs',cat:'cultura', free:true},
-    {name:'Peña de Mayo',           loc:'Parque Lineal Don Bosco',      hrs:'11 a 20:30 hs', cat:'folk',    free:true},
-    {name:'Matsuri Feria Asiática', loc:'Thames 747, Villa Crespo',     hrs:'12 a 20 hs',    cat:'cultura', free:true},
-    {name:'Manos al Oficio',        loc:'CMA Avellaneda',               hrs:'15 a 20 hs',    cat:'arte',    free:true},
-  ],
-  17:[
-    {name:'Food Fest',              loc:'La Rural, Av. Sarmiento 2704', hrs:'12 a 20 hs',    cat:'gastro',  free:true},
-    {name:'Feria Francesa',         loc:'Rosedal de Palermo',           hrs:'Desde las 11 hs',cat:'cultura', free:true},
-    {name:'Peña de Mayo',           loc:'Parque Lineal Don Bosco',      hrs:'11 a 20:30 hs', cat:'folk',    free:true},
-    {name:'Matsuri Feria Asiática', loc:'Thames 747, Villa Crespo',     hrs:'12 a 20 hs',    cat:'cultura', free:true},
-  ],
-  23:[
-    {name:'Feria de las Provincias',loc:'Hipódromo de San Isidro',      hrs:'11 a 21 hs',    cat:'folk',    free:true},
-    {name:'Expo Mate',              loc:'Hipódromo de San Isidro',      hrs:'10 a 19 hs',    cat:'gastro',  free:false},
-    {name:'Fugazzeta Fest',         loc:'Dr. del Valle Iberlucea 1001', hrs:'12 a 18 hs',    cat:'gastro',  free:false},
-  ],
-  24:[
-    {name:'Feria de las Provincias',loc:'Hipódromo de San Isidro',      hrs:'11 a 21 hs',    cat:'folk',    free:true},
-    {name:'Expo Mate',              loc:'Hipódromo de San Isidro',      hrs:'10 a 19 hs',    cat:'gastro',  free:false},
-    {name:'Fugazzeta Fest',         loc:'Dr. del Valle Iberlucea 1001', hrs:'12 a 18 hs',    cat:'gastro',  free:false},
-  ],
-  25:[
-    {name:'Feria de las Provincias',loc:'Hipódromo de San Isidro',      hrs:'11 a 21 hs',    cat:'folk',    free:true},
-    {name:'Expo Mate',              loc:'Hipódromo de San Isidro',      hrs:'10 a 19 hs',    cat:'gastro',  free:false},
-    {name:'Feria Tomé Criolla',     loc:'Gorriti 5646, Palermo',        hrs:'12 a 17 hs',    cat:'gastro',  free:false},
-  ],
+// ── CALENDARIO MULTI-MES ──
+const CAL_DATA = {
+  '2026-6':{
+    21:[{name:'Fiesta Junina',              loc:'La Rural, Av. Santa Fe y Thames',   hrs:'13 a 22 hs',    cat:'gastro',  free:false}],
+    25:[{name:'MAPA',                       loc:'La Rural, Pabellón 8',              hrs:'12 a 20 hs',    cat:'arte',    free:false}],
+    26:[{name:'MAPA',                       loc:'La Rural, Pabellón 8',              hrs:'12 a 20 hs',    cat:'arte',    free:false}],
+    27:[{name:'MAPA',                       loc:'La Rural, Pabellón 8',              hrs:'12 a 20 hs',    cat:'arte',    free:false},
+        {name:'La Chocolaterie',            loc:'La Rural, Av. Sarmiento 2407',      hrs:'A confirmar',   cat:'gastro',  free:false}],
+    28:[{name:'MAPA',                       loc:'La Rural, Pabellón 8',              hrs:'12 a 20 hs',    cat:'arte',    free:false},
+        {name:'La Chocolaterie',            loc:'La Rural, Av. Sarmiento 2407',      hrs:'A confirmar',   cat:'gastro',  free:false}],
+  },
+  '2026-7':{
+    9: [{name:'Caminos y Sabores',          loc:'BA Ferial, Costanera Rafael Obligado 1221', hrs:'A confirmar', cat:'gastro', free:false}],
+    10:[{name:'Caminos y Sabores',          loc:'BA Ferial, Costanera Rafael Obligado 1221', hrs:'A confirmar', cat:'gastro', free:false}],
+    11:[{name:'Caminos y Sabores',          loc:'BA Ferial, Costanera Rafael Obligado 1221', hrs:'A confirmar', cat:'gastro', free:false}],
+    12:[{name:'Caminos y Sabores',          loc:'BA Ferial, Costanera Rafael Obligado 1221', hrs:'A confirmar', cat:'gastro', free:false}],
+  },
+  '2026-8':{
+    1: [{name:'ExpoCelíaca',               loc:'BA Ferial, ex Costa Salguero',       hrs:'10 a 20 hs',    cat:'gastro',  free:false}],
+    2: [{name:'ExpoCelíaca',               loc:'BA Ferial, ex Costa Salguero',       hrs:'10 a 20 hs',    cat:'gastro',  free:false}],
+  },
+  '2026-9':{
+    26:[{name:'Feria Internacional de Turismo', loc:'La Rural, Palermo',             hrs:'A confirmar',   cat:'cultura', free:false}],
+    27:[{name:'Feria Internacional de Turismo', loc:'La Rural, Palermo',             hrs:'A confirmar',   cat:'cultura', free:false}],
+    28:[{name:'Feria Internacional de Turismo', loc:'La Rural, Palermo',             hrs:'A confirmar',   cat:'cultura', free:false}],
+    29:[{name:'Feria Internacional de Turismo', loc:'La Rural, Palermo',             hrs:'A confirmar',   cat:'cultura', free:false}],
+  },
+  '2026-11':{
+    6: [{name:'arteba',                    loc:'La Rural, Av. Santa Fe y Thames',    hrs:'A confirmar',   cat:'cultura', free:false}],
+    7: [{name:'arteba',                    loc:'La Rural, Av. Santa Fe y Thames',    hrs:'A confirmar',   cat:'cultura', free:false}],
+    8: [{name:'arteba',                    loc:'La Rural, Av. Santa Fe y Thames',    hrs:'A confirmar',   cat:'cultura', free:false}],
+  },
 };
 const CAT_COLOR={gastro:'#c4522a',cultura:'#1e6b5e',folk:'#7a9040',arte:'#e87a7a'};
-const DAY_NAMES=['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
+const MONTH_NAMES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+let calYear=2026, calMonth=6;
 
-function initCalendar(){
+function getFirstDay(y,m){const d=new Date(y,m-1,1).getDay();return d===0?6:d-1;}
+function getDaysInMonth(y,m){return new Date(y,m,0).getDate();}
+function getDayName(y,m,d){const dn=['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];const w=new Date(y,m-1,d).getDay();return dn[w===0?6:w-1];}
+
+function renderCalendar(y,m){
+  calYear=y; calMonth=m;
+  const key=`${y}-${m}`;
+  const data=CAL_DATA[key]||{};
+  document.getElementById('cal-title').textContent=`${MONTH_NAMES[m-1]} ${y}`;
   const grid=document.getElementById('cal-grid');
-  // Mayo 2026 empieza en viernes → 4 celdas vacías (Lu=0…Vi=4)
-  for(let i=0;i<4;i++){const e=document.createElement('div');e.className='cal-day';grid.appendChild(e);}
-  for(let d=1;d<=31;d++){
+  const headers=Array.from(grid.children).slice(0,7);
+  grid.innerHTML='';
+  headers.forEach(h=>grid.appendChild(h));
+  const first=getFirstDay(y,m);
+  for(let i=0;i<first;i++){const e=document.createElement('div');e.className='cal-day';grid.appendChild(e);}
+  const days=getDaysInMonth(y,m);
+  for(let d=1;d<=days;d++){
     const cell=document.createElement('div');
-    const evs=CAL[d];
-    cell.className='cal-day'+(evs?' has-ev':'');
+    const dayEvs=data[d]||[];
+    const filtered=dayEvs.filter(ev=>matchesFilter(ev,activeFilter));
+    cell.className='cal-day'+(dayEvs.length?' has-ev':'');
     cell.setAttribute('data-day',d);
-    const num=document.createElement('span');
-    num.className='cal-day-num';num.textContent=d;
+    const num=document.createElement('span');num.className='cal-day-num';num.textContent=d;
     cell.appendChild(num);
-    if(evs){
-      const cats=[...new Set(evs.map(e=>e.cat))].slice(0,3);
+    if(dayEvs.length){
+      const cats=[...new Set(dayEvs.map(e=>e.cat))].slice(0,3);
       const dots=document.createElement('div');dots.className='cal-dots';
       cats.forEach(c=>{const s=document.createElement('span');s.className='cal-dot';s.style.background=CAT_COLOR[c]||'#ccc';dots.appendChild(s);});
       cell.appendChild(dots);
-      cell.onclick=()=>showCalDay(d,cell);
+      if(filtered.length) cell.onclick=()=>showCalDay(d,cell);
+      else{cell.classList.remove('has-ev');cell.onclick=null;}
     }
     grid.appendChild(cell);
   }
-  // Mostrar día 16 por defecto
-  const def=document.querySelector('[data-day="16"]');
-  if(def)def.click();
+  document.getElementById('cal-panel').innerHTML='<div class="cal-empty"><i class="fas fa-calendar-alt"></i><p>Tocá un día con eventos para ver el detalle</p></div>';
+  const first2=grid.querySelector('.cal-day.has-ev');
+  if(first2) first2.click();
 }
 
-function matchesFilter(ev, f){
+function prevMonth(){let m=calMonth-1,y=calYear;if(m<1){m=12;y--;}renderCalendar(y,m);}
+function nextMonth(){let m=calMonth+1,y=calYear;if(m>12){m=1;y++;}renderCalendar(y,m);}
+
+function matchesFilter(ev,f){
   if(f==='all')        return true;
   if(f==='free')       return ev.free;
   if(f==='gastronomia')return ev.cat==='gastro';
@@ -895,58 +936,26 @@ function matchesFilter(ev, f){
 function showCalDay(day,cell){
   document.querySelectorAll('.cal-day.cal-active').forEach(c=>c.classList.remove('cal-active'));
   cell.classList.add('cal-active');
-  const evs=(CAL[day]||[]).filter(ev=>matchesFilter(ev,activeFilter));
-  const wd=DAY_NAMES[(4+day-1)%7];
+  const key=`${calYear}-${calMonth}`;
+  const evs=((CAL_DATA[key]||{})[day]||[]).filter(ev=>matchesFilter(ev,activeFilter));
   const panel=document.getElementById('cal-panel');
-  if(!evs.length){
-    panel.innerHTML=`<div class="cal-empty"><i class="fas fa-filter"></i><p>Sin eventos para este filtro en este día</p></div>`;
-    return;
-  }
-  let html=`<div class="cal-panel-day">${wd.charAt(0).toUpperCase()+wd.slice(1)} ${day} de Mayo</div>`;
+  if(!evs.length){panel.innerHTML='<div class="cal-empty"><i class="fas fa-filter"></i><p>Sin eventos para este filtro</p></div>';return;}
+  const dn=getDayName(calYear,calMonth,day);
+  let html=`<div class="cal-panel-day">${dn.charAt(0).toUpperCase()+dn.slice(1)} ${day} de ${MONTH_NAMES[calMonth-1]}</div>`;
   evs.forEach(ev=>{
     const c=CAT_COLOR[ev.cat]||'#ccc';
     const badge=ev.free?'<span style="color:#7a9040;font-size:.68rem;font-weight:800;font-family:Nunito,sans-serif">🟢 Gratis</span>':'';
-    html+=`<div class="cal-ev-item">
-      <div class="cal-ev-dot" style="background:${c}"></div>
+    html+=`<div class="cal-ev-item"><div class="cal-ev-dot" style="background:${c}"></div>
       <div><div class="cal-ev-name">${ev.name} ${badge}</div>
       <div class="cal-ev-loc"><i class="fas fa-map-marker-alt" style="color:${c};font-size:.65rem"></i> ${ev.loc}</div>
-      <div class="cal-ev-hrs"><i class="fas fa-clock" style="font-size:.65rem"></i> ${ev.hrs}</div></div>
-    </div>`;
+      <div class="cal-ev-hrs"><i class="fas fa-clock" style="font-size:.65rem"></i> ${ev.hrs}</div></div></div>`;
   });
   panel.innerHTML=html;
 }
 
-function updateCalendar(){
-  document.querySelectorAll('.cal-day[data-day]').forEach(cell=>{
-    const day=parseInt(cell.getAttribute('data-day'));
-    const evs=(CAL[day]||[]).filter(ev=>matchesFilter(ev,activeFilter));
-    // Limpiar dots
-    const old=cell.querySelector('.cal-dots');
-    if(old) old.remove();
-    if(evs.length){
-      cell.classList.add('has-ev');
-      cell.onclick=()=>showCalDay(day,cell);
-      const cats=[...new Set(evs.map(e=>e.cat))].slice(0,3);
-      const dots=document.createElement('div');dots.className='cal-dots';
-      cats.forEach(c=>{const s=document.createElement('span');s.className='cal-dot';s.style.background=CAT_COLOR[c]||'#ccc';dots.appendChild(s);});
-      cell.appendChild(dots);
-    } else {
-      cell.classList.remove('has-ev','cal-active');
-      cell.onclick=null;
-    }
-  });
-  // Re-renderizar el panel del día activo
-  const active=document.querySelector('.cal-day.cal-active');
-  if(active){
-    showCalDay(parseInt(active.getAttribute('data-day')),active);
-  } else {
-    const first=document.querySelector('.cal-day.has-ev');
-    if(first) first.click();
-    else document.getElementById('cal-panel').innerHTML=`<div class="cal-empty"><i class="fas fa-filter"></i><p>Sin eventos para este filtro</p></div>`;
-  }
-}
+function updateCalendar(){renderCalendar(calYear,calMonth);}
 
-initCalendar();
+renderCalendar(2026,6);
 
 // ── FILTER ──
 let activeFilter = 'all';
