@@ -100,7 +100,9 @@
     .dest-heading h2{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--txt);text-transform:uppercase;letter-spacing:.1em;line-height:1}
     .dest-heading h2 span{color:var(--terra)}
     .dest-heading::after{content:'';display:block;width:60px;height:3px;background:var(--terra);margin:10px auto 0;border-radius:2px}
-    .dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    @media(max-width:900px){.dest-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.dest-grid{grid-template-columns:1fr}}
     .dest-card{border-radius:14px;overflow:hidden;position:relative;height:230px;cursor:pointer;transition:transform .32s,box-shadow .32s}
     .dest-card:hover{transform:scale(1.035);box-shadow:var(--shadow-h)}
     .dest-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5.5rem;user-select:none;transition:transform .32s}
@@ -480,6 +482,17 @@
         <div class="dest-body">
           <div class="dest-card-title">Editoriales</div>
           <span class="dest-link">Ver más <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+
+      <!-- 4. Mapa figuritas -->
+      <a href="mapa-figuritas.html" class="dest-card">
+        <div class="dest-bg" style="background:linear-gradient(135deg,#74ACDF 0%,#1e6b5e 55%,#155046 100%);display:flex;align-items:center;justify-content:center;font-size:4rem;gap:4px">⚽🇦🇷</div>
+        <div class="dest-overlay"></div>
+        <div class="dest-body">
+          <div class="dest-card-title">Intercambio de figuritas 2026 🇦🇷</div>
+          <span class="dest-link">Ver mapa <i class="fas fa-map-marker-alt"></i></span>
         </div>
       </a>
 
