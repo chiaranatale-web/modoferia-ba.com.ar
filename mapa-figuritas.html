@@ -52,6 +52,8 @@
     .popup-row{display:flex;align-items:flex-start;gap:6px;font-size:.82rem;color:var(--txt-m);margin-bottom:5px}
     .popup-row i{color:var(--teal);width:12px;margin-top:2px;flex-shrink:0}
     .popup-badge{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:.75rem;font-weight:800;padding:3px 10px;border-radius:8px}
+    .popup-maps{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:#1e6b5e;color:#fff;padding:7px 14px;border-radius:20px;font-size:.78rem;font-weight:800;text-decoration:none;transition:background .2s}
+    .popup-maps:hover{background:#2d8a7a}
     .leaflet-popup-tip{display:none}
 
     /* LEGEND */
@@ -199,6 +201,7 @@ PUNTOS.forEach(p=>{
     ? `<span class="popup-badge" style="background:rgba(122,144,64,.12);color:#7a9040">🟢 Entrada gratuita</span>`
     : '';
   const fuenteStr = p.fuente ? `<div class="popup-row"><i class="fas fa-info-circle"></i><span>${p.fuente}</span></div>` : '';
+  const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`;
   marker.bindPopup(`
     <span class="popup-cat" style="background:${catBg};color:${catColor}">${catLabel}</span>
     <div class="popup-name">${p.nombre}</div>
@@ -207,6 +210,7 @@ PUNTOS.forEach(p=>{
     <div class="popup-row"><i class="fas fa-clock"></i><span>${p.hrs}</span></div>
     ${fuenteStr}
     ${gratisBadge}
+    <br><a href="${mapsUrl}" target="_blank" class="popup-maps"><i class="fas fa-directions"></i> ¿Cómo llegar?</a>
   `,{maxWidth:280});
   marker.addTo(map);
   markers.push({marker, zona:p.zona, tipo:p.tipo, ciudad:p.ciudad});
