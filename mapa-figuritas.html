@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Intercambio de Figuritas · Mundial 2026 · Modo Feria BA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    :root{
+      --teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;
+      --pink:#f4a8a8;--terra:#c4522a;--olive:#7a9040;
+      --cream:#faf5f0;--cream-dk:#f0e8df;
+      --txt:#2a2a2a;--txt-m:#555;--txt-l:#999;
+      --shadow:0 4px 20px rgba(0,0,0,.08);--r:12px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--txt);display:flex;flex-direction:column;height:100vh;overflow:hidden}
+    a{text-decoration:none;color:inherit}
+
+    /* HEADER */
+    header{background:var(--teal);box-shadow:0 2px 12px rgba(0,0,0,.2);flex-shrink:0;z-index:1000}
+    .nav{max-width:100%;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}
+    .nav-logo{display:flex;align-items:center;gap:8px}
+    .nav-logo img{height:38px;border-radius:6px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.1rem;font-weight:700}
+    .nav-back{color:rgba(255,255,255,.85);font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:6px;transition:color .2s}
+    .nav-back:hover{color:var(--pink)}
+
+    /* TOOLBAR */
+    .toolbar{background:#fff;border-bottom:2px solid var(--cream-dk);padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex-shrink:0;z-index:900}
+    .toolbar-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--teal-dark);white-space:nowrap;margin-right:8px}
+    .toolbar-title span{color:var(--terra)}
+    .fbtn{background:var(--cream);border:2px solid var(--cream-dk);color:var(--txt-m);padding:5px 13px;border-radius:20px;font-size:.78rem;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;white-space:nowrap;transition:all .2s}
+    .fbtn:hover{border-color:var(--teal);color:var(--teal)}
+    .fbtn.active{background:var(--terra);border-color:var(--terra);color:#fff}
+    .count-badge{background:var(--teal);color:#fff;padding:4px 10px;border-radius:20px;font-size:.75rem;font-weight:800;margin-left:auto}
+
+    /* MAP */
+    #map{flex:1;z-index:1}
+
+    /* CUSTOM MARKERS */
+    .marker-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer;transition:transform .2s}
+    .marker-icon:hover{transform:scale(1.2)}
+
+    /* LEAFLET POPUP */
+    .leaflet-popup-content-wrapper{border-radius:var(--r);box-shadow:var(--shadow);border:none;font-family:'Nunito',sans-serif}
+    .leaflet-popup-content{margin:14px 18px;font-family:'Nunito',sans-serif}
+    .popup-cat{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:8px;display:inline-block;margin-bottom:8px}
+    .popup-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal-dark);margin-bottom:8px;line-height:1.3}
+    .popup-row{display:flex;align-items:flex-start;gap:6px;font-size:.82rem;color:var(--txt-m);margin-bottom:5px}
+    .popup-row i{color:var(--teal);width:12px;margin-top:2px;flex-shrink:0}
+    .popup-badge{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:.75rem;font-weight:800;padding:3px 10px;border-radius:8px}
+    .leaflet-popup-tip{display:none}
+
+    /* LEGEND */
+    .legend{position:absolute;bottom:24px;right:12px;background:#fff;border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow);z-index:500;font-size:.78rem;min-width:160px}
+    .legend-title{font-weight:800;color:var(--teal-dark);margin-bottom:8px;font-size:.82rem}
+    .legend-item{display:flex;align-items:center;gap:8px;margin-bottom:6px;color:var(--txt-m)}
+    .legend-dot{width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2);flex-shrink:0}
+
+    /* MOBILE */
+    @media(max-width:600px){
+      .toolbar{padding:8px 12px;gap:6px}
+      .toolbar-title{font-size:.95rem}
+      .legend{bottom:16px;right:8px;padding:10px 12px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.jpeg" alt="Modo Feria BA">
+      <span>Modo Feria BA</span>
+    </a>
+    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Volver</a>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-title">Figuritas <span>Mundial 2026</span></div>
+  <button class="fbtn active" onclick="filterMap('all',this)">Todos</button>
+  <button class="fbtn" onclick="filterMap('caba',this)">CABA</button>
+  <button class="fbtn" onclick="filterMap('gba',this)">GBA</button>
+  <button class="fbtn" onclick="filterMap('interior',this)">Interior</button>
+  <button class="fbtn" onclick="filterMap('oficial',this)">🏛️ Oficiales</button>
+  <button class="fbtn" onclick="filterMap('comunitario',this)">🤝 Comunitarios</button>
+  <span class="count-badge" id="count-badge">42 puntos</span>
+</div>
+
+<div id="map"></div>
+
+<div class="legend">
+  <div class="legend-title">Referencias</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#1e6b5e"></div> Oficial / Municipal</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#7a9040"></div> Comunitario</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#c4522a"></div> Centro Cultural</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e87a7a"></div> Comercial</div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ── DATOS ──
+const PUNTOS = [
+  // CABA — Oficiales
+  {id:1, nombre:'Fan Fest · Plaza Seeber', dir:'Av. Libertador y Sarmiento, Palermo', ciudad:'Buenos Aires', zona:'caba', tipo:'oficial', lat:-34.5755, lng:-58.4138, dias:'11 Jun – 19 Jul', hrs:'12 a 20 hs', color:'#1e6b5e', gratis:true, fuente:'GCBA'},
+  {id:2, nombre:'Estación de intercambio · Parque Los Andes', dir:'Parque Los Andes, Chacarita', ciudad:'Buenos Aires', zona:'caba', tipo:'oficial', lat:-34.5948, lng:-58.4518, dias:'Desde octavos de final', hrs:'En horario Fan Fest', color:'#1e6b5e', gratis:true, fuente:'GCBA'},
+  // CABA — Comunitarios
+  {id:3, nombre:'Parque Rivadavia', dir:'Av. Rivadavia 4950, Caballito', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.6196, lng:-58.4380, dias:'Sáb y Dom', hrs:'Desde las 10 hs', color:'#7a9040', gratis:true},
+  {id:4, nombre:'Parque Centenario', dir:'Ángel Gallardo y Patricias Argentinas, Caballito', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.6060, lng:-58.4381, dias:'Sáb, Dom y feriados', hrs:'10 a 19 hs', color:'#7a9040', gratis:true},
+  {id:5, nombre:'Parque Chacabuco', dir:'Parque Chacabuco, Caballito', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.6299, lng:-58.4380, dias:'Fines de semana', hrs:'Mañana a tarde', color:'#7a9040', gratis:true},
+  {id:6, nombre:'Parque Saavedra', dir:'Parque Saavedra, Saavedra', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.5527, lng:-58.4820, dias:'Fines de semana', hrs:'Mañana a tarde', color:'#7a9040', gratis:true},
+  {id:7, nombre:'Plaza Lezama', dir:'Av. Brasil y Defensa, San Telmo', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.6285, lng:-58.3699, dias:'Fines de semana', hrs:'Mañana a tarde', color:'#7a9040', gratis:true},
+  {id:8, nombre:'Parque Avellaneda', dir:'Parque Avellaneda, Floresta', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.6400, lng:-58.4851, dias:'Fines de semana', hrs:'Mañana a tarde', color:'#7a9040', gratis:true},
+  {id:9, nombre:'Parque Las Heras', dir:'Av. Las Heras y Coronel Díaz, Palermo', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.5889, lng:-58.3992, dias:'Fines de semana', hrs:'Mañana a tarde', color:'#7a9040', gratis:true},
+  {id:10, nombre:'Plaza Canning', dir:'Av. Santa Fe y Scalabrini Ortiz, Palermo', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.5946, lng:-58.4098, dias:'Fines de semana', hrs:'Mañana a tarde', color:'#7a9040', gratis:true},
+  {id:11, nombre:'Plaza Italia', dir:'Av. Las Heras y Sarmiento, Palermo', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.5822, lng:-58.4244, dias:'Domingos', hrs:'Por la tarde', color:'#7a9040', gratis:true},
+  {id:12, nombre:'Plaza San Martín', dir:'Av. Santa Fe y Florida, Retiro', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.5934, lng:-58.3741, dias:'Días de semana', hrs:'Horario almuerzo', color:'#7a9040', gratis:true},
+  {id:13, nombre:'Barrio Chino', dir:'Arribeños al 2200, Belgrano', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.5555, lng:-58.4525, dias:'Fines de semana', hrs:'Mañana a tarde', color:'#7a9040', gratis:true},
+  {id:14, nombre:'Plaza Arenales', dir:'Plaza Arenales, Villa Devoto', ciudad:'Buenos Aires', zona:'caba', tipo:'comunitario', lat:-34.5994, lng:-58.5198, dias:'Fines de semana', hrs:'Mañana a tarde', color:'#7a9040', gratis:true},
+  // GBA / Provincia
+  {id:15, nombre:'Plaza Malvinas', dir:'Calles 19 y 51, La Plata', ciudad:'La Plata', zona:'gba', tipo:'comunitario', lat:-34.9200, lng:-57.9531, dias:'Domingos', hrs:'Desde las 10 hs', color:'#7a9040', gratis:true},
+  {id:16, nombre:'Plaza 19 y 72', dir:'Calles 19 y 72, La Plata', ciudad:'La Plata', zona:'gba', tipo:'comunitario', lat:-34.9215, lng:-57.9448, dias:'Domingos', hrs:'Por la tarde', color:'#7a9040', gratis:true},
+  {id:17, nombre:'Paseo Público Municipal', dir:'Paseo Público Municipal, San Pedro', ciudad:'San Pedro', zona:'gba', tipo:'oficial', lat:-33.6791, lng:-59.6714, dias:'Domingos', hrs:'13:30 a 17:30 hs', color:'#1e6b5e', gratis:true},
+  {id:18, nombre:'Galería Visión 2000', dir:'San Martín 216, Bahía Blanca', ciudad:'Bahía Blanca', zona:'gba', tipo:'comunitario', lat:-38.7196, lng:-62.2724, dias:'Sábados', hrs:'15:30 a 19:30 hs', color:'#7a9040', gratis:true},
+  {id:19, nombre:'Plaza Belgrano', dir:'Plaza Belgrano, 9 de Julio', ciudad:'9 de Julio', zona:'gba', tipo:'comunitario', lat:-35.4446, lng:-60.8855, dias:'Domingos', hrs:'16:30 hs', color:'#7a9040', gratis:true},
+  // Rosario
+  {id:20, nombre:'Centro Cultural Fontanarrosa', dir:'San Martín 1080, Rosario', ciudad:'Rosario', zona:'interior', tipo:'cultural', lat:-32.9468, lng:-60.6393, dias:'Sábados (Jun–Jul)', hrs:'15 a 19 hs', color:'#c4522a', gratis:true, fuente:'Municipalidad de Rosario'},
+  // Mendoza
+  {id:21, nombre:'Skatepark San Vicente', dir:'Av. Ingeniero Cipolletti 401, Godoy Cruz', ciudad:'Mendoza', zona:'interior', tipo:'oficial', lat:-32.9415, lng:-68.8516, dias:'Sábados', hrs:'16 hs', color:'#1e6b5e', gratis:true},
+  {id:22, nombre:'Plaza Departamental 12 de Febrero', dir:'Plaza 12 de Febrero, Maipú', ciudad:'Mendoza', zona:'interior', tipo:'oficial', lat:-32.9814, lng:-68.7807, dias:'Sábados de junio', hrs:'16 a 19 hs', color:'#1e6b5e', gratis:true},
+  {id:23, nombre:'Microcine Municipal "David Eisenchlas"', dir:'9 de Julio 500 (subsuelo), Ciudad de Mendoza', ciudad:'Mendoza', zona:'interior', tipo:'oficial', lat:-32.8895, lng:-68.8458, dias:'Sábados', hrs:'12 a 18 hs', color:'#1e6b5e', gratis:true},
+  {id:24, nombre:'Plaza España', dir:'Plaza España, Mendoza', ciudad:'Mendoza', zona:'interior', tipo:'comunitario', lat:-32.8928, lng:-68.8375, dias:'Fines de semana', hrs:'Por la tarde', color:'#7a9040', gratis:true},
+  {id:25, nombre:'Plaza Independencia', dir:'Plaza Independencia, Mendoza', ciudad:'Mendoza', zona:'interior', tipo:'comunitario', lat:-32.8895, lng:-68.8470, dias:'Fines de semana', hrs:'Por la tarde', color:'#7a9040', gratis:true},
+  // Salta
+  {id:26, nombre:'Parque de la Familia', dir:'Parque de la Familia, Salta', ciudad:'Salta', zona:'interior', tipo:'oficial', lat:-24.7826, lng:-65.4232, dias:'Sábados', hrs:'16 a 20 hs', color:'#1e6b5e', gratis:true},
+  {id:27, nombre:'Parque del Bicentenario', dir:'Parque del Bicentenario, Salta', ciudad:'Salta', zona:'interior', tipo:'oficial', lat:-24.7955, lng:-65.4042, dias:'Sábados', hrs:'16 a 20 hs', color:'#1e6b5e', gratis:true},
+  {id:28, nombre:'Parque Sur', dir:'Parque Sur (anfiteatro), Salta', ciudad:'Salta', zona:'interior', tipo:'oficial', lat:-24.8105, lng:-65.4009, dias:'Sábados', hrs:'16 a 20 hs', color:'#1e6b5e', gratis:true},
+  // Santa Fe
+  {id:29, nombre:'AIRE Santa Fe', dir:'25 de Mayo 3255, Santa Fe', ciudad:'Santa Fe', zona:'interior', tipo:'cultural', lat:-31.6333, lng:-60.7000, dias:'Sábados', hrs:'10 a 12 hs', color:'#c4522a', gratis:true},
+  {id:30, nombre:'Kiosko Odiseo · CCA Firmat', dir:'Av. Santa Fe 1369, Firmat', ciudad:'Firmat', zona:'interior', tipo:'cultural', lat:-33.4594, lng:-61.4884, dias:'Viernes', hrs:'17 hs', color:'#c4522a', gratis:true},
+  // Neuquén
+  {id:31, nombre:'Estadio Ruca Che', dir:'Estadio Ruca Che, Neuquén', ciudad:'Neuquén', zona:'interior', tipo:'oficial', lat:-38.9516, lng:-68.0591, dias:'Sábados', hrs:'14 a 18 hs', color:'#1e6b5e', gratis:true, fuente:'ECyDENSE / Ministerio de Juventud'},
+  {id:32, nombre:'Ciudad Deportiva', dir:'Lanín y Cacique Purrán, Neuquén', ciudad:'Neuquén', zona:'interior', tipo:'oficial', lat:-38.9540, lng:-68.0640, dias:'Martes', hrs:'16 a 19 hs', color:'#1e6b5e', gratis:true},
+  {id:33, nombre:'Club Plaza Huincul', dir:'Club Plaza Huincul, Plaza Huincul', ciudad:'Plaza Huincul', zona:'interior', tipo:'oficial', lat:-38.9284, lng:-69.2139, dias:'Viernes reprogramado', hrs:'17 a 20 hs', color:'#1e6b5e', gratis:true},
+  // Misiones
+  {id:34, nombre:'Plazoleta Güemes + Parque de las Naciones', dir:'Oberá, Misiones', ciudad:'Oberá', zona:'interior', tipo:'oficial', lat:-27.4869, lng:-55.1198, dias:'9 Jun 2026', hrs:'Jornada completa', color:'#1e6b5e', gratis:true, fuente:'Secretaría de Cultura de Oberá'},
+  // Chaco
+  {id:35, nombre:'Plaza Belgrano', dir:'Plaza Belgrano, Resistencia', ciudad:'Resistencia', zona:'interior', tipo:'comunitario', lat:-27.4511, lng:-58.9867, dias:'Sábados', hrs:'17 hs', color:'#7a9040', gratis:true},
+  // La Pampa
+  {id:36, nombre:'Racing Club de Eduardo Castex', dir:'Salón María Baralle, Eduardo Castex', ciudad:'Eduardo Castex', zona:'interior', tipo:'comunitario', lat:-35.9221, lng:-64.2942, dias:'8 Jun 2026', hrs:'Por la tarde', color:'#7a9040', gratis:true},
+  // San Juan
+  {id:37, nombre:'Territorio Yacopini', dir:'Territorio Yacopini, San Juan', ciudad:'San Juan', zona:'interior', tipo:'comercial', lat:-31.5349, lng:-68.5261, dias:'10 Jun 2026', hrs:'11 a 13 hs', color:'#e87a7a', gratis:true},
+  // Río Negro
+  {id:38, nombre:'Vereda Diario Río Negro', dir:'9 de Julio 733, General Roca', ciudad:'General Roca', zona:'interior', tipo:'cultural', lat:-39.0334, lng:-67.5770, dias:'Domingos', hrs:'Por la tarde', color:'#c4522a', gratis:true, fuente:'Diario Río Negro'},
+  // Chubut
+  {id:39, nombre:'Plaza Thompson · Barrio Fontana', dir:'España y Buenos Aires, barrio Fontana, Puerto Madryn', ciudad:'Puerto Madryn', zona:'interior', tipo:'comunitario', lat:-42.7692, lng:-65.0386, dias:'Sábados', hrs:'Desde las 15 hs', color:'#7a9040', gratis:true},
+  // San Luis
+  {id:40, nombre:'Club Juventud Cortaderas', dir:'Sede Club Juventud, Cortaderas', ciudad:'Cortaderas', zona:'interior', tipo:'oficial', lat:-34.0333, lng:-65.4167, dias:'15 Jun 2026', hrs:'Desde las 14 hs', color:'#1e6b5e', gratis:true, fuente:'Municipio de Cortaderas'},
+  // Córdoba
+  {id:41, nombre:'Barrio Olmos', dir:'Zona Olmos, Córdoba', ciudad:'Córdoba', zona:'interior', tipo:'comunitario', lat:-31.4173, lng:-64.1833, dias:'Fines de semana', hrs:'Por la tarde', color:'#7a9040', gratis:true},
+  {id:42, nombre:'Intercambio Villa del Rosario', dir:'Villa del Rosario, Córdoba', ciudad:'Villa del Rosario', zona:'interior', tipo:'comunitario', lat:-31.5447, lng:-63.5331, dias:'Fines de semana', hrs:'Por la tarde', color:'#7a9040', gratis:true},
+];
+
+const TYPE_LABEL = {oficial:'Oficial',comunitario:'Comunitario',cultural:'Cultural',comercial:'Comercial'};
+const TYPE_BG    = {oficial:'rgba(30,107,94,.12)',comunitario:'rgba(122,144,64,.12)',cultural:'rgba(196,82,42,.12)',comercial:'rgba(232,122,122,.15)'};
+const TYPE_COLOR = {oficial:'#1e6b5e',comunitario:'#7a9040',cultural:'#c4522a',comercial:'#e87a7a'};
+
+// ── MAPA ──
+const map = L.map('map',{zoomControl:true}).setView([-38.4,-63.6],5);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom:18
+}).addTo(map);
+
+function makeIcon(color){
+  return L.divIcon({
+    className:'',
+    html:`<div class="marker-icon" style="background:${color}"><i class="fas fa-map-marker-alt" style="color:#fff;font-size:1rem"></i></div>`,
+    iconSize:[32,32],
+    iconAnchor:[16,16],
+    popupAnchor:[0,-18]
+  });
+}
+
+let markers = [];
+let allLayers = [];
+
+PUNTOS.forEach(p=>{
+  const icon = makeIcon(p.color);
+  const marker = L.marker([p.lat,p.lng],{icon});
+  const catColor = TYPE_COLOR[p.tipo];
+  const catBg    = TYPE_BG[p.tipo];
+  const catLabel = TYPE_LABEL[p.tipo];
+  const gratisBadge = p.gratis
+    ? `<span class="popup-badge" style="background:rgba(122,144,64,.12);color:#7a9040">🟢 Entrada gratuita</span>`
+    : '';
+  const fuenteStr = p.fuente ? `<div class="popup-row"><i class="fas fa-info-circle"></i><span>${p.fuente}</span></div>` : '';
+  marker.bindPopup(`
+    <span class="popup-cat" style="background:${catBg};color:${catColor}">${catLabel}</span>
+    <div class="popup-name">${p.nombre}</div>
+    <div class="popup-row"><i class="fas fa-map-marker-alt"></i><span>${p.dir}</span></div>
+    <div class="popup-row"><i class="fas fa-calendar-alt"></i><span>${p.dias}</span></div>
+    <div class="popup-row"><i class="fas fa-clock"></i><span>${p.hrs}</span></div>
+    ${fuenteStr}
+    ${gratisBadge}
+  `,{maxWidth:280});
+  marker.addTo(map);
+  markers.push({marker, zona:p.zona, tipo:p.tipo, ciudad:p.ciudad});
+  allLayers.push(marker);
+});
+
+// ── FILTROS ──
+function filterMap(f, btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  let visible = 0;
+  markers.forEach(({marker,zona,tipo})=>{
+    let show = f==='all' || zona===f || tipo===f;
+    if(show){marker.addTo(map);visible++;}
+    else{marker.remove();}
+  });
+  document.getElementById('count-badge').textContent=`${visible} punto${visible!==1?'s':''}`;
+  if(f!=='all'){
+    const vis=markers.filter(({zona,tipo})=>f==='all'||zona===f||tipo===f);
+    if(vis.length>0){
+      const bounds=L.latLngBounds(vis.map(({marker})=>marker.getLatLng()));
+      map.fitBounds(bounds,{padding:[40,40]});
+    }
+  } else {
+    map.setView([-38.4,-63.6],5);
+  }
+}
+</script>
+</body>
+</html>
