@@ -540,6 +540,11 @@
     </div>
   </div>
 
+  <div class="wk-divider" id="este-finde">
+    <h2>📅 Este fin de semana — 13, 14 y 15 de Junio</h2>
+  </div>
+  <div class="grid" id="grid-3"></div>
+
   <div class="upcoming-banner">
     <div>
       <h3>Próximos eventos en Buenos Aires</h3>
@@ -853,8 +858,62 @@ function card(ev){
   </div>`;
 }
 
+const W3 = [
+  {
+    name:"Festival del Sandwich",
+    date:"Sáb 13 y Dom 14 de Junio",
+    loc:"Hipódromo de Palermo", neighborhood:"Palermo",
+    hours:"A confirmar", entry:"Gratuita", free:true,
+    cats:["gastronomia"], featured:true,
+    desc:"El festival dedicado al sándwich en todas sus versiones. Puestos gastronómicos, cerveza artesanal y música en vivo en el Hipódromo de Palermo.",
+    emoji:"🥪", bg:"#fff3e8",
+    maps:"https://www.google.com/maps/search/?api=1&query=Hipodromo+de+Palermo+Buenos+Aires"
+  },
+  {
+    name:"Feria ISBA",
+    date:"Dom 14 de Junio",
+    loc:"Federico Lacroze 2771", neighborhood:"Buenos Aires",
+    hours:"A confirmar", entry:"Gratuita", free:true,
+    cats:["artesanias","cultura"], featured:false,
+    desc:"La feria del Instituto Superior de Bellas Artes con diseño, arte y artesanías de estudiantes y egresados.",
+    emoji:"🎨", bg:"#f0e8f5",
+    maps:"https://www.google.com/maps/search/?api=1&query=Federico+Lacroze+2771+Buenos+Aires"
+  },
+  {
+    name:"Grand Market · Pilar",
+    date:"Vie 13 al Dom 15 de Junio",
+    loc:"Pueblo Caamaño, Pilar", neighborhood:"Pilar",
+    hours:"A confirmar", entry:"Gratuita", free:true,
+    cats:["artesanias","gastronomia"], featured:false,
+    desc:"Festival de emprendedores en Pueblo Caamaño. Diseño, gastronomía, moda y productos artesanales de toda la región.",
+    emoji:"🛍️", bg:"#e8f4f1",
+    maps:"https://www.google.com/maps/search/?api=1&query=Pueblo+Caamano+Pilar+Buenos+Aires"
+  },
+  {
+    name:"Feria Peatonal Boedo",
+    date:"Dom 14 de Junio",
+    loc:"Peatonal Boedo", neighborhood:"Boedo",
+    hours:"12 a 18 hs", entry:"Gratuita", free:true,
+    cats:["artesanias","cultura"], featured:false,
+    desc:"Feria de diseño y artesanías en la histórica Peatonal Boedo. Emprendedores locales y productos únicos.",
+    emoji:"🚶", bg:"#f5ede8",
+    maps:"https://www.google.com/maps/search/?api=1&query=Peatonal+Boedo+Buenos+Aires"
+  },
+  {
+    name:"Feria Plaza Banff",
+    date:"Lun 15 de Junio",
+    loc:"Plaza Banff, Versalles", neighborhood:"Versalles",
+    hours:"A confirmar", entry:"Gratuita", free:true,
+    cats:["artesanias"], featured:false,
+    desc:"Feria comunitaria en Plaza Banff, barrio de Versalles. Emprendedores locales y productos artesanales.",
+    emoji:"🌿", bg:"#e8f0e8",
+    maps:"https://www.google.com/maps/search/?api=1&query=Plaza+Banff+Versalles+Buenos+Aires"
+  },
+];
+
 document.getElementById('grid-1').innerHTML = W1.map(card).join('');
 document.getElementById('grid-2').innerHTML = W2.map(card).join('');
+document.getElementById('grid-3').innerHTML = W3.map(card).join('');
 
 // ── CALENDARIO ──
 // ── CALENDARIO MULTI-MES ──
@@ -1045,7 +1104,7 @@ function applyFilters(){
     c.classList.toggle('hidden',!ok);
   });
   // hide dividers if no visible cards
-  const gridMap = [['grid-2','este-finde'],['grid-1','div-finde1']];
+  const gridMap = [['grid-3','este-finde'],['grid-2','div-finde2'],['grid-1','div-finde1']];
   gridMap.forEach(([gid,did])=>{
     const g = document.getElementById(gid);
     const d = document.getElementById(did);

@@ -57,6 +57,11 @@
     .month-header::after{content:'';flex:1;height:2px;background:var(--cream-dk)}
     .month-pill{background:var(--teal);color:#fff;font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:800;padding:5px 14px;border-radius:20px;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em}
     .month-header h2{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--teal-dark);white-space:nowrap}
+    .month-header.fin h2{color:var(--txt-l);font-size:1.1rem}
+    .month-header.fin::after{background:#ddd}
+    .month-pill.fin{background:var(--txt-l)}
+    .grid-fin .card{opacity:.55;filter:grayscale(25%)}
+    .grid-fin .card:hover{opacity:.8;filter:grayscale(0%)}
 
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
     .card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:all .28s}
@@ -144,15 +149,6 @@
 
 <main class="main">
 
-  <div class="month-header"><span class="month-pill">Mayo 2026</span><h2>🎪 Hoy — 17 de Mayo</h2></div>
-  <div class="grid" id="g-mayo-hoy"></div>
-
-  <div class="month-header"><h2>🎉 Semana del 25 de Mayo</h2></div>
-  <div class="grid" id="g-mayo-25"></div>
-
-  <div class="month-header"><h2>🗓️ Fin de semana — 30 y 31 de Mayo</h2></div>
-  <div class="grid" id="g-mayo-30"></div>
-
   <div class="month-header"><span class="month-pill">Junio 2026</span><h2>☀️ Junio</h2></div>
   <div class="grid" id="g-junio"></div>
 
@@ -167,6 +163,14 @@
 
   <div class="month-header"><span class="month-pill">Noviembre 2026</span><h2>🎨 Noviembre</h2></div>
   <div class="grid" id="g-nov"></div>
+
+  <div class="month-header fin" style="margin-top:60px">
+    <span class="month-pill fin">Finalizados</span>
+    <h2>✅ Mayo 2026</h2>
+  </div>
+  <div class="grid grid-fin" id="g-mayo-30"></div>
+  <div class="grid grid-fin" id="g-mayo-25"></div>
+  <div class="grid grid-fin" id="g-mayo-hoy"></div>
 
 </main>
 
