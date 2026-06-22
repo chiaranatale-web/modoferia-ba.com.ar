@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armenia 1900: Un espacio donde la artesanía se vuelve historia — Modo Feria BA</title>
+  <meta name="description" content="Un recorrido por el esfuerzo de emprendedores y el oficio manual que transforman la Plaza Armenia en una experiencia artesanal cada fin de semana.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;--pink:#f4a8a8;--terra:#c4522a;--olive:#7a9040;--cream:#faf5f0;--cream-dk:#f0e8df;--txt:#2a2a2a;--txt-m:#555;--txt-l:#999;--shadow:0 4px 20px rgba(0,0,0,.08);--r:16px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+
+    .hero{min-height:500px;background:url('armenia-1900-portada.jpg') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,80,70,.92) 0%,rgba(21,80,70,.5) 45%,rgba(0,0,0,.1) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px);font-family:'Nunito',sans-serif}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.5rem;color:#fff;line-height:1.15;max-width:760px;text-shadow:0 2px 14px rgba(0,0,0,.35);margin-bottom:12px}
+    .hero-body .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:640px;font-family:'Lora',serif;font-style:italic}
+
+    .byline{max-width:760px;margin:24px auto 0;padding:0 24px;display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif}
+    .byline-avatar{width:40px;height:40px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.88rem;flex-shrink:0}
+    .byline span{font-size:.92rem;color:var(--txt-m)}
+    .byline strong{color:var(--txt)}
+
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark);font-family:'Nunito',sans-serif;font-weight:800}
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin:40px 0 16px;border-top:2px solid var(--cream-dk);padding-top:16px}
+
+    .pullquote{border-left:5px solid var(--terra);margin:32px 0;padding:18px 24px;background:#fff;border-radius:0 var(--r) var(--r) 0;box-shadow:var(--shadow)}
+    .pullquote p{font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;color:var(--terra);margin:0;line-height:1.55}
+
+    .info-transport{background:#fff;border-radius:var(--r);padding:20px 24px;margin:28px 0;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .info-transport h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:.82rem;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+    .info-transport ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+    .info-transport li{font-size:.88rem;color:var(--txt-m);font-family:'Nunito',sans-serif;display:flex;align-items:center;gap:6px}
+    .info-transport li i{color:var(--teal);font-size:.8rem;width:14px}
+
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif}
+    footer a{color:var(--pink);font-weight:700}
+    @media(max-width:640px){.nav-links{display:none}.hero-body h1{font-size:1.8rem}.info-transport{grid-template-columns:1fr}.btn-ghost{margin-left:0;margin-top:10px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo"><img src="Logo.jpeg" alt="Modo Feria BA"><span>Modo Feria BA</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <span>Armenia 1900</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-paint-brush"></i> Emprendimiento · Crónica</div>
+    <h1>Armenia 1900: Un espacio donde la artesanía se vuelve historia</h1>
+    <p class="hero-sub">Un recorrido por el esfuerzo de emprendedores y el oficio manual que transforman la Plaza Armenia en una experiencia artesanal cada fin de semana.</p>
+  </div>
+</section>
+
+<div class="byline">
+  <div class="byline-avatar">VP</div>
+  <span>Por <strong>Valentina Presedo</strong></span>
+</div>
+
+<article class="art-body">
+
+  <h2>Diseño, historia y pinceladas de identidad</h2>
+
+  <p>
+    En el corazón de Palermo, donde las calles empedradas de Armenia al 1900 marcan el ritmo del barrio, el trabajo manual se convirtió una vez más en un lenguaje de resistencia y creatividad. Lo que comenzó como un paseo de sábado al mediodía terminó siendo un reencuentro con oficios que, entre el cuero genuino y el fileteado tradicional, contaron la historia de una Buenos Aires que se niega a perder su esencia artesanal.
+  </p>
+
+  <p>
+    El movimiento comenzó desde las 11 de la mañana. Para los visitantes, fue el inicio de una jornada que se extendió hasta las 18 hs, un intervalo donde el tiempo pareció transcurrir a otra velocidad. A diferencia del ritmo de los locales comerciales que rodean la zona, allí la invitación fue a la pausa y al recorrido minucioso entre los puestos que, aunque lloviera, se mantuvieron firmes. Según la política del espacio, la feria no se suspende por lluvia, aunque las tormentas eléctricas o condiciones climáticas extremas pueden obligar a modificaciones de último momento.
+  </p>
+
+  <p>
+    Caminar por la plaza fue sumergirse en una marea de personas donde convivieron familias, turistas y grupos de amigos que recorrieron cada rincón con tranquilidad. Fue común ver perros descansando junto a los stands y personas que se detenían no solo a comprar, sino también a conversar con quienes estaban detrás de cada creación. El ambiente estuvo cargado de esa sensación de estar compartiendo algo extraordinario, potenciada por la organización de los puestos, que permitió un flujo natural de visitantes incluso en las horas de mayor concurrencia.
+  </p>
+
+  <h2>El valor de lo personalizado y la venta directa</h2>
+
+  <p>
+    La verdadera protagonista de este ecosistema fue la producción de autor. Cada stand reflejó la identidad de quien lo habitaba, y los testimonios de los feriantes revelaron la profundidad de su oficio. En el puesto de <strong>Mollitian</strong>, el enfoque estuvo puesto en la dedicación absoluta: realizaban fundas para distintos productos textiles —monederos de $9.500, fundas para libros de $10.500 y fundas para notebooks de $15.500— completamente personalizadas y hechas a pedido. El proceso era íntegramente artesanal y llevado adelante por ellas mismas, lo que garantizaba que cada pieza fuera única.
+  </p>
+
+  <p>
+    Unos metros más allá, <strong>Salvatora</strong> marcó la diferencia con un modelo de venta directa que permitía sostener lo que sus clientes definían como "precios imbatibles". Con años de trayectoria y una clientela fija que los buscaba cada fin de semana, este emprendimiento ofrecía carteras de cuero genuino desde los $45.000 y riñoneras desde los $25.000. Al evitar los intermediarios de las grandes casas de comercio, lograban que el diseño de calidad fuera accesible, manteniendo la esencia de la marca de autor en cada costura.
+  </p>
+
+  <div class="pullquote">
+    <p>"Lo hecho a mano sigue siendo el vínculo más fuerte entre el creador y su comunidad."</p>
+  </div>
+
+  <h2>Rescatando el patrimonio en cada chapa</h2>
+
+  <p>
+    Uno de los puntos más cargados de simbolismo fue el espacio dedicado al <strong>Fileteado Porteño</strong>. Su presencia en la feria tuvo una dinámica particular: participaron como "invitados", lo que significó integrar una lista de espera para cubrir las vacantes de los titulares ausentes. Sin embargo, su aporte cultural resultó incalculable. Esta técnica, declarada <strong>Patrimonio Cultural Inmaterial de la Humanidad</strong>, es heredera de los antiguos oficios porteños y sobrevive gracias a la precisión de pinceles especiales y una elección de colores llevada al extremo.
+  </p>
+
+  <p>
+    La historia del fileteado también es una historia de resiliencia. Durante la última dictadura militar, esta técnica de pintura estuvo prohibida, lo que otorgó un valor de resistencia cultural a cada una de las chapas pintadas a mano con pintura sintética que se exhibieron en el puesto. Al igual que otros emprendedores, ofrecieron la posibilidad de realizar productos personalizados y a pedido, permitiendo que cada visitante se llevara un pedazo de la historia de la ciudad adaptado a su propio gusto.
+  </p>
+
+  <h2>Una logística pensada para el visitante</h2>
+
+  <p>
+    La accesibilidad fue otro de los puntos fuertes que consolidaron a la feria como un destino destacado del fin de semana. La modernización también llegó a los métodos de pago: lejos de la exclusividad del efectivo, todos los puestos contaron con transferencias, cuotas y el sistema Pix.
+  </p>
+
+  <div class="info-transport">
+    <div>
+      <h3><i class="fas fa-bus"></i> Cómo llegar en colectivo</h3>
+      <ul>
+        <li><i class="fas fa-circle"></i> Línea 15</li>
+        <li><i class="fas fa-circle"></i> Línea 39</li>
+        <li><i class="fas fa-circle"></i> Línea 55</li>
+        <li><i class="fas fa-circle"></i> Línea 111</li>
+        <li><i class="fas fa-circle"></i> Línea 160</li>
+      </ul>
+    </div>
+    <div>
+      <h3><i class="fas fa-subway"></i> En subte</h3>
+      <ul>
+        <li><i class="fas fa-circle"></i> Línea D · Est. Plaza Italia</li>
+        <li><i class="fas fa-circle"></i> Línea D · Est. Scalabrini Ortiz</li>
+      </ul>
+      <h3 style="margin-top:14px"><i class="fas fa-credit-card"></i> Métodos de pago</h3>
+      <ul>
+        <li><i class="fas fa-circle"></i> Transferencia · Cuotas · Pix</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>
+    Al caer la tarde, cuando el sol comenzó a bajar sobre Palermo, la imagen que quedó fue la de una comunidad de trabajo que transformó el espacio público. La Feria de Plaza Armenia no fue solamente un mercado de artesanías; fue un punto de encuentro donde el diseño, la historia y la calidez humana demostraron que lo hecho a mano sigue siendo el vínculo más fuerte entre el creador y su comunidad.
+  </p>
+
+</article>
+
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Inicio</a>
+</div>
+
+<footer>© 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados</footer>
+</body>
+</html>
