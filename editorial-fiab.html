@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Qué son las FIABs? — Editoriales · Modo Feria BA</title>
+  <meta name="description" content="Desde 1990, el gobierno porteño impulsa 24 ferias móviles que recorren más de 100 espacios verdes de la ciudad con productos básicos a precios accesibles.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;--pink:#f4a8a8;--terra:#c4522a;--olive:#7a9040;--cream:#faf5f0;--cream-dk:#f0e8df;--txt:#2a2a2a;--txt-m:#555;--txt-l:#999;--shadow:0 4px 20px rgba(0,0,0,.08);--r:16px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+
+    .hero{min-height:480px;background:url('fiab-foto1.jpg') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,80,70,.92) 0%,rgba(21,80,70,.55) 45%,rgba(0,0,0,.1) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px);font-family:'Nunito',sans-serif}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.4rem;color:#fff;line-height:1.15;max-width:780px;text-shadow:0 2px 14px rgba(0,0,0,.35);margin-bottom:12px}
+    .hero-body .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:640px;font-family:'Lora',serif;font-style:italic}
+
+    .byline{max-width:760px;margin:24px auto 0;padding:0 24px;display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif}
+    .byline-avatar{width:40px;height:40px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.88rem;flex-shrink:0}
+    .byline span{font-size:.92rem;color:var(--txt-m)}
+    .byline strong{color:var(--txt)}
+
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark);font-family:'Nunito',sans-serif;font-weight:800}
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--teal-dark);margin:36px 0 14px;padding-top:14px;border-top:2px solid var(--cream-dk)}
+
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+    .stat-card{background:#fff;border-radius:var(--r);padding:18px;text-align:center;box-shadow:var(--shadow)}
+    .stat-card strong{display:block;font-family:'Playfair Display',serif;font-size:2rem;color:var(--teal);line-height:1}
+    .stat-card span{font-size:.78rem;color:var(--txt-m);font-family:'Nunito',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-top:6px;display:block}
+
+    .art-img{margin:32px 0}
+    .art-img img{width:100%;border-radius:var(--r);display:block;object-fit:cover;max-height:440px}
+    .art-img figcaption{font-size:.78rem;color:var(--txt-l);font-family:'Nunito',sans-serif;margin-top:8px;font-style:italic}
+
+    .info-box{background:#fff;border-radius:var(--r);padding:22px 26px;margin:28px 0;box-shadow:var(--shadow);border-left:4px solid var(--teal)}
+    .info-box h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+    .info-box ul{padding-left:18px;display:flex;flex-direction:column;gap:6px}
+    .info-box li{font-size:.92rem;color:var(--txt-m);font-family:'Nunito',sans-serif;line-height:1.5}
+
+    .cta-box{background:var(--teal);border-radius:var(--r);padding:20px 26px;margin:32px 0;text-align:center}
+    .cta-box p{color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;margin:0}
+    .cta-box a{color:var(--pink);font-weight:800}
+
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif}
+    footer a{color:var(--pink);font-weight:700}
+    @media(max-width:640px){.nav-links{display:none}.hero-body h1{font-size:1.8rem}.stat-row{grid-template-columns:1fr 1fr}.btn-ghost{margin-left:0;margin-top:10px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo"><img src="Logo.jpeg" alt="Modo Feria BA"><span>Modo Feria BA</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <span>¿Qué son las FIABs?</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-shopping-basket"></i> Ferias y mercados</div>
+    <h1>¿Qué son las FIABs? una propuesta de ferias itinerantes del GCBA para los vecinos de Buenos Aires</h1>
+    <p class="hero-sub">Desde 1990, el gobierno impulsa 24 ferias móviles que recorren más de 100 espacios verdes de la ciudad con productos básicos a precios accesibles y bajo control sanitario oficial.</p>
+  </div>
+</section>
+
+<div class="byline">
+  <div class="byline-avatar">FS</div>
+  <span>Por <strong>Florencia Santone</strong></span>
+</div>
+
+<article class="art-body">
+
+  <p>
+    Las Ferias Itinerantes de Abastecimiento Barrial son una propuesta impulsada por el Gobierno de la Ciudad de Buenos Aires. Cuentan con quince puestos móviles en los que se venden productos básicos como carnes, pescados, frutas, verduras y lácteos, y rotan diariamente por más de 100 espacios verdes de la Ciudad de Buenos Aires, de lunes a domingos, de 8 a 14 hs.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat-card"><strong>24</strong><span>FIABs activas</span></div>
+    <div class="stat-card"><strong>+100</strong><span>Espacios verdes</span></div>
+    <div class="stat-card"><strong>3.500</strong><span>Compradores por día</span></div>
+  </div>
+
+  <p>
+    Actualmente hay un total de 24 FIABs que llevan funcionando desde 1990 con el objetivo de asegurar el abastecimiento de productos de la canasta familiar en la mayor cantidad de consumidores y, a su vez, garantizar buena calidad y variedad con precios económicos. Según el Gobierno de la Ciudad de Buenos Aires, un promedio de 3.500 personas por día hacen sus compras en una de las ferias.
+  </p>
+
+  <h2>¿Qué diferencia a las FIABs de otras ferias?</h2>
+
+  <p>
+    La principal distinción de las FIABs es que mantienen arreglos y precios por debajo de las grandes cadenas y supermercados. Así, con esta propuesta, brindan a los ciudadanos una alternativa de precios manteniendo la calidad de los productos. Según el <strong>Informe PCRVM N° 02</strong>, cada dos semanas se lleva adelante un acuerdo de precios por 30 productos que forman parte de la canasta básica.
+  </p>
+
+  <figure class="art-img">
+    <img src="fiab-foto2.jpg" alt="Ferias itinerantes de abastecimiento barrial en Buenos Aires">
+    <figcaption>Los puestos de las FIABs ofrecen frutas, verduras, carnes y lácteos en plazas y parques de toda la ciudad.</figcaption>
+  </figure>
+
+  <h2>¿Cómo sé que es seguro?</h2>
+
+  <p>
+    La <strong>Dirección General de Ferias y Mercados del Gobierno de la Ciudad de Buenos Aires</strong> es la encargada de realizar las habilitaciones, garantizar las condiciones de higiene y el control bromatológico de los puestos. <em>Fuente: NotiBUE</em>
+  </p>
+
+  <h2>¿Cómo puedo participar de una FIAB?</h2>
+
+  <p>
+    Para poder participar, la Dirección de Permisos y Ferias es quien brinda los <strong>Permisos de Uso Precario</strong> —de uso personal, gratuito e intransferible— para cada puesto itinerante. El costo del trámite de inscripción es gratuito y la inscripción tiene un año de validez.
+  </p>
+
+  <div class="info-box">
+    <h3>Requisitos obligatorios</h3>
+    <ul>
+      <li>Ser mayor de edad</li>
+      <li>Ser argentino (nativo, naturalizado o con radicación permanente)</li>
+      <li>Constituir domicilio legal en CABA</li>
+      <li>Presentar DNI y Certificado de Antecedentes Penales</li>
+      <li>Información tributaria</li>
+      <li>Certificado del Curso de Manipulación Higiénica de Alimentos (AGC)</li>
+    </ul>
+  </div>
+
+  <figure class="art-img">
+    <img src="fiab-foto3.jpg" alt="Mapa de ferias itinerantes de abastecimiento barrial en Buenos Aires" style="max-height:500px;object-fit:contain;background:#f5f5f5">
+    <figcaption>Mapa de ferias itinerantes de abastecimiento barrial en la Ciudad de Buenos Aires. Fuente: buenosaires.gob.ar</figcaption>
+  </figure>
+
+  <div class="cta-box">
+    <p>Para conocer todos los requisitos y el circuito completo de ferias: <a href="https://www.buenosaires.gob.ar" target="_blank">buenosaires.gob.ar</a></p>
+  </div>
+
+</article>
+
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Inicio</a>
+</div>
+
+<footer>© 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados</footer>
+</body>
+</html>

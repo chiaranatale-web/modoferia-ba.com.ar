@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feria de las Plazas — Editoriales · Modo Feria BA</title>
+  <meta name="description" content="Entrevista a Cecilia, organizadora de la Feria de las Plazas, la red itinerante de emprendedores que recorre los barrios porteños.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;--pink:#f4a8a8;--terra:#c4522a;--olive:#7a9040;--cream:#faf5f0;--cream-dk:#f0e8df;--txt:#2a2a2a;--txt-m:#555;--txt-l:#999;--shadow:0 4px 20px rgba(0,0,0,.08);--r:16px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+
+    .hero{min-height:460px;background:url('feria-plazas-foto1.jpg') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,80,70,.92) 0%,rgba(21,80,70,.5) 45%,rgba(0,0,0,.1) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px);font-family:'Nunito',sans-serif}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.5rem;color:#fff;line-height:1.15;max-width:760px;text-shadow:0 2px 14px rgba(0,0,0,.35);margin-bottom:12px}
+    .hero-body .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:620px;font-style:italic;font-family:'Lora',serif}
+
+    .byline{max-width:760px;margin:24px auto 0;padding:0 24px;display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif}
+    .byline-avatar{width:40px;height:40px;border-radius:50%;background:var(--terra);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.88rem;flex-shrink:0}
+    .byline span{font-size:.92rem;color:var(--txt-m)}
+    .byline strong{color:var(--txt)}
+
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark);font-family:'Nunito',sans-serif;font-weight:800}
+    .art-body p em{font-style:italic}
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin:40px 0 16px;border-top:2px solid var(--cream-dk);padding-top:16px}
+
+    .qa{margin:0 0 28px}
+    .qa-q{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+    .qa-q-badge{background:var(--teal);color:#fff;font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:8px;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em;margin-top:4px;flex-shrink:0}
+    .qa-q p{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--teal-dark);margin:0;line-height:1.4}
+    .qa-a{padding-left:58px;font-size:1.05rem;color:var(--txt);line-height:1.85;font-family:'Lora',serif}
+    .qa-a blockquote{border-left:3px solid var(--olive);padding-left:16px;margin:8px 0;font-style:italic;color:var(--txt-m)}
+
+    .pullquote{border-left:5px solid var(--olive);margin:36px 0;padding:20px 28px;background:#fff;border-radius:0 var(--r) var(--r) 0;box-shadow:var(--shadow)}
+    .pullquote p{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--olive);margin:0;line-height:1.55}
+    .pullquote cite{display:block;margin-top:10px;font-size:.82rem;font-family:'Nunito',sans-serif;font-style:normal;color:var(--txt-l);font-weight:700}
+
+    .cierre{background:#fff;border-radius:var(--r);padding:24px 28px;margin:36px 0;box-shadow:var(--shadow);border-left:4px solid var(--teal)}
+    .cierre p{font-size:1rem;color:var(--txt-m);margin:0 0 10px;line-height:1.7}
+    .cierre p:last-child{margin:0;font-weight:700;color:var(--teal-dark);font-family:'Nunito',sans-serif}
+
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif}
+    footer a{color:var(--pink);font-weight:700}
+    @media(max-width:640px){.nav-links{display:none}.hero-body h1{font-size:1.8rem}.qa-a{padding-left:0}.btn-ghost{margin-left:0;margin-top:10px}.hero-emoji{display:none}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo"><img src="Logo.jpeg" alt="Modo Feria BA"><span>Modo Feria BA</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <span>Feria de las Plazas</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-microphone"></i> Entrevista · Ferias barriales</div>
+    <h1>Feria de las Plazas: una red de emprendedores que recorre los barrios porteños</h1>
+    <p class="hero-sub">Una iniciativa itinerante que cada fin de semana se instala en una plaza distinta para darle espacio a artesanos, productores y emprendedores independientes de la Ciudad de Buenos Aires.</p>
+  </div>
+</section>
+
+<div class="byline">
+  <div class="byline-avatar">UL</div>
+  <span>Por <strong>Úrsula Lombardo</strong></span>
+</div>
+
+<article class="art-body">
+
+  <p>
+    La Feria de las Plazas es una iniciativa impulsada por La Cámpora a través de su Frente de Economía Social. Se trata de una propuesta itinerante que reúne a emprendedores, artesanos y productores de distintos barrios de la Ciudad de Buenos Aires, brindándoles un espacio para comercializar sus productos y fortalecer redes de trabajo comunitario. Cada fin de semana la feria se instala en una plaza diferente y, en el caso de Versalles, se realiza el tercer domingo de cada mes. El circuito también incluye plazas de barrios como Boedo, Almagro, Villa del Parque, Abasto e Irlanda.
+  </p>
+
+  <p>
+    <strong>Cecilia</strong>, integrante del Frente de Economía Social y una de las organizadoras de la iniciativa, explicó cómo funciona este proyecto, cuáles son sus objetivos y qué desafíos enfrentan para sostener estos espacios de trabajo y encuentro en los distintos barrios porteños.
+  </p>
+
+  <figure style="margin:32px 0">
+    <img src="feria-plazas-foto2.jpg" alt="Stands de la Feria de las Plazas" style="width:100%;border-radius:16px;display:block;object-fit:cover;max-height:440px">
+    <figcaption style="font-size:.78rem;color:#999;font-family:'Nunito',sans-serif;margin-top:8px;font-style:italic">La feria se instala en distintas plazas de Buenos Aires cada fin de semana.</figcaption>
+  </figure>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Cuándo nace la Feria de las Plazas?</p></div>
+    <div class="qa-a">
+      <blockquote>"Hacemos la feria una vez al mes en cada plaza. En nuestro caso, acá en Versalles, se realiza el tercer domingo de cada mes. Pero además circula por distintas plazas de Capital Federal: Plaza Irlanda, Boedo, Almagro, Villa del Parque, Abasto y otros barrios. Vamos rotando todos los fines de semana."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Cómo puede encontrarla el público?</p></div>
+    <div class="qa-a">
+      <blockquote>"La feria se puede encontrar en las plazas donde se realiza cada fecha y también en nuestras redes sociales, tanto en Facebook como en Instagram, donde aparecemos como Feria de las Plazas."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Los puestos suelen variar en cada jornada? ¿Cómo se organizan los feriantes?</p></div>
+    <div class="qa-a">
+      <blockquote>"Nos manejamos principalmente a través de grupos de WhatsApp. Vamos difundiendo las convocatorias y cada emprendedor decide en qué fecha participar. No existe la obligación de asistir todos los fines de semana; cada uno elige el lugar que más le conviene para feriar."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Qué permisos necesitan para organizar una feria?</p></div>
+    <div class="qa-a">
+      <blockquote>"Tenemos que gestionar permisos ante la Junta Comunal y el Gobierno de la Ciudad. También debemos contar con una póliza de seguro, informar a la comisaría correspondiente y cumplir con una serie de requisitos administrativos."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Existen limitaciones para participar?</p></div>
+    <div class="qa-a">
+      <blockquote>"Sí. El Gobierno de la Ciudad establece un máximo aproximado de cien puestos por feria. Además, quienes venden productos gastronómicos deben tener la libreta sanitaria y el curso de manipulación de alimentos al día. En nuestra feria no permitimos productos de reventa ni ventas por catálogo porque priorizamos la producción propia."</blockquote>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <p>"Hay ferias que pueden llegar a cobrar alrededor de 50 mil pesos por un puesto. Nosotros cobramos 10 mil pesos para que sea accesible y permita que más emprendedores puedan participar."</p>
+    <cite>— Cecilia, organizadora de la Feria de las Plazas</cite>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Cómo surgió el proyecto?</p></div>
+    <div class="qa-a">
+      <blockquote>"La feria nació desde el Frente de Economía Social de La Cámpora para dar respuesta a trabajadores que no cuentan con empleo registrado: artesanos, productores autogestionados y emprendedores independientes. La idea fue generar espacios donde puedan comercializar sus productos y fortalecer sus actividades."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Hace cuánto participás en la organización?</p></div>
+    <div class="qa-a">
+      <blockquote>"Estoy en el Frente de Economía Social desde 2017. Empecé organizando actividades en esta misma plaza y después participamos de ferias en escuelas, festivales y distintos eventos comunitarios en la ciudad."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Cuántas personas participan en la organización?</p></div>
+    <div class="qa-a">
+      <blockquote>"Somos militantes de La Cámpora y organizamos este espacio como una herramienta para acompañar a los trabajadores. Somos varios compañeros distribuidos en distintas comunas. Cada grupo se ocupa principalmente de las ferias de su territorio, aunque todos trabajamos de manera articulada."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>Además de brindar un espacio de venta, ¿ofrecen otras herramientas a los emprendedores?</p></div>
+    <div class="qa-a">
+      <blockquote>"Sí. Trabajamos en capacitaciones y acompañamiento. Ayudamos con cuestiones vinculadas a costos, comercialización digital, fotografía de productos, promociones bancarias y distintas herramientas que les permitan mejorar sus ventas y desarrollar sus emprendimientos."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Cuál es el objetivo principal de la feria?</p></div>
+    <div class="qa-a">
+      <blockquote>"Buscamos generar oportunidades de trabajo para personas que muchas veces quedaron fuera del mercado laboral formal o necesitan complementar sus ingresos. Hoy la situación económica es difícil y muchos emprendimientos encuentran en estas ferias una posibilidad concreta de sostenerse."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Cuánto dura una jornada de feria?</p></div>
+    <div class="qa-a">
+      <blockquote>"Generalmente entre seis y ocho horas. En invierno solemos acortar un poco el horario por las bajas temperaturas, mientras que en verano podemos extendernos si hay buena circulación de público."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Qué importancia tiene el trabajo territorial en cada barrio?</p></div>
+    <div class="qa-a">
+      <blockquote>"Nos organizamos por comunas, que es la forma territorial en que está dividida la Ciudad de Buenos Aires. Los compañeros que militan en cada comuna son quienes sostienen las ferias de su zona, colaboran con la organización, decoran los espacios, ponen música y muchas veces suman actividades culturales."</blockquote>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q"><span class="qa-q-badge">MF</span><p>¿Qué impacto tiene la feria en la comunidad?</p></div>
+    <div class="qa-a">
+      <blockquote>"Muchos de los feriantes son vecinos del barrio. Hay personas que se quedaron sin trabajo o que comenzaron un emprendimiento para complementar sus ingresos. La feria también ayuda a generar vínculos entre ellos y a construir una red de apoyo comunitario."</blockquote>
+    </div>
+  </div>
+
+  <div class="cierre">
+    <p>La Feria de las Plazas se presenta como un espacio que articula trabajo, comunidad y participación barrial. Además de la comercialización de productos, la propuesta permite visibilizar la realidad de emprendedores, artesanos y trabajadores autogestionados que encuentran en estos espacios una oportunidad para sostener y desarrollar sus actividades.</p>
+    <p>A través de su recorrido por distintos barrios de la Ciudad de Buenos Aires, la feria fomenta vínculos entre vecinos, fortalece redes comunitarias y ofrece una alternativa de acceso al trabajo para quienes buscan impulsar sus proyectos independientes.</p>
+    <p>📲 Para conocer las fechas y cómo participar: <a href="https://www.instagram.com/feriadelasplazas" target="_blank" style="color:var(--teal)">@feriadelasplazas</a> · <a href="https://www.instagram.com/lacamporaversalles" target="_blank" style="color:var(--teal)">@lacamporaversalles</a></p>
+  </div>
+
+</article>
+
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Inicio</a>
+</div>
+
+<footer>© 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados</footer>
+</body>
+</html>

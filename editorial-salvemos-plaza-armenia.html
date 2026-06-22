@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salvemos Plaza Armenia — Editoriales · Modo Feria BA</title>
+  <meta name="description" content="Vecinos y feriantes se movilizan para defender la Plaza Armenia de Palermo frente al plan de estacionamientos subterráneos del gobierno porteño.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;--pink:#f4a8a8;--terra:#c4522a;--olive:#7a9040;--cream:#faf5f0;--cream-dk:#f0e8df;--txt:#2a2a2a;--txt-m:#555;--txt-l:#999;--shadow:0 4px 20px rgba(0,0,0,.08);--r:16px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+
+    .hero{min-height:500px;background:url('plaza-armenia-1.jpg') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,80,70,.92) 0%,rgba(21,80,70,.5) 45%,rgba(0,0,0,.1) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px);font-family:'Nunito',sans-serif}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.5rem;color:#fff;line-height:1.15;max-width:780px;text-shadow:0 2px 14px rgba(0,0,0,.35);margin-bottom:12px}
+    .hero-body .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:640px;font-family:'Lora',serif;font-style:italic}
+
+    .byline{max-width:760px;margin:24px auto 0;padding:0 24px;display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif}
+    .byline-avatar{width:40px;height:40px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.88rem;flex-shrink:0}
+    .byline span{font-size:.92rem;color:var(--txt-m)}
+    .byline strong{color:var(--txt)}
+
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark);font-family:'Nunito',sans-serif;font-weight:800}
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin:40px 0 16px;border-top:2px solid var(--cream-dk);padding-top:16px}
+
+    .pullquote{border-left:5px solid var(--terra);margin:32px 0;padding:18px 24px;background:#fff;border-radius:0 var(--r) var(--r) 0;box-shadow:var(--shadow)}
+    .pullquote p{font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;color:var(--terra);margin:0;line-height:1.55}
+    .pullquote cite{display:block;margin-top:8px;font-size:.8rem;font-family:'Nunito',sans-serif;font-style:normal;color:var(--txt-l);font-weight:700}
+
+    .art-img{margin:32px 0}
+    .art-img img{width:100%;border-radius:var(--r);display:block;object-fit:cover;max-height:460px}
+    .art-img figcaption{font-size:.78rem;color:var(--txt-l);font-family:'Nunito',sans-serif;margin-top:8px;font-style:italic}
+
+    .cta-box{background:var(--teal);border-radius:var(--r);padding:22px 26px;margin:36px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .cta-box p{color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;margin:0;flex:1}
+    .cta-box strong{font-weight:800}
+    .cta-box a{color:var(--pink);font-weight:800;transition:color .2s}
+    .cta-box a:hover{color:#fff}
+
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif}
+    footer a{color:var(--pink);font-weight:700}
+    @media(max-width:640px){.nav-links{display:none}.hero-body h1{font-size:1.8rem}.btn-ghost{margin-left:0;margin-top:10px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo"><img src="Logo.jpeg" alt="Modo Feria BA"><span>Modo Feria BA</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <span>Salvemos Plaza Armenia</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-tree"></i> Comunidad · Palermo</div>
+    <h1>Salvemos Plaza Armenia: vecinos y feriantes se movilizan para defender la identidad del barrio</h1>
+    <p class="hero-sub">Vecinos y feriantes se reúnen en un reclamo colectivo para salvar la Plaza Armenia de obras arrasadoras.</p>
+  </div>
+</section>
+
+<div class="byline">
+  <div class="byline-avatar">VG</div>
+  <span>Por <strong>Valentina García Iaria</strong></span>
+</div>
+
+<article class="art-body">
+
+  <p>
+    El histórico espacio verde de Palermo —punto de encuentro, trabajo y biodiversidad urbana— atraviesa un momento crítico y podría sufrir modificaciones que preocupan a la comunidad. El domingo 21 de junio, el equipo de Modo Feria se acercó a la Feria de la Plaza Armenia y, además de contar acerca de sus emprendimientos, los feriantes denunciaron una gran amenaza de cemento que se avecina: el gobierno porteño impulsa un plan para construir estacionamientos subterráneos en cinco espacios verdes de la ciudad, entre ellos, la Plaza Armenia.
+  </p>
+
+  <div class="pullquote">
+    <p>"Los vecinos no quieren. Ya se hizo un amparo, pero no nos escuchan."</p>
+    <cite>— Feriante de la Plaza Armenia</cite>
+  </div>
+
+  <h2>Impacto vecinal y ambiental</h2>
+
+  <p>
+    El barrio es una zona céntrica y muy concurrida, por lo que la posibilidad de estacionar ya es baja. Sin embargo, las playas de estacionamiento no faltan y nunca tienen su capacidad completa. Asimismo, los oriundos y turistas disfrutan de sus calles caminando y consumiendo en los cafés y bares que rodean a la plaza. Una vecina comentó que el gobierno de la ciudad también propone abrir más locales gastronómicos, pero que no es una decisión sensata.
+  </p>
+
+  <div class="pullquote">
+    <p>"El barrio ya está saturado."</p>
+    <cite>— Vecina de Palermo</cite>
+  </div>
+
+  <p>
+    Por otro lado, estas construcciones también implican destrucción. Los árboles añejos no resistirían el impacto de que sus raíces se corten. Varias fuentes coinciden en que la plaza es muy frecuentada y muchas zonas fueron delimitadas para crear espacios de juego para los infantes, pero ante esta amenaza de cemento, los juegos pierden su diversión.
+  </p>
+
+  <div class="pullquote">
+    <p>"La plaza cerraría de dos a tres años y este es el único espacio verde que hay en la zona."</p>
+    <cite>— Feriante de la Plaza Armenia</cite>
+  </div>
+
+  <h2>Los feriantes y la resistencia</h2>
+
+  <p>
+    Y si la plaza cierra, ¿qué pasa con la feria? Los feriantes son los más afectados por la situación. Si la plaza cierra, la feria se iría con ella y muchos emprendedores perderían su principal fuente de ingreso.
+  </p>
+
+  <div class="pullquote">
+    <p>"No somos informados de nada. No nos tienen en cuenta."</p>
+    <cite>— Vendedora de velas y esencias aromáticas</cite>
+  </div>
+
+  <figure class="art-img">
+    <img src="plaza-armenia-2.jpg" alt="Protesta Salvemos Plaza Armenia">
+    <figcaption>Vecinos y feriantes se organizan todos los sábados a las 16 hs en Plaza Armenia bajo el lema #SalvemosPlazaArmenia.</figcaption>
+  </figure>
+
+  <figure class="art-img">
+    <img src="plaza-armenia-3.jpg" alt="Afiche Salvemos Plaza Armenia - La Plaza No Se Toca" style="max-height:520px;object-fit:contain;background:#f5f5f5">
+    <figcaption>La iniciativa Salvemos Plaza Armenia difunde los motivos por los que la comunidad se opone al estacionamiento subterráneo.</figcaption>
+  </figure>
+
+  <p>
+    Fuentes como La Nación y Todo Noticias explican que la <strong>Ley Hojarasca</strong> elimina las regulaciones y controles que antes limitaban concesiones y obras, desprotegiendo los bienes culturales, ambientales y comunitarios. Esta ley es la que respalda la destrucción de la Plaza Armenia para abrir el estacionamiento techado.
+  </p>
+
+  <p>
+    No obstante, los vecinos y feriantes no se quedan de brazos cruzados. Hace meses que promueven la iniciativa <strong>Salvemos Plaza Armenia</strong>, organizando marchas, caravanas y "abrazos a la plaza" todos los sábados a las cuatro de la tarde. Invitan a los transeúntes a acercarse a firmar para visibilizar el conflicto, frenar las obras y salvar a la plaza, casa de infancias, encuentros y memorias.
+  </p>
+
+  <p>
+    La Plaza Armenia no es simple cemento: es el espacio donde una comunidad creció entre juegos, feriantes y árboles. Los vecinos no toleran que destruyan el símbolo de mayor memoria para el barrio. No es sólo un pedazo de tierra, es la posibilidad de conectar lo urbano con el medio ambiente. Y quienes la defienden están lejos de dar el brazo a torcer.
+  </p>
+
+  <div class="cta-box">
+    <p>📍 <strong>Abrazos a la plaza</strong> — todos los sábados a las 16 hs en Plaza Armenia (Palermo). Sumate a la iniciativa y firmá el petitorio.</p>
+  </div>
+
+</article>
+
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Inicio</a>
+</div>
+
+<footer>© 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados</footer>
+</body>
+</html>
