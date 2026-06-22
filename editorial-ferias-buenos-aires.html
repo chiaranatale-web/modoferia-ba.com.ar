@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buenos Aires: epicentro de ferias y exposiciones 2026–2027 — Modo Feria BA</title>
+  <meta name="description" content="Buenos Aires concentra el 91% de la actividad ferial del país con 21 grandes eventos internacionales. Sectores, fechas clave y guía para expositores.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;--pink:#f4a8a8;--terra:#c4522a;--olive:#7a9040;--cream:#faf5f0;--cream-dk:#f0e8df;--txt:#2a2a2a;--txt-m:#555;--txt-l:#999;--shadow:0 4px 20px rgba(0,0,0,.08);--r:16px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+
+    .hero{min-height:500px;background:url('ferias-ba-portada.jpg') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,80,70,.92) 0%,rgba(21,80,70,.55) 45%,rgba(0,0,0,.1) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px);font-family:'Nunito',sans-serif}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.4rem;color:#fff;line-height:1.15;max-width:800px;text-shadow:0 2px 14px rgba(0,0,0,.35);margin-bottom:12px}
+    .hero-body .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:660px;font-family:'Lora',serif;font-style:italic}
+
+    .byline{max-width:760px;margin:24px auto 0;padding:0 24px;display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif}
+    .byline-avatar{width:40px;height:40px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.88rem;flex-shrink:0}
+    .byline span{font-size:.92rem;color:var(--txt-m)}
+    .byline strong{color:var(--txt)}
+
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark);font-family:'Nunito',sans-serif;font-weight:800}
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin:40px 0 16px;border-top:2px solid var(--cream-dk);padding-top:16px}
+
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+    .stat-card{background:#fff;border-radius:var(--r);padding:18px;text-align:center;box-shadow:var(--shadow)}
+    .stat-card strong{display:block;font-family:'Playfair Display',serif;font-size:2rem;color:var(--teal);line-height:1}
+    .stat-card span{font-size:.78rem;color:var(--txt-m);font-family:'Nunito',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-top:6px;display:block}
+
+    .temas-grid{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px}
+    .tema-tag{background:var(--cream-dk);color:var(--txt-m);padding:5px 12px;border-radius:20px;font-size:.78rem;font-weight:700;font-family:'Nunito',sans-serif}
+
+    .feria-card{background:#fff;border-radius:var(--r);padding:22px 24px;margin:24px 0;box-shadow:var(--shadow);border-left:4px solid var(--teal)}
+    .feria-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--teal-dark);margin-bottom:8px}
+    .feria-card .feria-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+    .feria-meta span{font-size:.82rem;font-family:'Nunito',sans-serif;color:var(--txt-m);display:flex;align-items:center;gap:5px}
+    .feria-meta i{color:var(--teal);font-size:.75rem}
+    .feria-card p{font-size:.95rem;margin:0;color:var(--txt-m)}
+
+    .art-img{margin:24px 0}
+    .art-img img{width:100%;border-radius:var(--r);display:block;object-fit:cover;max-height:420px}
+    .art-img figcaption{font-size:.78rem;color:var(--txt-l);font-family:'Nunito',sans-serif;margin-top:8px;font-style:italic}
+
+    .cta-box{background:var(--teal);border-radius:var(--r);padding:20px 26px;margin:32px 0;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .cta-box p{color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;margin:0;flex:1}
+    .cta-box a{color:var(--pink);font-weight:800;text-decoration:underline}
+
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif}
+    footer a{color:var(--pink);font-weight:700}
+    @media(max-width:640px){.nav-links{display:none}.hero-body h1{font-size:1.8rem}.stat-row{grid-template-columns:1fr 1fr}.btn-ghost{margin-left:0;margin-top:10px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo"><img src="Logo.jpeg" alt="Modo Feria BA"><span>Modo Feria BA</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <span>Ferias y exposiciones BA 2026–2027</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-star"></i> Eventos Destacados</div>
+    <h1>Buenos Aires: El epicentro indiscutido de las ferias y exposiciones para 2026–2027</h1>
+    <p class="hero-sub">Buenos Aires concentra el 91% de la actividad ferial del país con un calendario que ya suma 21 grandes eventos internacionales. Descubrí los sectores protagonistas y las fechas clave para no perderte nada.</p>
+  </div>
+</section>
+
+<div class="byline">
+  <div class="byline-avatar">VP</div>
+  <span>Por <strong>Valentina Presedo</strong></span>
+</div>
+
+<article class="art-body">
+
+  <h2>Buenos Aires, el corazón de la industria ferial argentina</h2>
+
+  <p>
+    La ciudad se consolida como el principal centro de negocios de la región, albergando la gran mayoría de las exposiciones nacionales. De acuerdo a las fuentes, se han programado <strong>21 eventos feriales</strong> en total: 13 de ellos se llevarán a cabo en 2026, mientras que otros 8 ya están confirmados para el cronograma de 2027. Los encuentros tendrán lugar en sedes de prestigio como La Rural, el Centro Costa Salguero, el Hilton Buenos Aires y Expoagro.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat-card"><strong>91%</strong><span>De la actividad ferial del país</span></div>
+    <div class="stat-card"><strong>21</strong><span>Eventos confirmados 2026–2027</span></div>
+    <div class="stat-card"><strong>15</strong><span>Temáticas y sectores</span></div>
+  </div>
+
+  <h2>Fechas clave y diversidad de sectores</h2>
+
+  <p>
+    Si bien la actividad es constante, el mayor movimiento se espera para el <strong>segundo semestre de 2026</strong>, con un pico de actividad en los meses de agosto y septiembre. La oferta es sumamente variada y abarca 15 temáticas principales:
+  </p>
+
+  <div class="temas-grid">
+    <span class="tema-tag">🏗️ Construcción</span>
+    <span class="tema-tag">🍽️ Industria de alimentos</span>
+    <span class="tema-tag">🏥 Medicina</span>
+    <span class="tema-tag">✈️ Turismo</span>
+    <span class="tema-tag">🌾 Agricultura</span>
+    <span class="tema-tag">🔒 Seguridad</span>
+    <span class="tema-tag">⛽ Petróleo, gas y química</span>
+    <span class="tema-tag">🛒 Consumo masivo</span>
+    <span class="tema-tag">💻 Tecnología y comunicación</span>
+  </div>
+
+  <h2>¿Cuáles son las ferias más grandes del calendario de Buenos Aires?</h2>
+
+  <div class="feria-card">
+    <h3>Tecno Fidta 2026</h3>
+    <div class="feria-meta">
+      <span><i class="fas fa-calendar-alt"></i> 15 al 18 de septiembre de 2026</span>
+      <span><i class="fas fa-map-marker-alt"></i> Centro Costa Salguero</span>
+      <span><i class="fas fa-users"></i> 12.075 visitantes</span>
+      <span><i class="fas fa-store"></i> 125 puestos</span>
+    </div>
+    <p>Exposición internacional de la industria alimentaria, una de las más importantes de América Latina.</p>
+  </div>
+
+  <figure class="art-img">
+    <img src="ferias-ba-tecnofidta.jpg" alt="Perspectiva general de la feria Tecno Fidta">
+    <figcaption>Perspectiva general de la feria Tecno Fidta. Fuente: nferias.com</figcaption>
+  </figure>
+
+  <div class="feria-card">
+    <h3>InterSec Buenos Aires 2026</h3>
+    <div class="feria-meta">
+      <span><i class="fas fa-calendar-alt"></i> 2 al 4 de septiembre de 2026</span>
+      <span><i class="fas fa-map-marker-alt"></i> La Rural</span>
+      <span><i class="fas fa-users"></i> 16.385 visitantes</span>
+      <span><i class="fas fa-store"></i> 86 puestos</span>
+    </div>
+    <p>Exposición especializada en seguridad, la de mayor convocatoria del calendario.</p>
+  </div>
+
+  <figure class="art-img">
+    <img src="ferias-ba-intersec.jpg" alt="Perspectiva general de la feria InterSec Buenos Aires en La Rural">
+    <figcaption>Perspectiva general de la feria InterSec Buenos Aires celebrada en La Rural Predio Ferial en 2024. Fuente: segurilatam.com</figcaption>
+  </figure>
+
+  <h2>Guía para expositores: ¿Cómo participar?</h2>
+
+  <p>
+    Para aquellas empresas interesadas en formar parte de estas ferias comerciales, el proceso comienza visitando la página web oficial de cada evento de interés. Sitios como <strong>EXPOSALE.net</strong> permiten enviar solicitudes preliminares de participación para facilitar el ingreso de nuevos expositores a las ferias de la ciudad. Es recomendable realizar estas gestiones con antelación debido al alto volumen de participantes que manejan estas exposiciones internacionales.
+  </p>
+
+  <div class="cta-box">
+    <p><i class="fas fa-info-circle" style="margin-right:6px"></i> Para más información sobre fechas de las próximas ferias: <a href="https://www.exposale.net" target="_blank">exposale.net</a></p>
+  </div>
+
+</article>
+
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="proximos-eventos.html" class="btn btn-ghost"><i class="fas fa-calendar-alt"></i> Próximos eventos</a>
+</div>
+
+<footer>© 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados</footer>
+</body>
+</html>
