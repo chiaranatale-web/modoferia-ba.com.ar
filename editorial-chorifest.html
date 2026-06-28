@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chori Fest 2026 — Editoriales · Modo Feria BA</title>
+  <meta name="description" content="El sábado 27 de junio el Hipódromo de Palermo se llenó de humo, brasas y el aroma inconfundible del choripán. Crónica de la Chori Fest 2026.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;--pink:#f4a8a8;--terra:#c4522a;--olive:#7a9040;--cream:#faf5f0;--cream-dk:#f0e8df;--txt:#2a2a2a;--txt-m:#555;--txt-l:#999;--shadow:0 4px 20px rgba(0,0,0,.08);--r:16px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+
+    .hero{min-height:520px;background:url('chorifest-portada.jpg') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.5) 45%,rgba(0,0,0,.1) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px);font-family:'Nunito',sans-serif}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.6rem;color:#fff;line-height:1.15;max-width:780px;text-shadow:0 2px 14px rgba(0,0,0,.4);margin-bottom:12px}
+    .hero-body .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;font-style:italic;font-family:'Lora',serif}
+
+    .byline{max-width:760px;margin:24px auto 0;padding:0 24px;display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif}
+    .byline-avatar{width:40px;height:40px;border-radius:50%;background:var(--terra);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.88rem;flex-shrink:0}
+    .byline span{font-size:.92rem;color:var(--txt-m)}
+    .byline strong{color:var(--txt)}
+
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark);font-family:'Nunito',sans-serif;font-weight:800}
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin:40px 0 16px;border-top:2px solid var(--cream-dk);padding-top:16px}
+
+    .pullquote{border-left:5px solid var(--terra);margin:36px 0;padding:20px 28px;background:#fff;border-radius:0 var(--r) var(--r) 0;box-shadow:var(--shadow)}
+    .pullquote p{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--terra);margin:0;line-height:1.55}
+
+    .art-video{margin:36px 0}
+    .art-video video{width:100%;border-radius:var(--r);display:block;background:#000;max-height:520px}
+    .art-video figcaption{font-size:.78rem;color:var(--txt-l);font-family:'Nunito',sans-serif;margin-top:8px;font-style:italic}
+
+    .stands-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:24px 0}
+    .stand-item{background:#fff;border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow);border-left:3px solid var(--terra)}
+    .stand-item h4{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;color:var(--teal-dark);margin-bottom:5px}
+    .stand-item p{font-size:.85rem;color:var(--txt-m);margin:0;line-height:1.5}
+
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif}
+    footer a{color:var(--pink);font-weight:700}
+    @media(max-width:640px){.nav-links{display:none}.hero-body h1{font-size:1.9rem}.stands-grid{grid-template-columns:1fr}.btn-ghost{margin-left:0;margin-top:10px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo"><img src="Logo.jpeg" alt="Modo Feria BA"><span>Modo Feria BA</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <span>Chori Fest 2026</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-fire"></i> Gastronomía · Crónica</div>
+    <h1>Chori Fest 2026: un día donde el choripán reunió sabores, tradición y comunidad</h1>
+    <p class="hero-sub">27 de junio · Hipódromo de Palermo · Buenos Aires</p>
+  </div>
+</section>
+
+<div class="byline">
+  <div class="byline-avatar">UL</div>
+  <span>Por <strong>Úrsula Lombardo</strong></span>
+</div>
+
+<article class="art-body">
+
+  <p>
+    El sábado 27 de junio, a las 12 del mediodía, el Hipódromo de Palermo volvió a llenarse de humo, brasas y el aroma inconfundible del choripán. El sol acompañó desde el comienzo de la jornada y creó el escenario ideal para disfrutar de una nueva edición de la Chori Fest. Mientras algunos caminaban en remera aprovechando el calor del mediodía, otros recorrían el predio con camperas livianas. Había sectores completamente iluminados por el sol y otros bajo la sombra, permitiendo que cada visitante encontrara su lugar para pasar el día.
+  </p>
+
+  <p>
+    Desde el ingreso se percibía que no era una feria gastronómica más. El predio, organizado por <strong>Buenos Aires Market</strong>, estaba rodeado por vallas que ordenaban el recorrido y decorado con banderines celestes y blancos, banderas argentinas y filas de mesas donde la gente se instalaba sin apuro. De fondo sonaba música tranquila que acompañaba el ambiente sin imponerse sobre las conversaciones. Todo invitaba a quedarse.
+  </p>
+
+  <p>
+    Con el correr de las horas, el movimiento no se detuvo. Familias enteras, grupos de amigos, parejas, personas mayores y turistas extranjeros recorrían los distintos puestos con calma. Se escuchaban risas, distintos idiomas y el sonido constante de las parrillas, mientras el humo avanzaba lentamente impulsado por el viento y envolvía gran parte del predio. No resultaba molesto; al contrario, parecía formar parte de la experiencia.
+  </p>
+
+  <h2>La estrella: la parrilla</h2>
+
+  <p>
+    La gran protagonista era, sin dudas, la parrilla. Los chorizos ocupaban el lugar central en cada puesto y eran exhibidos como verdaderas estrellas. Sobre las brasas, brillaban bajo el fuego mientras los cocineros los giraban lentamente con las pinzas. El chisporroteo de la grasa al caer sobre el carbón se mezclaba con el humo y hacía que muchos visitantes se detuvieran solamente para mirar, sacar una foto o grabar un video antes de elegir dónde comer.
+  </p>
+
+  <figure class="art-video">
+    <video controls playsinline>
+      <source src="chorifest-video.mp4" type="video/mp4">
+    </video>
+    <figcaption>Ambiente del Chori Fest 2026 en el Hipódromo de Palermo.</figcaption>
+  </figure>
+
+  <h2>Sabores de todos lados</h2>
+
+  <p>
+    Cada stand buscaba diferenciarse del resto. Algunos apostaban por los sabores tradicionales con chimichurri o salsa criolla, mientras que otros presentaban versiones más innovadoras:
+  </p>
+
+  <div class="stands-grid">
+    <div class="stand-item"><h4>Tres Fuegos — Chori-Masa</h4><p>El chorizo envuelto en una masa dorada crujiente.</p></div>
+    <div class="stand-item"><h4>Fierro — Chorikimchi</h4><p>Fusión con kimchi asiático que sorprendió a más de uno.</p></div>
+    <div class="stand-item"><h4>Austin Smoke House</h4><p>Chorizo ahumado con cheddar, cebolla caramelizada y salsa barbacoa.</p></div>
+    <div class="stand-item"><h4>Jordanas — Cordero patagónico</h4><p>Una versión de autor con ingredientes del sur argentino.</p></div>
+    <div class="stand-item"><h4>Versión alemana</h4><p>Con chucrut, para quienes buscaban cruzar fronteras gastronómicas.</p></div>
+    <div class="stand-item"><h4>Chori Matrimonio</h4><p>La combinación clásica de chorizo y morcilla en un mismo pan.</p></div>
+  </div>
+
+  <p>
+    La oferta también pensaba en quienes buscaban otras alternativas. Había <strong>choripanes vegetarianos</strong> y versiones <strong>sin TACC</strong> elaboradas con pan de chipá, preparados bajo los cuidados necesarios para evitar la contaminación cruzada. Además, podían encontrarse puestos de bondiola, shawarma, pollo, asado, picadas y distintas propuestas que ampliaban la experiencia gastronómica.
+  </p>
+
+  <p>
+    Los sabores dulces aparecían como el cierre perfecto de la recorrida. El aroma del café competía con el de las galletitas horneadas, los chocolates artesanales y los helados. Las bebidas tampoco faltaban: cerveza artesanal, vinos, tragos y opciones sin alcohol acompañaban la tarde.
+  </p>
+
+  <h2>Una feria pensada para todos</h2>
+
+  <p>
+    Más allá de la comida, la organización permitía disfrutar del evento con comodidad. Había baños, rampas para personas con discapacidad, tachos de residuos distribuidos por todo el predio, seguridad y espacios de juegos para los más chicos. Además, la feria era <strong>pet friendly</strong>, por lo que era habitual cruzarse con perros paseando junto a sus dueños entre las mesas y los puestos.
+  </p>
+
+  <p>
+    Entre la multitud también aparecían algunas caras conocidas. <strong>Paula Chaves, Pedro Alfonso y Florencia de la V</strong> recorrían la feria como cualquier otro visitante, grabando contenidos o simplemente disfrutando de la propuesta gastronómica. Aunque llamaban la atención, rápidamente se mezclaban con el resto de la gente.
+  </p>
+
+  <h2>Choripán y Mundial: la mezcla perfecta</h2>
+
+  <p>
+    Había un detalle que atravesaba toda la jornada y que iba mucho más allá de la comida. Esa misma noche la <strong>Selección Argentina</strong> disputaría un partido del Mundial y el clima se hacía sentir desde el mediodía. Muchos visitantes llevaban camisetas argentinas, gorros, banderas o bufandas celestes y blancas. Lo mismo ocurría con vendedores y organizadores. Incluso varios turistas extranjeros se sacaban fotos con banderas argentinas. Se respiraba una sensación de pertenencia que unía a personas muy distintas alrededor de una misma expectativa.
+  </p>
+
+  <div class="pullquote">
+    <p>La Chori Fest volvió a demostrar que el choripán es mucho más que una comida: es una excusa para reunirse, compartir y celebrar.</p>
+  </div>
+
+  <p>
+    No es casual que el choripán genere ese tipo de encuentros. Su historia está ligada a las reuniones populares y a los asados familiares. Nació como una comida simple, accesible y rápida de preparar, pero con el paso del tiempo se convirtió en uno de los grandes símbolos de la gastronomía argentina. Hoy forma parte de festivales, ferias y competencias culinarias donde conviven las recetas tradicionales con versiones más innovadoras, como las que pudieron verse en esta edición.
+  </p>
+
+  <p>
+    Cuando comenzó a caer la tarde, las mesas seguían ocupadas y las filas frente a las parrillas no disminuían. El humo continuaba elevándose entre los banderines argentinos mientras las conversaciones, las risas y el sonido de la música seguían acompañando el recorrido. La Chori Fest volvió a demostrar que el choripán es mucho más que una comida: es una excusa para reunirse, compartir y celebrar una parte de la identidad argentina que sigue encontrando, alrededor del fuego, su mejor forma de expresarse.
+  </p>
+
+</article>
+
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Inicio</a>
+</div>
+
+<footer>© 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados</footer>
+</body>
+</html>
