@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chori Fest 2026 — Editoriales · Modo Feria BA</title>
+  <meta name="description" content="La 11° edición del Chori Fest reunió a miles de personas en el Hipódromo de Palermo con más de 35 puestos y sabores de todo el mundo.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--teal:#1e6b5e;--teal-dark:#155046;--teal-light:#2d8a7a;--pink:#f4a8a8;--terra:#c4522a;--olive:#7a9040;--cream:#faf5f0;--cream-dk:#f0e8df;--txt:#2a2a2a;--txt-m:#555;--txt-l:#999;--shadow:0 4px 20px rgba(0,0,0,.08);--r:16px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Lora',serif;background:var(--cream);color:var(--txt);line-height:1.8}
+    a{text-decoration:none;color:inherit}
+    header{background:var(--teal);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+    .nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:10px}
+    .nav-logo img{height:46px;border-radius:8px;object-fit:contain}
+    .nav-logo span{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .breadcrumb{background:var(--teal-dark);padding:10px 24px}
+    .bc{max-width:1200px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .bc a{color:rgba(255,255,255,.7)}.bc a:hover{color:#fff}
+
+    .hero{min-height:500px;background:url('cf2-portada.jpg') center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.5) 45%,rgba(0,0,0,.1) 100%)}
+    .hero-body{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 56px;width:100%}
+    .hero-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;backdrop-filter:blur(4px);font-family:'Nunito',sans-serif}
+    .hero-body h1{font-family:'Playfair Display',serif;font-size:2.5rem;color:#fff;line-height:1.15;max-width:780px;text-shadow:0 2px 14px rgba(0,0,0,.4);margin-bottom:12px}
+    .hero-body .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:640px;font-style:italic;font-family:'Lora',serif}
+
+    .byline{max-width:760px;margin:24px auto 0;padding:0 24px;display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif}
+    .byline-avatar{width:40px;height:40px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.88rem;flex-shrink:0}
+    .byline span{font-size:.92rem;color:var(--txt-m)}
+    .byline strong{color:var(--txt)}
+
+    .art-body{max-width:760px;margin:0 auto;padding:36px 24px 0}
+    .art-body p{font-size:1.05rem;color:var(--txt);margin-bottom:22px;line-height:1.85}
+    .art-body p strong{color:var(--teal-dark);font-family:'Nunito',sans-serif;font-weight:800}
+    .art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin:40px 0 16px;border-top:2px solid var(--cream-dk);padding-top:16px}
+    .art-body h3{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--teal-dark);margin:20px 0 8px}
+
+    .art-img{margin:32px 0}
+    .art-img img{width:100%;border-radius:var(--r);display:block;object-fit:cover;max-height:480px}
+    .art-img figcaption{font-size:.78rem;color:var(--txt-l);font-family:'Nunito',sans-serif;margin-top:8px;font-style:italic}
+
+    .menu-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 22px}
+    .menu-item{background:#fff;border-radius:10px;padding:10px 14px;font-size:.88rem;color:var(--txt-m);box-shadow:var(--shadow);display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif}
+    .menu-item::before{content:'🔥';font-size:.85rem;flex-shrink:0}
+
+    .puestos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}
+    .puesto-tag{background:rgba(30,107,94,.08);border:1px solid rgba(30,107,94,.15);border-radius:8px;padding:7px 12px;font-size:.78rem;font-weight:700;color:var(--teal-dark);font-family:'Nunito',sans-serif;text-align:center}
+
+    .recomendados{display:flex;flex-direction:column;gap:12px;margin:16px 0}
+    .recomendado{background:#fff;border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow);border-left:4px solid var(--terra);display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .recomendado p{font-size:.92rem;color:var(--txt);margin:0;flex:1}
+    .recomendado .precio{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;color:var(--terra);white-space:nowrap}
+
+    .transport-box{background:#fff;border-radius:var(--r);padding:22px 24px;margin:24px 0;box-shadow:var(--shadow)}
+    .transport-box h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+    .transport-box ul{padding-left:20px;display:flex;flex-direction:column;gap:5px}
+    .transport-box li{font-size:.88rem;color:var(--txt-m);font-family:'Nunito',sans-serif}
+
+    .map-section{margin:32px 0}
+    .map-section h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin-bottom:16px;border-top:2px solid var(--cream-dk);padding-top:16px}
+    .map-wrapper{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+    .map-wrapper iframe{width:100%;height:380px;border:0;display:block}
+
+    .more{max-width:760px;margin:52px auto;padding:0 24px}
+    .more h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;font-family:'Nunito',sans-serif;transition:background .2s}
+    .btn:hover{background:var(--teal-light)}
+    .btn-ghost{background:transparent;border:2px solid var(--teal);color:var(--teal);margin-left:12px}
+    .btn-ghost:hover{background:var(--teal);color:#fff}
+    footer{background:var(--teal-dark);color:rgba(255,255,255,.85);padding:28px 24px;text-align:center;font-size:.82rem;font-family:'Nunito',sans-serif}
+    footer a{color:var(--pink);font-weight:700}
+    @media(max-width:640px){.nav-links{display:none}.hero-body h1{font-size:1.9rem}.menu-list{grid-template-columns:1fr}.puestos-grid{grid-template-columns:1fr 1fr}.btn-ghost{margin-left:0;margin-top:10px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="nav-logo"><img src="Logo.jpeg" alt="Modo Feria BA"><span>Modo Feria BA</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="imperdibles.html">Imperdibles</a></li>
+      <li><a href="editoriales.html">Editoriales</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <a href="editoriales.html">Editoriales</a>
+    <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
+    <span>Chori Fest 2026</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-cat"><i class="fas fa-fire"></i> Ferias gastronómicas</div>
+    <h1>Chori Fest 2026: el Hipódromo de Palermo volvió a convertirse en la capital del choripán</h1>
+    <p class="hero-sub">La 11° edición del festival reunió a miles de personas con más de 35 puestos, sabores de todo el mundo y una propuesta gastronómica para todos los gustos.</p>
+  </div>
+</section>
+
+<div class="byline">
+  <div class="byline-avatar">VP</div>
+  <span>Por <strong>Valentina Presedo</strong></span>
+</div>
+
+<article class="art-body">
+
+  <p>
+    El choripán volvió a tener su gran celebración en la Ciudad de Buenos Aires. Durante el sábado 27 y domingo 28 de junio, el Hipódromo Argentino de Palermo recibió la <strong>11° edición de Chori Fest</strong>, el festival gastronómico que rinde homenaje a uno de los íconos más representativos de la cocina argentina.
+  </p>
+  <p>
+    Con <strong>entrada libre y gratuita</strong>, el evento se desarrolló entre las 12 y las 20 horas y reunió a miles de visitantes que recorrieron los más de 35 puestos y food trucks instalados en el predio para disfrutar de versiones tradicionales y de autor del clásico sándwich argentino.
+  </p>
+
+  <h2>Más de cien versiones del sándwich más argentino</h2>
+
+  <figure class="art-img">
+    <img src="cf2-foto2.jpg" alt="Chorizos en la parrilla del Chori Fest 2026">
+    <figcaption>El festival presentó más de cien versiones del tradicional sándwich argentino.</figcaption>
+  </figure>
+
+  <p>
+    Uno de los principales atractivos de esta edición fue la enorme variedad de propuestas gastronómicas. Chori Fest ofreció alrededor de un centenar de versiones del choripán, desde las recetas clásicas hasta combinaciones gourmet inspiradas en distintas ciudades y sabores del mundo. La propuesta apostó por una mezcla de influencias francesas, italianas y criollas, logrando reinterpretaciones originales del tradicional chorizo argentino.
+  </p>
+
+  <p>Entre las opciones más destacadas se encontraron:</p>
+  <div class="menu-list">
+    <div class="menu-item">Chorizo de cordero con cebolla roja, yogurt, pepino, hierbabuena y batata</div>
+    <div class="menu-item">Choripán vegetariano con berenjena, espinaca, queso de cabra y miel</div>
+    <div class="menu-item">Choripán ahumado con hongos, lechuga, naranja y ajo</div>
+    <div class="menu-item">El clásico choripán con salsa criolla</div>
+    <div class="menu-item">Chorizo a la pomarola con cebolla, morrón y salsa de tomate</div>
+    <div class="menu-item">Chorizo de cerdo ahumado a leña servido en pan artesanal</div>
+  </div>
+
+  <p>La oferta estuvo pensada tanto para los amantes del choripán tradicional como para quienes buscan sabores más innovadores y propuestas gourmet.</p>
+
+  <h2>Precios accesibles y relación calidad-precio destacada</h2>
+
+  <figure class="art-img">
+    <img src="cf2-foto3.jpg" alt="Miles de visitantes en el Chori Fest 2026">
+    <figcaption>Miles de visitantes recorrieron el Hipódromo de Palermo durante la 11° edición de Chori Fest.</figcaption>
+  </figure>
+
+  <p>
+    Los precios de los choripanes comenzaron desde los <strong>$10.000</strong>, aunque algunas propuestas especiales partían desde los $8.000 dependiendo del puesto y la preparación elegida. Además del tradicional sándwich, los visitantes pudieron encontrar tapas de asado por $17.000 y bondiola con distintos toppings por $15.000.
+  </p>
+  <p>
+    Muchos asistentes destacaron la calidad de los productos y la relación entre precio y porción, señalando que la propuesta gastronómica superó las expectativas tanto por el sabor como por la variedad disponible. La gran convocatoria durante ambas jornadas volvió a confirmar el crecimiento del festival dentro del calendario gastronómico porteño.
+  </p>
+
+  <h2>Mucho más que choripanes</h2>
+
+  <figure class="art-img">
+    <img src="cf2-foto1.jpg" alt="Cocina al fuego en el Chori Fest 2026">
+    <figcaption>La cocina al fuego fue una de las protagonistas de la jornada gastronómica.</figcaption>
+  </figure>
+
+  <p>Aunque el protagonista indiscutido fue el choripán, Chori Fest ofreció una experiencia gastronómica mucho más amplia. Los asistentes también pudieron disfrutar de:</p>
+  <div class="menu-list">
+    <div class="menu-item">Mollejas</div>
+    <div class="menu-item">Vacío</div>
+    <div class="menu-item">Tiras de asado</div>
+    <div class="menu-item">Lomitos</div>
+    <div class="menu-item">Bondiolas</div>
+    <div class="menu-item">Costillares al asador</div>
+    <div class="menu-item">Empanadas artesanales</div>
+    <div class="menu-item">Hamburguesas</div>
+    <div class="menu-item">Postres</div>
+    <div class="menu-item">Opciones veganas y sin TACC</div>
+  </div>
+  <p>La propuesta se completó con vinos de bodegas seleccionadas, cerveza artesanal y opciones de coctelería para acompañar cada plato.</p>
+
+  <h2>Más de 35 puestos y food trucks participaron del festival</h2>
+
+  <p>La edición 2026 reunió a algunas de las parrillas y emprendimientos gastronómicos más reconocidos de Buenos Aires, junto con nuevos proyectos especializados en cocina al fuego.</p>
+
+  <div class="puestos-grid">
+    <div class="puesto-tag">El Reino del Choripán</div>
+    <div class="puesto-tag">Patrón Charcuterie</div>
+    <div class="puesto-tag">Todo Brasas</div>
+    <div class="puesto-tag">Club Asador</div>
+    <div class="puesto-tag">Asado Campero</div>
+    <div class="puesto-tag">Lo de Gauna</div>
+    <div class="puesto-tag">Sabores Argentos</div>
+    <div class="puesto-tag">Distrito Chori</div>
+    <div class="puesto-tag">Fierro</div>
+    <div class="puesto-tag">Pancho Masjuan</div>
+    <div class="puesto-tag">Flama</div>
+    <div class="puesto-tag">Delta Búfalo</div>
+    <div class="puesto-tag">Viejo Patrón</div>
+    <div class="puesto-tag">La Magia del Flaco</div>
+    <div class="puesto-tag">Jordanas</div>
+    <div class="puesto-tag">Shappa</div>
+    <div class="puesto-tag">Tres Fuegos</div>
+    <div class="puesto-tag">Veggie Green</div>
+    <div class="puesto-tag">Cremolatti</div>
+    <div class="puesto-tag">Rabieta</div>
+    <div class="puesto-tag">Two Churros</div>
+    <div class="puesto-tag">Pop Tails</div>
+    <div class="puesto-tag">Guapaletas</div>
+    <div class="puesto-tag">Bodega Valle del Indio</div>
+    <div class="puesto-tag">Cinzano</div>
+    <div class="puesto-tag">Taproom</div>
+    <div class="puesto-tag">Cabaña Los Hermanos</div>
+    <div class="puesto-tag">La Cabrera</div>
+    <div class="puesto-tag">La Tranquera</div>
+    <div class="puesto-tag">Anti Gourmet</div>
+  </div>
+
+  <h2>Los recomendados de Chori Fest</h2>
+  <p>Entre las propuestas más destacadas por el público se encontraron:</p>
+  <div class="recomendados">
+    <div class="recomendado">
+      <p><strong>Chorizo a la pomarola</strong> con cebolla, morrón y salsa de tomate.</p>
+      <span class="precio">$8.000</span>
+    </div>
+    <div class="recomendado">
+      <p><strong>Chorizo 100% de cerdo ahumado a leña</strong>, servido en pan artesanal.</p>
+      <span class="precio">$9.000</span>
+    </div>
+  </div>
+  <p>Dos opciones que reflejan el espíritu del festival: reinventar el clásico choripán sin perder su identidad.</p>
+
+  <p>
+    Con entrada gratuita, cientos de opciones para elegir y una convocatoria que crece edición tras edición, Chori Fest volvió a consolidarse como uno de los eventos gastronómicos más importantes de Buenos Aires. La combinación entre tradición, innovación y cocina al fuego convirtió nuevamente al Hipódromo de Palermo en el punto de encuentro para los fanáticos del choripán y de la gastronomía argentina.
+  </p>
+
+</article>
+
+<!-- CÓMO LLEGAR + MAPA -->
+<div class="art-body">
+  <div class="map-section">
+    <h2><i class="fas fa-map-marker-alt" style="color:var(--terra);margin-right:8px"></i>Cómo llegar al Hipódromo de Palermo</h2>
+    <p style="margin-bottom:20px">El evento se realizó en el <strong>Hipódromo Argentino de Palermo</strong>, ubicado en Avenida del Libertador y Dorrego, uno de los principales polos gastronómicos y recreativos de la Ciudad de Buenos Aires.</p>
+
+    <div class="map-wrapper" style="margin-bottom:20px">
+      <iframe src="https://maps.google.com/maps?q=Hipodromo+Argentino+de+Palermo+Buenos+Aires&output=embed&z=15" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div class="transport-box">
+        <h3><i class="fas fa-subway"></i> Desde Constitución</h3>
+        <ul>
+          <li>Línea C hasta Retiro</li>
+          <li>Combinar con Línea D hasta Palermo</li>
+          <li>Colectivos 10, 34 o 160</li>
+        </ul>
+      </div>
+      <div class="transport-box">
+        <h3><i class="fas fa-subway"></i> Desde el Obelisco</h3>
+        <ul>
+          <li>Línea D desde 9 de Julio hasta Palermo</li>
+          <li>Caminar por Av. del Libertador hasta el ingreso</li>
+        </ul>
+      </div>
+      <div class="transport-box">
+        <h3><i class="fas fa-subway"></i> Desde Retiro</h3>
+        <ul>
+          <li>Línea C hasta Diagonal Norte</li>
+          <li>Combinar con Línea D hasta Palermo</li>
+          <li>Colectivos 10, 67, 130 y 160</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="more">
+  <h3>Seguí leyendo</h3>
+  <a href="editoriales.html" class="btn"><i class="fas fa-pen-fancy"></i> Ver todos los editoriales</a>
+  <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Inicio</a>
+</div>
+
+<footer>© 2026 <a href="index.html">Modo Feria BA</a> — Todos los derechos reservados</footer>
+</body>
+</html>
