@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chiara Natale · Portfolio · Periodismo II UADE 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --bg:#0d1a16;--bg2:#111f1a;--bg3:#0a1510;
+      --teal:#1e6b5e;--teal-light:#4db8a0;
+      --terra:#c4522a;--pink:#f4a8a8;--olive:#a8c878;
+      --txt:#fff;--txt-m:rgba(255,255,255,.72);--txt-l:rgba(255,255,255,.45);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt)}
+
+    #progress{position:fixed;top:0;left:0;height:3px;background:var(--terra);transition:width .4s;z-index:1000}
+    #counter{position:fixed;bottom:20px;right:28px;font-size:.72rem;font-weight:800;color:var(--txt-l);letter-spacing:.1em;z-index:1000}
+    .nav-btn{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.07);border:none;color:rgba(255,255,255,.35);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:.95rem;display:grid;place-items:center;transition:all .2s;z-index:1000}
+    .nav-btn:hover{background:rgba(255,255,255,.16);color:#fff}
+    #prev-btn{left:14px}
+    #next-btn{right:14px}
+
+    #slides{width:100%;height:100%}
+    .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s,transform .5s;transform:translateX(40px);padding:40px 80px}
+    .slide.active{opacity:1;pointer-events:all;transform:translateX(0)}
+    .slide.prev{transform:translateX(-40px)}
+    .slide-center{flex-direction:column;text-align:center}
+    .slide-split{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;width:100%;max-width:1100px}
+
+    /* TYPOGRAPHY */
+    .label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--terra);margin-bottom:10px;display:block}
+    h1{font-family:'Playfair Display',serif;font-size:3rem;line-height:1.1;margin-bottom:16px}
+    h2{font-family:'Playfair Display',serif;font-size:2.2rem;line-height:1.15;margin-bottom:20px}
+    h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:8px}
+    p{font-size:.98rem;color:var(--txt-m);line-height:1.75;margin-bottom:14px}
+    p strong{color:#fff}
+    .accent{color:var(--terra)}
+    .line{width:44px;height:3px;background:var(--terra);border-radius:2px;margin:14px 0 24px}
+    .line.c{margin:14px auto 24px}
+
+    /* PORTADA BG */
+    .slide-portada{background:radial-gradient(ellipse at 25% 65%,rgba(30,107,94,.3) 0%,transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(196,82,42,.18) 0%,transparent 50%),var(--bg)}
+
+    /* CARD */
+    .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px}
+    .card h3{color:#fff;margin-bottom:6px;font-size:1.05rem}
+    .card p{font-size:.85rem;margin:0}
+
+    /* ARTICLE CARDS */
+    .art-cards{display:flex;flex-direction:column;gap:16px}
+    .art-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start;text-decoration:none;transition:background .2s,border-color .2s}
+    .art-card:hover{background:rgba(255,255,255,.09);border-color:rgba(196,82,42,.4)}
+    .art-card-icon{width:44px;height:44px;border-radius:12px;background:rgba(196,82,42,.2);display:grid;place-items:center;color:var(--terra);font-size:1rem;flex-shrink:0}
+    .art-card h4{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:4px;line-height:1.3}
+    .art-card p{font-size:.8rem;color:var(--txt-l);margin:0}
+    .art-card .tag{display:inline-block;background:rgba(196,82,42,.18);color:var(--terra);font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:6px;margin-top:6px}
+
+    /* PORTADAS GRID */
+    .portadas-row{display:flex;gap:14px;justify-content:center;margin-top:8px}
+    .portada-item{flex:1;max-width:200px}
+    .portada-item img{width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:9/16;border:1px solid rgba(255,255,255,.08)}
+    .portada-label{font-size:.72rem;color:var(--txt-l);text-align:center;margin-top:7px;font-weight:700}
+
+    /* VIDEOS GRID */
+    .videos-row{display:flex;gap:14px;justify-content:center;align-items:flex-start;margin-top:8px}
+    .video-item{flex:1;max-width:180px}
+    .video-item video{width:100%;border-radius:12px;display:block;aspect-ratio:9/16;object-fit:cover;background:#000;border:1px solid rgba(255,255,255,.08)}
+    .video-label{font-size:.7rem;color:var(--txt-l);text-align:center;margin-top:7px;font-weight:700}
+
+    /* WEB PREVIEW */
+    .web-preview{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden}
+    .web-bar{background:rgba(255,255,255,.06);padding:10px 16px;display:flex;align-items:center;gap:8px}
+    .web-dot{width:10px;height:10px;border-radius:50%}
+    .web-url{background:rgba(255,255,255,.08);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--txt-l);margin-left:8px;flex:1;font-family:monospace}
+    .web-sections{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px}
+    .web-section{background:rgba(255,255,255,.05);border-radius:10px;padding:12px;text-align:center}
+    .web-section i{font-size:1.2rem;color:var(--teal-light);margin-bottom:6px;display:block}
+    .web-section span{font-size:.72rem;color:var(--txt-l);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+
+    /* CHIP */
+    .chip{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:var(--txt-m);padding:4px 12px;border-radius:20px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+    .chip.terra{background:rgba(196,82,42,.18);border-color:rgba(196,82,42,.3);color:var(--pink)}
+    .chip.teal{background:rgba(30,107,94,.25);border-color:rgba(77,184,160,.3);color:var(--teal-light)}
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+<button class="nav-btn" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+<button class="nav-btn" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+<div id="counter"></div>
+
+<div id="slides">
+
+  <!-- 1. PORTADA -->
+  <div class="slide slide-portada slide-center active">
+    <span class="label">Portfolio · Periodismo II · UADE · 2026</span>
+    <h1>Chiara <span class="accent">Natale</span></h1>
+    <div class="line c"></div>
+    <p style="font-size:1.05rem;max-width:480px;margin:0 auto 28px">Periodista. Editora. Creadora de contenidos digitales sobre cultura, gastronomía y ferias en Buenos Aires.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <span class="chip terra"><i class="fas fa-pen-nib"></i> Redacción</span>
+      <span class="chip teal"><i class="fas fa-edit"></i> Edición</span>
+      <span class="chip"><i class="fab fa-instagram"></i> Contenido digital</span>
+      <span class="chip"><i class="fas fa-globe"></i> Desarrollo web</span>
+    </div>
+  </div>
+
+  <!-- 2. MODO FERIA BA -->
+  <div class="slide slide-split" style="background:var(--bg2)">
+    <div>
+      <span class="label">El proyecto</span>
+      <h2>Modo <span class="accent">Feria BA</span></h2>
+      <div class="line"></div>
+      <p>Co-fundadora y editora de <strong>Modo Feria BA</strong>, un medio digital nativo sobre ferias, eventos culturales y emprendimientos en la Ciudad de Buenos Aires, desarrollado en el marco de Periodismo II (UADE).</p>
+      <p>Participé en la <strong>dirección editorial</strong> del proyecto: definición de líneas editoriales, revisión de contenidos, coordinación del equipo de redactoras y desarrollo del sitio web.</p>
+      <div style="display:flex;gap:8px;margin-top:20px;flex-wrap:wrap">
+        <span class="chip terra">Edición</span>
+        <span class="chip teal">Dirección</span>
+        <span class="chip"><i class="fas fa-globe"></i> modoferia-ba.com.ar</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card"><h3>📰 12 editoriales</h3><p>Crónicas, entrevistas y notas publicadas entre mayo y junio de 2026.</p></div>
+      <div class="card"><h3>🗓️ Agenda completa</h3><p>21+ eventos cubiertos en Buenos Aires, calendario interactivo mayo–noviembre.</p></div>
+      <div class="card"><h3>🗺️ Mapa interactivo</h3><p>42+ puntos de intercambio de figuritas del Mundial 2026 en todo el país.</p></div>
+      <div class="card"><h3>📱 Redes sociales</h3><p>Reels y TikToks en @modoferia_ba con cobertura en campo de cada evento.</p></div>
+    </div>
+  </div>
+
+  <!-- 3. CRÓNICA EXPO MATE -->
+  <div class="slide slide-split" style="background:var(--bg3)">
+    <div>
+      <span class="label">Producción escrita</span>
+      <h2>Coberturas <span class="accent">propias</span></h2>
+      <div class="line"></div>
+      <p>Produje y publiqué dos piezas periodísticas de autoría propia en el sitio, aplicando géneros del periodismo digital contemporáneo.</p>
+      <div class="art-cards" style="margin-top:8px">
+        <a href="https://modoferia-ba.com.ar/editorial-expo-mate" target="_blank" class="art-card">
+          <div class="art-card-icon"><i class="fas fa-pen-nib"></i></div>
+          <div>
+            <h4>Mate, chacarera y escarapela: la Expo Mate celebró el 25 de Mayo como se debe</h4>
+            <p>Crónica de campo con entrevistas y cobertura exclusiva.</p>
+            <span class="tag">Crónica · 25 de Mayo 2026</span>
+          </div>
+        </a>
+        <a href="https://modoferia-ba.com.ar/mapa-figuritas" target="_blank" class="art-card">
+          <div class="art-card-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div>
+            <h4>Late, no late: guía de intercambio de figuritas del Mundial 2026</h4>
+            <p>Nota con datos duros, fuentes citadas y mapa interactivo propio.</p>
+            <span class="tag">Periodismo de datos · Junio 2026</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card" style="border-left:3px solid var(--terra)">
+        <h3>🧉 Expo Mate</h3>
+        <p>Cobertura de campo el 25 de Mayo en el Hipódromo de San Isidro. Entrevistas, ambiente, chacarera y clima mundialista. Crónica narrativa.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--teal-light)">
+        <h3>⚽ "Late, no late"</h3>
+        <p>Investigación periodística sobre el álbum Panini 2026. 10 fuentes verificadas, tabla comparativa de costos y mapa interactivo con 42+ puntos en Argentina.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--olive)">
+        <h3>📊 Periodismo de precisión</h3>
+        <p>Datos de Chequeado, Infobae, Bloomberg Línea y QuestionPro. Sección de fuentes con citas numeradas y referencias desplegables.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. DISEÑO DE PORTADAS -->
+  <div class="slide slide-center" style="background:var(--bg2)">
+    <div style="width:100%;max-width:1000px;text-align:center">
+      <span class="label">Diseño de contenido</span>
+      <h2>Portadas para <span class="accent">redes sociales</span></h2>
+      <div class="line c"></div>
+      <p style="max-width:560px;margin:0 auto 24px">Diseñé las portadas de cobertura para Instagram y TikTok de los eventos cubiertos por Modo Feria BA, con identidad visual consistente y branding de la marca.</p>
+      <div class="portadas-row">
+        <div class="portada-item">
+          <img src="pf-portada-francesa.png" alt="Feria Francesa">
+          <div class="portada-label">Feria Francesa</div>
+        </div>
+        <div class="portada-item">
+          <img src="pf-portada-francesa2.png" alt="Feria Francesa v2">
+          <div class="portada-label">Feria Francesa v2</div>
+        </div>
+        <div class="portada-item">
+          <img src="pf-portada-matsuri.png" alt="Matsuri">
+          <div class="portada-label">Matsuri</div>
+        </div>
+        <div class="portada-item">
+          <img src="pf-portada-expomate.png" alt="Expo Mate">
+          <div class="portada-label">Expo Mate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. VIDEOS -->
+  <div class="slide slide-center" style="background:var(--bg3)">
+    <div style="width:100%;max-width:1000px;text-align:center">
+      <span class="label">Periodismo móvil · MOJO</span>
+      <h2>Reels & <span class="accent">TikToks</span></h2>
+      <div class="line c"></div>
+      <p style="max-width:560px;margin:0 auto 20px">Produje y edité contenido en video en cobertura de campo, aplicando la metodología de periodismo móvil (MOJO): captura con smartphone, edición mobile-first y publicación en @modoferia_ba.</p>
+      <div class="videos-row">
+        <div class="video-item">
+          <video controls playsinline muted><source src="pf-reel-francesa.mp4" type="video/mp4"></video>
+          <div class="video-label">Reel · Feria Francesa</div>
+        </div>
+        <div class="video-item">
+          <video controls playsinline muted><source src="pf-teaser-expomate.mp4" type="video/mp4"></video>
+          <div class="video-label">Teaser · Expo Mate</div>
+        </div>
+        <div class="video-item">
+          <video controls playsinline muted><source src="pf-tiktok-expomate.mp4" type="video/mp4"></video>
+          <div class="video-label">TikTok · Expo Mate</div>
+        </div>
+        <div class="video-item">
+          <video controls playsinline muted><source src="pf-tiktok-chorifest.mp4" type="video/mp4"></video>
+          <div class="video-label">TikTok · Chori Fest</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. SITIO WEB -->
+  <div class="slide slide-split" style="background:var(--bg2)">
+    <div>
+      <span class="label">Desarrollo web</span>
+      <h2>Creación del <span class="accent">sitio web</span></h2>
+      <div class="line"></div>
+      <p>Diseñé y desarrollé el sitio web completo de Modo Feria BA utilizando <strong>HTML, CSS y JavaScript</strong> desde cero, en colaboración con <strong>Claude (Anthropic)</strong>.</p>
+      <p>El sitio está publicado en producción con dominio propio, hospedado en <strong>Cloudflare Pages</strong> y con repositorio en <strong>GitHub</strong>.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border-radius:10px;padding:10px 14px">
+          <i class="fas fa-globe" style="color:var(--teal-light);width:20px"></i>
+          <div><div style="font-size:.85rem;font-weight:800">modoferia-ba.com.ar</div><div style="font-size:.72rem;color:var(--txt-l)">Dominio propio · Cloudflare Pages</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border-radius:10px;padding:10px 14px">
+          <i class="fab fa-github" style="color:var(--txt-m);width:20px"></i>
+          <div><div style="font-size:.85rem;font-weight:800">GitHub repository</div><div style="font-size:.72rem;color:var(--txt-l)">chiaranatale-web/modoferia-ba.com.ar</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border-radius:10px;padding:10px 14px">
+          <i class="fas fa-robot" style="color:var(--terra);width:20px"></i>
+          <div><div style="font-size:.85rem;font-weight:800">Claude · Anthropic</div><div style="font-size:.72rem;color:var(--txt-l)">Herramienta de IA para desarrollo web asistido</div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="web-preview">
+        <div class="web-bar">
+          <div class="web-dot" style="background:#ff5f57"></div>
+          <div class="web-dot" style="background:#febc2e"></div>
+          <div class="web-dot" style="background:#28c840"></div>
+          <div class="web-url">modoferia-ba.com.ar</div>
+        </div>
+        <div class="web-sections">
+          <div class="web-section"><i class="fas fa-star"></i><span>Coberturas</span></div>
+          <div class="web-section"><i class="fas fa-calendar-alt"></i><span>Calendario</span></div>
+          <div class="web-section"><i class="fas fa-map-marker-alt"></i><span>Mapa</span></div>
+          <div class="web-section"><i class="fas fa-newspaper"></i><span>Editoriales</span></div>
+          <div class="web-section"><i class="fab fa-instagram"></i><span>Reels</span></div>
+          <div class="web-section"><i class="fas fa-map"></i><span>Barrios</span></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <span class="chip teal">HTML / CSS / JS</span>
+        <span class="chip">Leaflet.js</span>
+        <span class="chip">GitHub Pages</span>
+        <span class="chip terra">IA asistida</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. CIERRE -->
+  <div class="slide slide-center slide-portada">
+    <span class="label">Periodismo II · UADE · 2026</span>
+    <h1 style="font-size:2.6rem">Chiara <span class="accent">Natale</span></h1>
+    <div class="line c"></div>
+    <p style="max-width:500px;margin:0 auto 28px;font-size:1rem">Crónica · Edición · Diseño · Video · Desarrollo web.<br>Un portfolio construido desde las ferias de Buenos Aires.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="https://modoferia-ba.com.ar" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--terra);color:#fff;padding:10px 22px;border-radius:30px;font-weight:800;font-size:.88rem;text-decoration:none"><i class="fas fa-globe"></i> modoferia-ba.com.ar</a>
+      <a href="https://www.instagram.com/modoferia_ba" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;padding:10px 22px;border-radius:30px;font-weight:800;font-size:.88rem;text-decoration:none"><i class="fab fa-instagram"></i> @modoferia_ba</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let cur = 0;
+const total = slides.length;
+
+function goTo(n){
+  slides[cur].classList.remove('active');
+  slides[cur].classList.add('prev');
+  setTimeout(()=>slides[Math.max(0,cur)].classList.remove('prev'),500);
+  // pause all videos
+  document.querySelectorAll('video').forEach(v=>{v.pause()});
+  cur = Math.max(0,Math.min(n,total-1));
+  slides[cur].classList.add('active');
+  document.getElementById('progress').style.width=((cur+1)/total*100)+'%';
+  document.getElementById('counter').textContent=(cur+1)+' / '+total;
+  document.getElementById('prev-btn').style.opacity=cur===0?'0':'1';
+  document.getElementById('next-btn').style.opacity=cur===total-1?'0':'1';
+}
+
+document.getElementById('prev-btn').addEventListener('click',()=>goTo(cur-1));
+document.getElementById('next-btn').addEventListener('click',()=>goTo(cur+1));
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' ')goTo(cur+1);
+  if(e.key==='ArrowLeft')goTo(cur-1);
+});
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX);
+document.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>50)d>0?goTo(cur+1):goTo(cur-1);});
+goTo(0);
+</script>
+</body>
+</html>
